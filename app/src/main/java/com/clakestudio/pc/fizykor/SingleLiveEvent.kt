@@ -23,7 +23,6 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
                 observer.onChanged(t)
             }
         })
-
     }
 
 
