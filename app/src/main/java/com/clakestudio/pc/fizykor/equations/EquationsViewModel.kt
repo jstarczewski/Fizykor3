@@ -17,7 +17,6 @@ class EquationsViewModel(
     private val context: Context = context.applicationContext
     internal val openFlashCardsEvent = SingleLiveEvent<String>()
 
-    @Bindable
     val equations: ArrayList<Equation> = ObservableArrayList()
 
     fun start() {
