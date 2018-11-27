@@ -1,6 +1,7 @@
 package com.clakestudio.pc.fizykor.equations
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -28,4 +29,16 @@ class EquationsFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
+    private fun setupFav() {
+
+
+    }
+
+    private fun setupRecyclerViewAdapter() {
+
+    }
+
+    
+
 }
+
