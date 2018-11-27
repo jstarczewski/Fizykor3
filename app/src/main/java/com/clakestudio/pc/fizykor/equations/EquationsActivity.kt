@@ -4,14 +4,22 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.clakestudio.pc.fizykor.R
+import com.clakestudio.pc.fizykor.util.obtainViewModel
+import com.clakestudio.pc.fizykor.util.replaceFragmentInActivity
+import com.clakestudio.pc.fizykor.util.setupActionBar
 import kotlinx.android.synthetic.main.activity_equations.*
 import kotlinx.android.synthetic.main.app_bar_equations.*
 
-class EquationsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class EquationsActivity : AppCompatActivity() {
+
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +31,51 @@ class EquationsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                     .setAction("Action", null).show()
         }
 
+        setupActionBar(R.id.toolbar) {
+            setHomeAsUpIndicator(R.drawable.ic_menu)
+            setDisplayHomeAsUpEnabled(true)
+        }
+
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        nav_view.setNavigationItemSelectedListener(this)
     }
+
+
+    private fun setupViewFragment() {
+        supportFragmentManager.findFragmentById(R.id.contentFrame)
+                ?: EquationsFragment.newInstance().let {
+                    replaceFragmentInActivity(it, R.id.contentFrame)
+                }
+    }
+
+    private fun setupNavigationDrawer() {
+        drawerLayout = (findViewById<DrawerLayout>(R.id.drawer_layout)).apply {
+            setStatusBarBackground(R.color.colorPrimaryDark)
+        }
+        setUpDrawerContent(findViewById(R.id.nav_view))
+    }
+
+    private fun setUpDrawerContent(navigationView: NavigationView) {
+
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_camera -> {
+                    Log.e("NavDrawer", "Camera")
+                }
+                R.id.nav_gallery -> {
+                    Log.e("NavDrawer", "Gallery")
+                }
+            }
+            menuItem.isChecked = true
+            drawerLayout.closeDrawers()
+            true
+        }
+
+    }
+
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -39,46 +85,14 @@ class EquationsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.equations, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+    override fun onOptionsItemSelected(item: MenuItem?) =
+            when (item?.itemId) {
+                android.R.id.home -> {
+                    drawerLayout.openDrawer(GravityCompat.START)
+                    true
+                }
+                else -> super.onOptionsItemSelected(item)
             }
-            R.id.nav_gallery -> {
 
-            }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
-        }
-
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
-    }
+    fun obtainViewModel(): EquationsViewModel = obtainViewModel(EquationsViewModel::class.java)
 }

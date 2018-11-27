@@ -3,23 +3,23 @@ package com.clakestudio.pc.fizykor
 import android.app.Application
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.clakestudio.pc.fizykor.equations.EquationsViewModel
 
 class ViewModelFactory private constructor(
         private val application: Application
 ) : ViewModelProvider.NewInstanceFactory() {
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+            with(modelClass) {
+                when {
+                    isAssignableFrom(EquationsViewModel::class.java) ->
+                        EquationsViewModel(application)
 
-        /*
-        with (modelClass) {
+                    else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
+                }
+                // Unchecked cast
+            } as T
 
-
-            else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
-
-        } as T
-        */
-        return super.create(modelClass)
-    }
 
     companion object {
 
