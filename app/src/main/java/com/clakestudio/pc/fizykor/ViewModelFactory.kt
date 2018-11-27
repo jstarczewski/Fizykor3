@@ -9,7 +9,7 @@ class ViewModelFactory private constructor(
         private val application: Application
 ) : ViewModelProvider.NewInstanceFactory() {
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+    override fun <T : ViewModel> create(modelClass: Class<T>) =
             with(modelClass) {
                 when {
                     isAssignableFrom(EquationsViewModel::class.java) ->

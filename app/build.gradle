@@ -75,5 +75,5 @@ dependencies {
     implementation "com.android.support.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
 
     kapt "com.android.databinding:compiler:$rootProject.gradlePluginVersion"
-    implementation 'com.github.jstarczewski:MathView:0.2.0'
+    implementation 'com.github.jstarczewski:MathView:0.2.1'
 }

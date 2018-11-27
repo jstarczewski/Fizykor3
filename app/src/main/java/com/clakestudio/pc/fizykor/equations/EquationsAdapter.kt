@@ -11,8 +11,8 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
     class ViewHolder(private val binding: EquationBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(title: String, equation: String) {
-
-
+            binding.tvTitle.text = title
+            binding.mvEquation.text = equation
         }
 
     }
@@ -29,12 +29,13 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return equations.size
     }
 
-    override fun onBindViewHolder(p0: EquationsAdapter.ViewHolder, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onBindViewHolder(holder: EquationsAdapter.ViewHolder, position: Int) = holder.bind(equations[position].title, equations[position].equation)
+
+    fun replaceData(equations: ArrayList<Equation>) {
+        this.equations = equations
+        notifyDataSetChanged()
     }
-
-
 }

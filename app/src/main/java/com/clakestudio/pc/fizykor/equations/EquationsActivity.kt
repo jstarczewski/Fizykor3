@@ -21,15 +21,18 @@ class EquationsActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
 
+    private lateinit var equationsViewModel: EquationsViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_equations)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+
+        setupViewFragment()
+
+        equationsViewModel = obtainViewModel()
+
 
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)

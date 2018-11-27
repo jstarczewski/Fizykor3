@@ -32,7 +32,7 @@
 
             <com.jstarczewski.pc.mathview.src.MathView
                 android:id="@+id/mvEquation"
-
+                app:text="@{equation.equation}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

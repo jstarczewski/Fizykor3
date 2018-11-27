@@ -9,28 +9,33 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.clakestudio.pc.fizykor.R
+import com.clakestudio.pc.fizykor.databinding.EquationsFragmentBinding
 
 class EquationsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = EquationsFragment()
-    }
-
-    private lateinit var viewModel: EquationsViewModel
+    private lateinit var equationsAdapter: EquationsAdapter
+    private lateinit var viewDataBinding: EquationsFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.equations_fragment, container, false)
+
+        viewDataBinding = EquationsFragmentBinding.inflate(inflater, container, false).apply{
+            viewmodel = (activity as EquationsActivity).obtainViewModel()
+        }
+        return viewDataBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(EquationsViewModel::class.java)
+
         // TODO: Use the ViewModel
+
+
+
+
     }
 
-    private fun setupFav() {
-
+    private fun setupFab() {
 
     }
 
@@ -38,7 +43,10 @@ class EquationsFragment : Fragment() {
 
     }
 
-    
+    companion object {
+        fun newInstance() = EquationsFragment()
+    }
+
 
 }
 
