@@ -11,9 +11,5 @@ class FlashCardsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flash_cards)
 
-        mvTest.setTextZoom(120)
-        mvTest.setTextColor(Color.GREEN.toString())
-        mvTest.setBackgroundColor(Color.WHITE)
-        mvTest.setText("$\\F&#x2196{&#x2192}=ma_g$")
     }
 }

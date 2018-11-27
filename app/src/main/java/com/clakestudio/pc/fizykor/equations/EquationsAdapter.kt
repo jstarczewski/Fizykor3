@@ -21,7 +21,7 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
 
         val binding: EquationBinding
 
-        val inflater = LayoutInflater.from(parent.context)
+        val inflater = LayoutInflater.from(parent!!.context)
 
         binding = EquationBinding.inflate(inflater, parent, false)
 
@@ -34,8 +34,10 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
 
     override fun onBindViewHolder(holder: EquationsAdapter.ViewHolder, position: Int) = holder.bind(equations[position].title, equations[position].equation)
 
-    fun replaceData(equations: ArrayList<Equation>) {
+    private fun setEquations(equations: ArrayList<Equation>) {
         this.equations = equations
         notifyDataSetChanged()
     }
+
+    fun replaceData(equations: ArrayList<Equation>) = setEquations(equations)
 }

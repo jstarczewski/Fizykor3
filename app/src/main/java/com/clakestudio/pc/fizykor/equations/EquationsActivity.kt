@@ -49,9 +49,7 @@ class EquationsActivity : AppCompatActivity() {
 
     private fun setupViewFragment() {
         supportFragmentManager.findFragmentById(R.id.contentFrame)
-                ?: EquationsFragment.newInstance().let {
-                    replaceFragmentInActivity(it, R.id.contentFrame)
-                }
+                ?: replaceFragmentInActivity(EquationsFragment.newInstance(), R.id.contentFrame)
     }
 
     private fun setupNavigationDrawer() {

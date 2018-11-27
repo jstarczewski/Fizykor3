@@ -3,6 +3,7 @@ package com.clakestudio.pc.fizykor.equations
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.content.Context
+import android.databinding.Bindable
 import android.databinding.ObservableArrayList
 import android.databinding.ObservableBoolean
 import com.clakestudio.pc.fizykor.SingleLiveEvent
@@ -16,8 +17,14 @@ class EquationsViewModel(
     private val context: Context = context.applicationContext
     internal val openFlashCardsEvent = SingleLiveEvent<String>()
 
-    val equations: ObservableArrayList<Equation> = ObservableArrayList()
+    @Bindable
+    val equations: ArrayList<Equation> = ObservableArrayList()
 
+    fun start() {
+
+
+
+    }
 
     //val equations : ObservableList<Equation> = ObservableArrayList()
 
