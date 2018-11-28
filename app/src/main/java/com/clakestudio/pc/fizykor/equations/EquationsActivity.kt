@@ -31,7 +31,10 @@ class EquationsActivity : AppCompatActivity() {
 
         setupViewFragment()
 
-        equationsViewModel = obtainViewModel()
+        equationsViewModel = obtainViewModel().apply {
+
+        }
+
 
 
         setupActionBar(R.id.toolbar) {

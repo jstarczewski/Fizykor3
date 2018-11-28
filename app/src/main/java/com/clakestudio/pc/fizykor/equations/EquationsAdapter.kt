@@ -1,6 +1,7 @@
 package com.clakestudio.pc.fizykor.equations
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.clakestudio.pc.fizykor.data.Equation
@@ -11,8 +12,11 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
     class ViewHolder(private val binding: EquationBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(title: String, equation: String) {
+            Log.e("title and eq", " ee - > $title i $equation")
             binding.tvTitle.text = title
             binding.mvEquation.text = equation
+            binding.mvEquation.update()
+            binding.executePendingBindings()
         }
 
     }
@@ -21,9 +25,11 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
 
         val binding: EquationBinding
 
-        val inflater = LayoutInflater.from(parent!!.context)
+        val inflater = LayoutInflater.from(parent.context)
 
         binding = EquationBinding.inflate(inflater, parent, false)
+
+        binding.tvTitle.text = "elooo"
 
         return ViewHolder(binding)
     }
@@ -34,10 +40,12 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
 
     override fun onBindViewHolder(holder: EquationsAdapter.ViewHolder, position: Int) = holder.bind(equations[position].title, equations[position].equation)
 
-    private fun setEquations(equations: ArrayList<Equation>) {
-        this.equations = equations
-        notifyDataSetChanged()
-    }
 
     fun replaceData(equations: ArrayList<Equation>) = setEquations(equations)
+
+    private fun setEquations(equations: ArrayList<Equation>) {
+        this.equations = equations
+        Log.e("eqtttt ->", this.equations.toString())
+        notifyDataSetChanged()
+    }
 }

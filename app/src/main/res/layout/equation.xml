@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="equation"
+            name="eqt"
             type="com.clakestudio.pc.fizykor.data.Equation" />
 
     </data>
@@ -18,24 +18,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:textSize="20sp"
-                android:text="@{equation.title}"
+                android:textColor="#000000"
+                android:text="@{eqt.title}"
                 android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+
             <com.jstarczewski.pc.mathview.src.MathView
                 android:id="@+id/mvEquation"
-                app:text="@{equation.equation}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                app:text="@{eqt.equation}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+
 
         </LinearLayout>
+
     </android.support.v7.widget.CardView>
 
 </layout>

@@ -4,6 +4,7 @@ import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Observer
 import android.support.annotation.MainThread
+import android.util.Log
 import java.util.concurrent.atomic.AtomicBoolean
 
 class SingleLiveEvent<T> : MutableLiveData<T>() {
@@ -13,9 +14,9 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<T>) {
 
+
         if (hasActiveObservers()) {
-
-
+            Log.w("SingleLiveEvent", "Multiple observers registered but only one will be notified of changes.")
         }
 
         super.observe(owner, Observer<T> { t ->
@@ -23,13 +24,15 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
                 observer.onChanged(t)
             }
         })
+
+
     }
 
 
     @MainThread
-    override fun setValue(t: T?) {
+    override fun setValue(value: T?) {
         pending.set(true)
-        super.setValue(t)
+        super.setValue(value)
     }
 
     @MainThread
@@ -37,7 +40,4 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
         value = null
     }
 
-    companion object {
-        private const val TAG = "SingleLiveEvent"
-    }
 }

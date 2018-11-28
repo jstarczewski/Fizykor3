@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.databinding.FragmentEquationsBinding
 
 class EquationsFragment : Fragment() {
@@ -28,10 +29,13 @@ class EquationsFragment : Fragment() {
 
         // TODO: Use the ViewModel
 
+        var equations = ArrayList<Equation>()
+        equations.add(Equation("Elo", "Elooo", "1"))
+
         val viewModel = viewDataBinding.viewmodel
         if (viewModel!=null) {
+            equationsAdapter = EquationsAdapter(equations)
             viewDataBinding.rvEquations.apply{
-                equationsAdapter = EquationsAdapter(ArrayList(0))
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 viewDataBinding.rvEquations.adapter = equationsAdapter
@@ -39,6 +43,11 @@ class EquationsFragment : Fragment() {
         }
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewDataBinding.viewmodel?.start()
     }
 
     private fun setupFab() {
