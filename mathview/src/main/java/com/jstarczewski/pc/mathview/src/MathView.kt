@@ -2,7 +2,6 @@ package com.jstarczewski.pc.mathview.src
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.databinding.Bindable
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
@@ -39,17 +38,14 @@ class MathView : WebView {
         }
     }
 
-    @Bindable
     var text : String? = ""
 
 
-    @Bindable
     var textAlign: TextAlign = TextAlign.CENTER
 
-    @Bindable
+
     var textColor: String = "Black"
 
-    @Bindable
     var backgroundColor: String = "White"
 
     var textZoom: Int = 100
