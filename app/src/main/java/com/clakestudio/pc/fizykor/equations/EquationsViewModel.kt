@@ -9,20 +9,24 @@ import android.databinding.ObservableBoolean
 import android.util.Log
 import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.Equation
+import com.clakestudio.pc.fizykor.data.source.EquationsRepository
+import io.reactivex.disposables.CompositeDisposable
 
 class EquationsViewModel(
-        context: Application
+        context: Application,
+        private val equationsRepository: EquationsRepository
 ) : AndroidViewModel(context) {
 
     private val isDataLoadingError = ObservableBoolean(false)
     private val context: Context = context.applicationContext
     internal val openFlashCardsEvent = SingleLiveEvent<String>()
 
+    private var compositeDisposable: CompositeDisposable = CompositeDisposable()
+
     var equations: ObservableArrayList<Equation> = ObservableArrayList()
 
     fun start() {
 
-        equations.add(Equation("Kinematyka", "Siła", "$\\F=12$", "2"))
 
         Log.e("eqt", equations.toString())
 
