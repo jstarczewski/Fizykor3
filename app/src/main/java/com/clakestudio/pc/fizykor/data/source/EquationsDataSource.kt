@@ -5,9 +5,9 @@ import io.reactivex.Flowable
 
 interface EquationsDataSource {
 
-    fun getAllEquations(): Flowable<ArrayList<Equation>>
+    fun getAllEquations(): Flowable<List<Equation>>
 
-    fun getAllEquationsFromSection(section: String): Flowable<ArrayList<Equation>>
+    fun getAllEquationsFromSection(section: String): Flowable<List<Equation>>
 
     fun saveEquation(equation: Equation)
 

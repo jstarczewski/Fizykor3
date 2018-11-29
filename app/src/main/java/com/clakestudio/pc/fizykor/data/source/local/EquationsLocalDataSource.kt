@@ -2,21 +2,18 @@ package com.clakestudio.pc.fizykor.data.source.local
 
 import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.data.source.EquationsDataSource
-import com.clakestudio.pc.fizykor.util.SchedulerProvider
+import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import io.reactivex.Flowable
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 
 class EquationsLocalDataSource(private val equationDao: EquationDao) : EquationsDataSource {
 
 
-    override fun getAllEquations(): Flowable<ArrayList<Equation>> {
+    override fun getAllEquations(): Flowable<List<Equation>> {
         return equationDao.getAllEquations()
     }
 
-    override fun getAllEquationsFromSection(section: String): Flowable<ArrayList<Equation>> {
+    override fun getAllEquationsFromSection(section: String): Flowable<List<Equation>> {
         return equationDao.getAllEquationsFromSection(section)
     }
 
@@ -26,12 +23,9 @@ class EquationsLocalDataSource(private val equationDao: EquationDao) : Equations
         // TODO: Check if this approach is correct
 
         val disposable = Flowable.fromCallable { equationDao.insertEquation(equation) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(AppSchedulersProvider.ioScheduler())
+                .observeOn(AppSchedulersProvider.uiScheduler())
                 .subscribe()
-        val compositeDisposable: CompositeDisposable = CompositeDisposable()
-        compositeDisposable.add(disposable)
-        compositeDisposable.clear()
     }
 
     companion object {

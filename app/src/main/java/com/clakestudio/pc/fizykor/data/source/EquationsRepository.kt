@@ -12,11 +12,11 @@ class EquationsRepository(private var equationsLocalDataSource: EquationsDataSou
      * */
 
 
-    override fun getAllEquations(): Flowable<ArrayList<Equation>> {
+    override fun getAllEquations(): Flowable<List<Equation>> {
         return equationsLocalDataSource.getAllEquations()
     }
 
-    override fun getAllEquationsFromSection(section: String): Flowable<ArrayList<Equation>> {
+    override fun getAllEquationsFromSection(section: String): Flowable<List<Equation>> {
         return equationsLocalDataSource.getAllEquationsFromSection(section)
     }
 
@@ -27,8 +27,9 @@ class EquationsRepository(private var equationsLocalDataSource: EquationsDataSou
     companion object {
 
         private var INSTANCE: EquationsRepository? = null
+
+        @JvmStatic
         fun getInstance(equationsDataSource: EquationsDataSource): EquationsRepository {
-            @JvmStatic
             if (INSTANCE == null) {
                 synchronized(EquationsRepository::class.java) {
                     INSTANCE = EquationsRepository(equationsDataSource).also {

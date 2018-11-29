@@ -14,14 +14,15 @@ import io.reactivex.Flowable
      * */
 
     @Query("SELECT * FROM equations")
-    fun getAllEquations() : Flowable<ArrayList<Equation>>
+    fun getAllEquations() : Flowable<List<Equation>>
 
     @Query("SELECT * FROM equations WHERE section = :section")
-    fun getAllEquationsFromSection(section: String) : Flowable<ArrayList<Equation>>
+    fun getAllEquationsFromSection(section: String) : Flowable<List<Equation>>
 
     @Insert(onConflict =  OnConflictStrategy.REPLACE)
     fun insertEquation(equation: Equation)
 
-    
+
+
 
 }

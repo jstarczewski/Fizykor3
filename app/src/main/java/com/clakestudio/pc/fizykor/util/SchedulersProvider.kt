@@ -2,7 +2,7 @@ package com.clakestudio.pc.fizykor.util
 
 import io.reactivex.Scheduler
 
-interface SchedulerProvider {
+interface SchedulersProvider {
 
     fun uiScheduler(): Scheduler
     fun ioScheduler(): Scheduler
