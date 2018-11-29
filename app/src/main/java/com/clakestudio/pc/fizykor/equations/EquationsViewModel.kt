@@ -27,7 +27,7 @@ class EquationsViewModel(
 
     fun start() {
 
-
+        equationsRepository.saveEquation(Equation("Kinematyka", "Prędkość", "$\\v=s/t"))
         Log.e("eqt", equations.toString())
 
     }
