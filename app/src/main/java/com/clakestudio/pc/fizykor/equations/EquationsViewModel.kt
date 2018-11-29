@@ -22,7 +22,7 @@ class EquationsViewModel(
 
     fun start() {
 
-        equations.add(Equation("Siła", "$\\F=12$", "2"))
+        equations.add(Equation("Kinematyka", "Siła", "$\\F=12$", "2"))
 
         Log.e("eqt", equations.toString())
 

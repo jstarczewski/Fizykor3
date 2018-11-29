@@ -16,7 +16,6 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
             binding.tvTitle.text = title
             binding.mvEquation.text = equation
             binding.mvEquation.update()
-            binding.executePendingBindings()
         }
 
     }
