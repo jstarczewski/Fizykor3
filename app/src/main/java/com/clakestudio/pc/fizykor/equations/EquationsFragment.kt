@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.databinding.FragmentEquationsBinding
-import kotlinx.android.synthetic.main.app_bar_equations.view.*
 
 class EquationsFragment : Fragment() {
 
@@ -19,8 +18,6 @@ class EquationsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
-
         viewDataBinding = FragmentEquationsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as EquationsActivity).obtainViewModel()
         }
@@ -29,27 +26,14 @@ class EquationsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        // TODO: Use the ViewModel
-
-        var equations = ArrayList<Equation>()
-        equations.add(Equation("Elo", "Elooo", "1"))
-
-        val viewModel = viewDataBinding.viewmodel
-        if (viewModel != null) {
-            equationsAdapter = EquationsAdapter(equations)
-            viewDataBinding.rvEquations.apply {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                viewDataBinding.rvEquations.adapter = equationsAdapter
-            }
-        }
+        setupRecyclerView()
         setupFab()
     }
 
     override fun onResume() {
         super.onResume()
         viewDataBinding.viewmodel?.start()
+        viewDataBinding.executePendingBindings()
     }
 
     private fun setupFab() {
@@ -60,9 +44,15 @@ class EquationsFragment : Fragment() {
         }
     }
 
-
-    private fun setupRecyclerViewAdapter() {
-
+    private fun setupRecyclerView() {
+        if (viewDataBinding.viewmodel != null) {
+            viewDataBinding.rvEquations.apply {
+                equationsAdapter = EquationsAdapter(arrayListOf())
+                layoutManager = LinearLayoutManager(context)
+                setHasFixedSize(true)
+                viewDataBinding.rvEquations.adapter = equationsAdapter
+            }
+        }
     }
 
     companion object {

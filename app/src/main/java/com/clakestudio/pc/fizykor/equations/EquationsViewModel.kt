@@ -12,6 +12,7 @@ import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
+import io.reactivex.Flowable
 import io.reactivex.disposables.CompositeDisposable
 
 class EquationsViewModel(
@@ -22,6 +23,8 @@ class EquationsViewModel(
     private val isDataLoadingError = ObservableBoolean(false)
     private val context: Context = context.applicationContext
     internal val openFlashCardsEvent = SingleLiveEvent<String>()
+    private var wasDataLoaded: Boolean = false
+
 
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -30,26 +33,34 @@ class EquationsViewModel(
 
 
     fun start() {
+        loadData()
+    }
 
-        val disposable = equationsRepository.getAllEquations()
+    private fun loadData() {
+        var disposable = equationsRepository.getAllEquations()
                 .subscribeOn(AppSchedulersProvider.ioScheduler())
-                .observeOn(AppSchedulersProvider.uiScheduler())
                 .subscribe(
                         {
-                            this.equations.clear()
-                            this.equations.addAll(it)
+                            addEquations(it)
                         },
-                        { error -> showToast("Error retriving data occured") }
+                        { showToast("Error retriving data occured") }
                 )
-    //equationsRepository.saveEquation(Equation("Kinematyka", "Prędkość", "$\\{v_0}=s/t$"))
-    //equationsRepository.saveEquation(Equation("Kinematyka", "Droga", "$\\s=v_0*t$"))
-    //equationsRepository.saveEquation(Equation("Kinematyka", "Czas", "$\\t=s/{v_0}$"))
+        compositeDisposable.add(disposable)
+        //equationsRepository.saveEquation(Equation("Kinematyka", "Prędkość", "$\\{v_0}=s/t$"))
+        //equationsRepository.saveEquation(Equation("Kinematyka", "Droga", "$\\s=v_0*t$"))
+        //equationsRe
+    }
 
+    private fun addEquations(equations: List<Equation>) {
+        this.equations.clear()
+        this.equations.addAll(equations)
     }
 
     fun openFlashCards() {
         flashCardsEvent.call()
     }
+
+
 
     private fun showToast(errorMessage: String) = Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
 
