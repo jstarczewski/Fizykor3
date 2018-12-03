@@ -12,7 +12,7 @@
              <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/ruch"
-                    android:title="Ruch jednostajny" />
+                    android:title="Ruch jednostajny prostoliniowy" />
                 <item
                     android:id="@+id/ruch_po_okregu"
                     android:title="Ruch po okręgu" />
