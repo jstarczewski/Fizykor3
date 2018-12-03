@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FlashCardsActivity">
+    tools:context=".flashcards.FlashCardsActivity">
 
     <com.jstarczewski.pc.mathview.src.MathView
         android:id="@+id/mvTest"

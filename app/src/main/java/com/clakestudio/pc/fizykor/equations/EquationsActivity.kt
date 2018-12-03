@@ -1,5 +1,7 @@
 package com.clakestudio.pc.fizykor.equations
 
+import android.arch.lifecycle.Observer
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -11,6 +13,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.clakestudio.pc.fizykor.R
+import com.clakestudio.pc.fizykor.flashcards.FlashCardsActivity
 import com.clakestudio.pc.fizykor.util.obtainViewModel
 import com.clakestudio.pc.fizykor.util.replaceFragmentInActivity
 import com.clakestudio.pc.fizykor.util.setupActionBar
@@ -33,6 +36,10 @@ class EquationsActivity : AppCompatActivity() {
 
         equationsViewModel = obtainViewModel().apply {
 
+            flashCardsEvent.observe(this@EquationsActivity, Observer<Void> {
+                this@EquationsActivity.openFlashCards()
+            })
+
         }
 
 
@@ -49,6 +56,9 @@ class EquationsActivity : AppCompatActivity() {
 
     }
 
+    private fun openFlashCards() {
+        startActivity(Intent(this, FlashCardsActivity::class.java))
+    }
 
     private fun setupViewFragment() {
         supportFragmentManager.findFragmentById(R.id.contentFrame)

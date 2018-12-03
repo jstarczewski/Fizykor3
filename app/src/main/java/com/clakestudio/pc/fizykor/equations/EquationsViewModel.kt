@@ -26,6 +26,8 @@ class EquationsViewModel(
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     var equations: ObservableArrayList<Equation> = ObservableArrayList()
+    var flashCardsEvent: SingleLiveEvent<Void> = SingleLiveEvent()
+
 
     fun start() {
 
@@ -43,7 +45,10 @@ class EquationsViewModel(
     //equationsRepository.saveEquation(Equation("Kinematyka", "Droga", "$\\s=v_0*t$"))
     //equationsRepository.saveEquation(Equation("Kinematyka", "Czas", "$\\t=s/{v_0}$"))
 
+    }
 
+    fun openFlashCards() {
+        flashCardsEvent.call()
     }
 
     private fun showToast(errorMessage: String) = Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()

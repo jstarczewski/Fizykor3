@@ -1,9 +1,8 @@
-package com.clakestudio.pc.fizykor
+package com.clakestudio.pc.fizykor.flashcards
 
-import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_flash_cards.*
+import com.clakestudio.pc.fizykor.R
 
 class FlashCardsActivity : AppCompatActivity() {
 
