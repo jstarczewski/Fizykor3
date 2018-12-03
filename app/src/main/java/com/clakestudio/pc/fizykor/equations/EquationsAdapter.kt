@@ -2,9 +2,7 @@ package com.clakestudio.pc.fizykor.equations
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.databinding.EquationBinding
 
@@ -24,6 +22,7 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
         val binding: EquationBinding
         val inflater = LayoutInflater.from(parent.context)
         binding = EquationBinding.inflate(inflater, parent,false)
+        binding.mvEquation.textZoom = 70
 
         return ViewHolder(binding)
     }
