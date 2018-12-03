@@ -33,7 +33,7 @@ class EquationsViewModel(
 
 
     fun start() {
-   //     testBaseInjection()
+   //      testBaseInjection()
         loadData()
 
     }
@@ -44,13 +44,14 @@ class EquationsViewModel(
         equationsRepository.saveEquation(Equation("Kinematyka", "Ruch jednostajny zmienny", "$\\v↖{→}=v_0+at [m/s]$ , s$\\a↖{→}={∆v}/t [m/s^2]$ <br> $\\v↖{→}$ prędkość, $\\v_0$ prędkość początkowa, $\\a↖{→}$ przyśpieszenie, $\\t$ czas, dla $\\a↖{→}>0$ ruch jednostajnie przyśpieszony, dla $\\a↖{→}<0$ ruch jednostajnie opóźniony"))
         equationsRepository.saveEquation(Equation("Kinematyka", "Droga w ruchu jednostajnie mziennym", "$\\s = v_0t +↙{-} {at^2}/2$ $[m]$,   $\\s = {v_0 + v_k}/2 t$,   $\\s = {v_k^2-v_0^2}/{2a}$ <br> $\\s$ droga , $\\a↖{→}$ przyśpieszenie, $\\t$ czas, $\\v_k$ prędkość końcowa, $\\v_0$ prędkość początkowa <br> $\\s_1:s_2:s_3 ..s_n = 1:3:5..n$ <br> Drogi przebyte przez ciało w ruchu jednostajnie przyśpieszonym bez prędkości początkowej mają się do siebie jak kolejne liczby nieparzyste."))
         equationsRepository.saveEquation(Equation("Kinematyka", "Równania ruchu", "$\\v↖{→}(t)=v_0+↙{-}at$ $[m/s]$ <br> $\\v(t)$ prędkość od czasu, $\\a↖{→}$ przyśpieszenie, $\\t$ czas <br> $\\x(t)=x_0+s$ $[m]$ <br> $\\x(t)$ położenie od czasu, $\\x_0$ położenie początkowe, w miejsce $\\s$ wstawiamy wzór na drogę w zależności od ruchu jakim porusza się rozpatrywane ciało"))
+        /*
         equationsRepository.saveEquation(Equation("Kinematyka", "Spadek swobodny", "$\\v↖{→}(t)=v_0+↙{-}at$ $[m/s]$ <br> $\\v(t)$ prędkość od czasu, $\\a↖{→}$ przyśpieszenie, $\\t$ czas <br> $\\x(t)=x_0+s$ $[m]$ <br> $\\x(t)$ położenie od czasu, $\\x_0$ położenie początkowe, w miejsce $\\s$ wstawiamy wzór na drogę w zależności od ruchu jakim porusza się rozpatrywane ciało"))
         equationsRepository.saveEquation(Equation("Kinematyka", "Rzut poziomy", "Przy spadku swobodnym, w pionie, bez oporów ruchu $\\a↖{→}=g↖{→}$, $\\v↖{→}_0 = 0$. Spadek swobodny jest ruchem jednostajnie przyśpieszonym, Dla rzutu pionowego $\\h(t)=x_0+↙{-}v_0↖{→}t+↙{-}{g↖{→}t^2}/2$, gdzie $\\g$ to przyśpiesznie ziemskie."))
         equationsRepository.saveEquation(Equation("Kinematyka", "Rzut ukośny", "$\\Z=v↖{→}_ot$ ,  $\\v↖{→}_{ky}=g↖{→}t$,  $\\tgα={v_y}/{v_x}={g_t}/v_o$,   $\\v↖{→}_c=√{v↖{→}_x^2+v↖{→}_y^2}$ <br> $\\Z$ zasięg, $\\v↖{→}_{ky}$ prędkość końcowa pionowej składowej wekotra prędkości całkowitej, $\\tgα$ tangens kąta pod jakim ciało uderzy w ziemię, $\\v↖{→}_c$ prędkość całkowita, która zawsze jest styczna do toru, $\\v↖{→}_x$ pozioma składowa wektora prędkośi całkowitej, $\\v↖{→}_y$ pionowa składowa wektora prędkości całkowitej"))
         equationsRepository.saveEquation(Equation("Kinematyka", "Ruch po okręgu", "$\\v↖{→}_{0y}=v_0sinα$, $\\v↖{→}_{0x}=v_0cosα$, $\\t_{wz}={v↖{→}_0sinα}/g↖{→}$, $\\t_{cal}={2v_0sinα}/g$, $\\h_{max}={v_0^2sin^2α}/{2g}$, $\\Z={v_0^2sin2α}/g$ <br> $\\α$ kąt pod jakim ciało jest nachylone do osi O:X, $\\v↖{→}_0$, $\\v_0$ prędkość początkowa, $\\v↖{→}_{0x}$  prędkość początkowa poziomej skłądowej prędkości, $\\v↖{→}_{0y}$  prędkość początkowa pionowej składowej prędkości, $\\t_{wz}$ czas wznoszenia, $\\t_{cal}$ czas całkowity, $\\h_{max}$ maksymalna wysokość na jaką wzniesie się ciało. Czas wznoszenia jest równy czasowi spadania ciała."))
         equationsRepository.saveEquation(Equation("Kinematyka", "Ruch po okręgu", "$\\v↖{→}= s/t= {2πr}/T = {2πrf}$, $\\f=1/T$ <br> $\\v↖{→}$ prędkość ciała w ruchu po okręgu, $\\f$ czestotliwość, $\\r$ promień okręgu, $\\T$ okres, czas jednego pełnego ruchu,"))
         equationsRepository.saveEquation(Equation("Kinematyka", "Szybkość srednia", "Szybkość średnia to stosunek całkowitej drogi przebytej podczasu ruchu do całkowitego czasu trwania tego ruchu."))
-
+*/
 
     }
 

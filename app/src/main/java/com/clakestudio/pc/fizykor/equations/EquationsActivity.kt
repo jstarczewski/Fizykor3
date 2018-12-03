@@ -76,12 +76,13 @@ class EquationsActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+                /*
                 R.id.nav_camera -> {
                     Log.e("NavDrawer", "Camera")
                 }
                 R.id.nav_gallery -> {
                     Log.e("NavDrawer", "Gallery")
-                }
+                }*/
             }
             menuItem.isChecked = true
             drawerLayout.closeDrawers()

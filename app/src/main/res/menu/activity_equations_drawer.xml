@@ -1,38 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <group android:checkableBehavior="single">
+
+        <item android:title="@string/kinematykaDwa">
+
+            <menu>
+
+             <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/ruch"
+                    android:title="Ruch jednostajny" />
+                <item
+                    android:id="@+id/ruch_po_okregu"
+                    android:title="Ruch po okręgu" />
+
+                <item
+                    android:id="@+id/rzuty"
+                    android:title="Rzuty" />
+            </group>
+
+            </menu>
+
+
+        </item>
+
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/dynamika"
+            android:title="@string/dynamikaDWA" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/pracaMocEnergia"
+            android:title="@string/praca_moc_energiaDWA" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/bryla"
+            android:title="@string/bry_a_szytywnaDWA" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/termodynamika"
+            android:title="@string/termodynamikaDWA" />
+        <item
+            android:id="@+id/grawitacja"
+            android:title="@string/grawitacja_kosmosDWA" />
+        <item
+            android:id="@+id/drgajacy"
+            android:title="@string/ruch_drgaj_cyDWA" />
+        <item
+            android:id="@+id/mechaniczne"
+            android:title="@string/fale_mechaniczneDWA" />
+        <item
+            android:id="@+id/Elektorstatyka"
+            android:title="@string/elektrostatykaDWA" />
+        <item
+            android:id="@+id/pradstatly"
+            android:title="@string/pr_d_sta_yDWA" />
+        <item
+            android:id="@+id/magnetyzm"
+            android:title="@string/magnetyzmDWA" />
+        <item
+            android:id="@+id/IndukcjaElektro"
+            android:title="@string/indukcja_elektromagnetycznaDWA" />
+        <item
+            android:id="@+id/przemienny"
+            android:title="@string/pr_d_przemienny_i_obwodyDWA" />
+        <item
+            android:id="@+id/optyka"
+            android:title="@string/optykaDWA" />
+        <item
+            android:id="@+id/wspolczesna"
+            android:title="@string/fizyka_wsp_czesnaDWA" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/sta_e_i_przedrostki">
+
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/stale"
+                    android:title="@string/sta_e_fizyczne" />
+                <item
+                    android:id="@+id/przedrostki"
+                    android:title="@string/przedrostki" />
+            </group>
         </menu>
+
+
     </item>
+    <item android:title="@string/dodatkowo">
+
+        <menu>
+
+            <item
+                android:id="@+id/onas"
+                android:title="@string/informacje" />
+
+        </menu>
+
+
+    </item>
+
 
 </menu>
