@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.flashcards.FlashCardsActivity
 import com.clakestudio.pc.fizykor.util.obtainViewModel
@@ -32,6 +33,7 @@ class EquationsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
 
+        setupNavigationDrawer()
         setupViewFragment()
 
         equationsViewModel = obtainViewModel().apply {
@@ -41,6 +43,7 @@ class EquationsActivity : AppCompatActivity() {
             })
 
         }
+
 
 
 
@@ -76,6 +79,17 @@ class EquationsActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+
+                R.id.rzuty -> {
+                    equationsViewModel.filterEquations("Rzuty")
+                }
+                R.id.ruch_po_okregu -> {
+                    equationsViewModel.filterEquations("Ruch po okręgu")
+                }
+                R.id.ruch -> {
+                    equationsViewModel.filterEquations("Ruch")
+                }
+
                 /*
                 R.id.nav_camera -> {
                     Log.e("NavDrawer", "Camera")

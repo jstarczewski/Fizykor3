@@ -80,6 +80,5 @@ dependencies {
     //implementation project(':mathview')
 
     implementation 'com.github.jstarczewski:MathView:0.3.0'
-   // implementation 'com.trello.rxlifecycle3:rxlifecycle-kotlin:3.0.0'
+    // implementation 'com.trello.rxlifecycle3:rxlifecycle-kotlin:3.0.0'
 }
-

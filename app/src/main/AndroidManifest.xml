@@ -19,7 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".flashcards.FlashCardsActivity"/>
+        <activity
+            android:name=".flashcards.FlashCardsActivity"
+            android:label="@string/title_activity_flash_cards"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -29,4 +29,5 @@
     <string name="dodatkowo">Dodatkowo</string>
     <string name="informacje">Informacje</string>
     <string name="sta_e_i_przedrostki">Stałe i przedrostki</string>
+    <string name="title_activity_flash_cards">FlashCardsActivity</string>
 </resources>
