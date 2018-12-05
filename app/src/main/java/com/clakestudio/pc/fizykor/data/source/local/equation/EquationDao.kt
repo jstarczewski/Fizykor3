@@ -1,4 +1,4 @@
-package com.clakestudio.pc.fizykor.data.source.local
+package com.clakestudio.pc.fizykor.data.source.local.equation
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
@@ -13,10 +13,10 @@ import io.reactivex.Flowable
      * Books Dao if a place for all the querries needed
      * */
 
-    @Query("SELECT * FROM equations")
+    @Query("SELECT * FROM equation")
     fun getAllEquations() : Flowable<List<Equation>>
 
-    @Query("SELECT * FROM equations WHERE section = :section")
+    @Query("SELECT * FROM equation WHERE section = :section")
     fun getAllEquationsFromSection(section: String) : Flowable<List<Equation>>
 
     @Insert(onConflict =  OnConflictStrategy.REPLACE)

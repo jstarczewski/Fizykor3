@@ -1,10 +1,9 @@
-package com.clakestudio.pc.fizykor.data.source.local
+package com.clakestudio.pc.fizykor.data.source.local.equation
 
 import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.data.source.EquationsDataSource
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import io.reactivex.Flowable
-import io.reactivex.disposables.CompositeDisposable
 
 class EquationsLocalDataSource(private val equationDao: EquationDao) : EquationsDataSource {
 

@@ -5,6 +5,7 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.clakestudio.pc.fizykor.data.Equation
+import com.clakestudio.pc.fizykor.data.source.local.equation.EquationDao
 
 
 @Database(entities = arrayOf(Equation::class), version = 1)

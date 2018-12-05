@@ -5,12 +5,12 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "equation")
-data class Equation @JvmOverloads constructor(
+
+@Entity (tableName = "flashcard")
+data class FlashCard @JvmOverloads constructor (
         @ColumnInfo(name = "section") var section: String = "",
-        @ColumnInfo(name = "subsection") var subsection: String = "",
+        @ColumnInfo(name = "ismatura") var isMatura: Boolean = false,
         @ColumnInfo(name = "title") var title: String = "",
         @ColumnInfo(name = "equation") var equation: String = "",
-        @PrimaryKey @ColumnInfo(name = "entryid") var id: String = UUID.randomUUID().toString()
-
+        @PrimaryKey @ColumnInfo(name = "entryid") var entryid: String = UUID.randomUUID().toString()
 )
