@@ -75,9 +75,10 @@ class FlashCardsActivity : AppCompatActivity() {
 
             when(menuItem.itemId) {
 
+                /*
                 R.id.nav_camera -> {
 
-                }
+                }*/
 
             }
             menuItem.isChecked = true

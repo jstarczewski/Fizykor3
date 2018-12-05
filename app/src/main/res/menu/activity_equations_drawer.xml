@@ -5,7 +5,7 @@
 
     <group android:checkableBehavior="single">
 
-        <item android:title="@string/kinematykaDwa">
+        <item android:title="@string/kinematyka">
 
             <menu>
 
@@ -29,46 +29,46 @@
 
         <item
             android:id="@+id/dynamika"
-            android:title="@string/dynamikaDWA" />
+            android:title="@string/dynamika" />
         <item
             android:id="@+id/pracaMocEnergia"
-            android:title="@string/praca_moc_energiaDWA" />
+            android:title="@string/praca_moc_energia" />
         <item
             android:id="@+id/bryla"
-            android:title="@string/bry_a_szytywnaDWA" />
+            android:title="@string/bry_a_szytywna" />
         <item
             android:id="@+id/termodynamika"
-            android:title="@string/termodynamikaDWA" />
+            android:title="@string/termodynamika" />
         <item
             android:id="@+id/grawitacja"
-            android:title="@string/grawitacja_kosmosDWA" />
+            android:title="@string/grawitacja_kosmos" />
         <item
             android:id="@+id/drgajacy"
-            android:title="@string/ruch_drgaj_cyDWA" />
+            android:title="@string/ruch_drgaj_cy" />
         <item
             android:id="@+id/mechaniczne"
-            android:title="@string/fale_mechaniczneDWA" />
+            android:title="@string/fale_mechaniczne" />
         <item
             android:id="@+id/Elektorstatyka"
-            android:title="@string/elektrostatykaDWA" />
+            android:title="@string/elektrostatyka" />
         <item
             android:id="@+id/pradstatly"
-            android:title="@string/pr_d_sta_yDWA" />
+            android:title="@string/pr_d_sta_y" />
         <item
             android:id="@+id/magnetyzm"
-            android:title="@string/magnetyzmDWA" />
+            android:title="@string/magnetyzm" />
         <item
             android:id="@+id/IndukcjaElektro"
-            android:title="@string/indukcja_elektromagnetycznaDWA" />
+            android:title="@string/indukcja_elektromagnetyczna" />
         <item
             android:id="@+id/przemienny"
-            android:title="@string/pr_d_przemienny_i_obwodyDWA" />
+            android:title="@string/pr_d_przemienny_i_obwody" />
         <item
             android:id="@+id/optyka"
-            android:title="@string/optykaDWA" />
+            android:title="@string/optyka" />
         <item
             android:id="@+id/wspolczesna"
-            android:title="@string/fizyka_wsp_czesnaDWA" />
+            android:title="@string/fizyka_wsp_czesna" />
     </group>
 
     <item android:title="@string/sta_e_i_przedrostki">

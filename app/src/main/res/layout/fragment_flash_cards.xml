@@ -65,6 +65,9 @@
             <TextView
                 android:id="@+id/tvFlashCardsMode"
                 android:layout_width="0dp"
+                android:text="@string/tryb_maturalny"
+                android:textAlignment="center"
+                android:textSize="20sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3" />
 
@@ -73,7 +76,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="left|center"
                 android:textAlignment="center" />
 
         </LinearLayout>

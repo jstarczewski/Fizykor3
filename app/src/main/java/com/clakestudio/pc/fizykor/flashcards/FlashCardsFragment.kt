@@ -12,19 +12,13 @@ class FlashCardsFragment : Fragment() {
 
     private lateinit var viewFragmentBinding : FragmentFlashCardsBinding
 
-
-
-    private lateinit var viewModel: FlashCardsViewModel
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
 
         // Layout inflater because <layout></layout> makes no need for R.layout.fragment_flash_cards
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
-
-            viewFragmentBinding.viewmodel = (activity as FlashCardsActivity).obtainViewModel()
-
+            viewmodel = (activity as FlashCardsActivity).obtainViewModel()
         }
 
         return viewFragmentBinding.root
@@ -36,6 +30,12 @@ class FlashCardsFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        viewFragmentBinding.viewmodel?.start()
+
+    }
 
     companion object {
         fun newInstance() = FlashCardsFragment()

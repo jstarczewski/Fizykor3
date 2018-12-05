@@ -14,10 +14,10 @@ class FlashCardsLocalDataSource(private val flashCardDao: FlashCardDao) : FlashC
 
         private var INSTANCE: FlashCardsLocalDataSource? = null
 
-        fun getInstance(flashCardsLocalDataSource: FlashCardsLocalDataSource): FlashCardsLocalDataSource {
+        fun getInstance(flashCardDao: FlashCardDao): FlashCardsLocalDataSource {
             if (INSTANCE == null) {
                 synchronized(FlashCardsLocalDataSource::class.java) {
-                    INSTANCE = flashCardsLocalDataSource
+                    INSTANCE = FlashCardsLocalDataSource(flashCardDao)
                 }
             }
             return INSTANCE!!
