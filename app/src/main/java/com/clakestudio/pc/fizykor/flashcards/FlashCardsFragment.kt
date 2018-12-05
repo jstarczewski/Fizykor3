@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
+import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
 
 class FlashCardsFragment : Fragment() {
 
@@ -35,6 +36,9 @@ class FlashCardsFragment : Fragment() {
 
         viewFragmentBinding.viewmodel?.start()
 
+        viewFragmentBinding.tvFlashCardTitle.setOnClickListener {
+            viewFragmentBinding.mvFlashcard.update()
+        }
     }
 
     companion object {

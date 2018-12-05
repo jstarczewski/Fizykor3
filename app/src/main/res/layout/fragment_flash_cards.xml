@@ -36,12 +36,13 @@
                 <com.jstarczewski.pc.mathview.src.MathView
                     android:id="@+id/mvFlashcard"
                     android:layout_width="match_parent"
+                    app:text="@{viewmodel.equation}"
                     android:layout_height="300dp" />
 
                 <TextView
                     android:id="@+id/tvFlashCardTitle"
                     android:layout_width="match_parent"
-                    android:text="Równanie ruchu"
+                    android:text="@{viewmodel.title}"
                     android:textSize="24sp"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
