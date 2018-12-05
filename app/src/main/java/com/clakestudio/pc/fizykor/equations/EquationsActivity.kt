@@ -42,6 +42,7 @@ class EquationsActivity : AppCompatActivity() {
                 this@EquationsActivity.openFlashCards()
             })
 
+
         }
 
 

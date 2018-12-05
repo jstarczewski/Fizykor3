@@ -1,5 +1,6 @@
 package com.clakestudio.pc.fizykor.flashcards
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.app_bar_flash_cards.*
 
 class FlashCardsActivity : AppCompatActivity() {
 
-    private lateinit var drawerLayout : DrawerLayout
+    private lateinit var drawerLayout: DrawerLayout
 
     private lateinit var flashCardsViewModel: FlashCardsViewModel
 
@@ -28,7 +29,6 @@ class FlashCardsActivity : AppCompatActivity() {
         flashCardsViewModel = obtainViewModel().apply {
 
             // Interactions
-
         }
 
         setupViewFragment()
@@ -73,7 +73,7 @@ class FlashCardsActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
 
-            when(menuItem.itemId) {
+            when (menuItem.itemId) {
 
                 /*
                 R.id.nav_camera -> {

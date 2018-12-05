@@ -40,7 +40,6 @@ class MathView : WebView {
 
     var text : String? = ""
 
-
     var textAlign: TextAlign = TextAlign.CENTER
 
 

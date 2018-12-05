@@ -77,8 +77,8 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso.idling:idling-concurrent:$rootProject.espressoVersion"
     implementation "com.android.support.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
-    //implementation project(':mathview')
+    implementation project(':mathview')
 
-    implementation 'com.github.jstarczewski:MathView:0.3.0'
+    //implementation 'com.github.jstarczewski:MathView:0.3.0'
     // implementation 'com.trello.rxlifecycle3:rxlifecycle-kotlin:3.0.0'
 }

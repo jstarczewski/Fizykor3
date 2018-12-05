@@ -1,5 +1,6 @@
 package com.clakestudio.pc.fizykor.flashcards
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
 class FlashCardsFragment : Fragment() {
 
 
-    private lateinit var viewFragmentBinding : FragmentFlashCardsBinding
+    private lateinit var viewFragmentBinding: FragmentFlashCardsBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -19,7 +20,13 @@ class FlashCardsFragment : Fragment() {
 
         // Layout inflater because <layout></layout> makes no need for R.layout.fragment_flash_cards
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
-            viewmodel = (activity as FlashCardsActivity).obtainViewModel()
+            viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
+
+                updateMathViewTextEvent.observe(this@FlashCardsFragment, Observer<Void> {
+                    this@FlashCardsFragment.updateMathViewText()
+                })
+
+            }
         }
 
         return viewFragmentBinding.root
@@ -36,9 +43,13 @@ class FlashCardsFragment : Fragment() {
 
         viewFragmentBinding.viewmodel?.start()
 
-        viewFragmentBinding.tvFlashCardTitle.setOnClickListener {
-            viewFragmentBinding.mvFlashcard.update()
-        }
+
+        /// Not working
+        updateMathViewText()
+    }
+
+    private fun updateMathViewText() {
+        viewFragmentBinding.mvFlashcard.update()
     }
 
     companion object {

@@ -3,6 +3,7 @@ package com.clakestudio.pc.fizykor.flashcards
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableField
+import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
@@ -16,6 +17,7 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
     var equation: ObservableField<String> = ObservableField()
     private var flashcards: ArrayList<FlashCard> = arrayListOf()
     private var isDataLoaded: Boolean = false
+    var updateMathViewTextEvent: SingleLiveEvent<Void> = SingleLiveEvent()
 
     fun start() {
        // testDataInjection()
@@ -45,6 +47,10 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
         this.title.set(flashcards[0].title)
         this.equation.set(flashcards[0].equation)
     }
+    fun updateMathViewText() {
+        updateMathViewTextEvent.call()
+    }
+
 
     private fun testDataInjection() {
         /*

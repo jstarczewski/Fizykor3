@@ -34,7 +34,6 @@ class EquationsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewDataBinding.viewmodel?.start()
-        viewDataBinding.executePendingBindings()
     }
 
     private fun setupFab() {
