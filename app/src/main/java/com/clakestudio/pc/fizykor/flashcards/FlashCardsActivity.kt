@@ -1,34 +1,35 @@
 package com.clakestudio.pc.fizykor.flashcards
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.clakestudio.pc.fizykor.R
+import com.clakestudio.pc.fizykor.util.replaceFragmentInActivity
+import com.clakestudio.pc.fizykor.util.setupActionBar
 import kotlinx.android.synthetic.main.activity_flash_cards.*
 import kotlinx.android.synthetic.main.app_bar_flash_cards.*
 
-class FlashCardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class FlashCardsActivity : AppCompatActivity() {
+
+    private lateinit var drawerLayout : DrawerLayout
+
+    private lateinit var flashCardsViewModel: FlashCardsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flash_cards)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        setupNavigationDrawer()
+
+        setupActionBar(R.id.toolbar) {
+            setHomeAsUpIndicator(R.drawable.ic_menu)
+            setDisplayHomeAsUpEnabled(true)
         }
-
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        nav_view.setNavigationItemSelectedListener(this)
     }
 
     override fun onBackPressed() {
@@ -39,46 +40,53 @@ class FlashCardsActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         }
     }
 
+    private fun setupViewFragment() {
+
+        supportFragmentManager.findFragmentById(R.id.contentFrame)
+                ?: replaceFragmentInActivity(FlashCardsFragment.newInstance(), R.id.contentFrame)
+
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.flash_cards, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
+    private fun setupNavigationDrawer() {
+
+        drawerLayout = (findViewById<DrawerLayout>(R.id.drawer_layout)).apply {
+            setStatusBarBackground(R.color.colorPrimaryDark)
         }
+        setupDrawerContent(findViewById<NavigationView>(R.id.nav_view))
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
+    private fun setupDrawerContent(navigationView: NavigationView) {
+
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+
+            when(menuItem.itemId) {
+
+                R.id.nav_camera -> {
+
+                }
 
             }
-            R.id.nav_slideshow -> {
+            menuItem.isChecked = true
+            drawerLayout.closeDrawers()
+            true
 
-            }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
         }
 
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                drawerLayout.openDrawer(GravityCompat.START)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

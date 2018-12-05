@@ -68,6 +68,8 @@ class EquationsActivity : AppCompatActivity() {
                 ?: replaceFragmentInActivity(EquationsFragment.newInstance(), R.id.contentFrame)
     }
 
+
+
     private fun setupNavigationDrawer() {
         drawerLayout = (findViewById<DrawerLayout>(R.id.drawer_layout)).apply {
             setStatusBarBackground(R.color.colorPrimaryDark)
