@@ -8,24 +8,40 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.clakestudio.pc.fizykor.R
+import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
 
 class FlashCardsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FlashCardsFragment()
-    }
+
+    private lateinit var viewFragmentBinding : FragmentFlashCardsBinding
+
+
 
     private lateinit var viewModel: FlashCardsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_flash_cards, container, false)
+
+
+        // Layout inflater because <layout></layout> makes no need for R.layout.fragment_flash_cards
+        viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
+
+            viewFragmentBinding.viewmodel = (activity as FlashCardsActivity).obtainViewModel()
+
+
+        }
+
+        return viewFragmentBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(FlashCardsViewModel::class.java)
+
         // TODO: Use the ViewModel
     }
 
+
+    companion object {
+        fun newInstance() = FlashCardsFragment()
+    }
 }

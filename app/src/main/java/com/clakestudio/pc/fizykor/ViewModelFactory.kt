@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.equations.EquationsViewModel
+import com.clakestudio.pc.fizykor.flashcards.FlashCardsViewModel
 import com.clakestudio.pc.fizykor.util.Injection
 
 class ViewModelFactory private constructor(
@@ -17,6 +18,8 @@ class ViewModelFactory private constructor(
                 when {
                     isAssignableFrom(EquationsViewModel::class.java) ->
                         EquationsViewModel(application, equationsRepository)
+                    isAssignableFrom(FlashCardsViewModel::class.java) ->
+                        FlashCardsViewModel(application, equationsRepository)
 
                     else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }
@@ -32,7 +35,8 @@ class ViewModelFactory private constructor(
         fun getInstance(application: Application) = INSTANCE
                 ?: synchronized(ViewModelFactory::class.java) {
 
-                    INSTANCE ?: ViewModelFactory(application, Injection.provideEquationsEepository(application.applicationContext)).also { INSTANCE = it }
+                    INSTANCE
+                            ?: ViewModelFactory(application, Injection.provideEquationsEepository(application.applicationContext)).also { INSTANCE = it }
 
                 }
 
