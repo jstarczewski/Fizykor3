@@ -9,4 +9,20 @@ class FlashCardsLocalDataSource(private val flashCardDao: FlashCardDao) : FlashC
     override fun getAllFlashCards(): Flowable<List<FlashCard>> = flashCardDao.getAllFlashCards()
 
     override fun saveFlashCard(flashCard: FlashCard) = flashCardDao.saveFlashCard(flashCard)
+
+    companion object {
+
+        private var INSTANCE: FlashCardsLocalDataSource? = null
+
+        fun getInstance(flashCardsLocalDataSource: FlashCardsLocalDataSource): FlashCardsLocalDataSource {
+            if (INSTANCE == null) {
+                synchronized(FlashCardsLocalDataSource::class.java) {
+                    INSTANCE = flashCardsLocalDataSource
+                }
+            }
+            return INSTANCE!!
+
+        }
+
+    }
 }

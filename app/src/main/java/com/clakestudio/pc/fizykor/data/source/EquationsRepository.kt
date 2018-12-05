@@ -6,7 +6,7 @@ import com.clakestudio.pc.fizykor.data.source.local.flashcard.FlashCardsLocalDat
 import io.reactivex.Flowable
 
 class EquationsRepository(private var equationsLocalDataSource: EquationsDataSource,
-                          private var flashCardsLocalDataSource: FlashCardsLocalDataSource
+                          private var flashCardsLocalDataSource: FlashCardsDataSource
 ) : EquationsDataSource, FlashCardsDataSource {
 
 
@@ -15,7 +15,6 @@ class EquationsRepository(private var equationsLocalDataSource: EquationsDataSou
      * or not
      *
      * */
-
     override fun getAllEquations(): Flowable<List<Equation>> = equationsLocalDataSource.getAllEquations()
 
     override fun getAllEquationsFromSection(section: String): Flowable<List<Equation>> = equationsLocalDataSource.getAllEquationsFromSection(section)
@@ -38,10 +37,12 @@ class EquationsRepository(private var equationsLocalDataSource: EquationsDataSou
         private var INSTANCE: EquationsRepository? = null
 
         @JvmStatic
-        fun getInstance(equationsDataSource: EquationsDataSource): EquationsRepository {
+        fun getInstance(equationsDataSource: EquationsDataSource,
+                        flashCardsDataSource: FlashCardsDataSource
+        ): EquationsRepository {
             if (INSTANCE == null) {
                 synchronized(EquationsRepository::class.java) {
-                    INSTANCE = EquationsRepository(equationsDataSource).also {
+                    INSTANCE = EquationsRepository(equationsDataSource, flashCardsDataSource).also {
                         INSTANCE = it
                     }
                 }
