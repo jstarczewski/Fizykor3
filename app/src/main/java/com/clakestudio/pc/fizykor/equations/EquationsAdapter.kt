@@ -8,7 +8,7 @@ import com.clakestudio.pc.fizykor.databinding.EquationBinding
 
 class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerView.Adapter<EquationsAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: EquationBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: EquationBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(title: String, equation: String) {
             binding.mvEquation.text = equation
@@ -20,7 +20,7 @@ class EquationsAdapter(private var equations: ArrayList<Equation>) : RecyclerVie
 
         val binding: EquationBinding
         val inflater = LayoutInflater.from(parent.context)
-        binding = EquationBinding.inflate(inflater, parent,false)
+        binding = EquationBinding.inflate(inflater, parent, false)
         binding.mvEquation.textZoom = 70
 
         return ViewHolder(binding)

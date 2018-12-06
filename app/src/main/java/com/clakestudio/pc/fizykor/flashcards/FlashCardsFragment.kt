@@ -22,9 +22,6 @@ class FlashCardsFragment : Fragment() {
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
 
-                updateMathViewTextEvent.observe(this@FlashCardsFragment, Observer<Void> {
-                    this@FlashCardsFragment.updateMathViewText()
-                })
 
             }
         }
@@ -45,11 +42,6 @@ class FlashCardsFragment : Fragment() {
 
 
         /// Not working
-        updateMathViewText()
-    }
-
-    private fun updateMathViewText() {
-        viewFragmentBinding.mvFlashcard.update()
     }
 
     companion object {

@@ -17,7 +17,6 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
     var equation: ObservableField<String> = ObservableField()
     private var flashcards: ArrayList<FlashCard> = arrayListOf()
     private var isDataLoaded: Boolean = false
-    var updateMathViewTextEvent: SingleLiveEvent<Void> = SingleLiveEvent()
 
     fun start() {
        // testDataInjection()
@@ -46,9 +45,6 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
     private fun prepareFlashCard() {
         this.title.set(flashcards[0].title)
         this.equation.set(flashcards[0].equation)
-    }
-    fun updateMathViewText() {
-        updateMathViewTextEvent.call()
     }
 
 

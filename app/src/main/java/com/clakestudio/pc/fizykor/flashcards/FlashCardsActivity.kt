@@ -30,7 +30,6 @@ class FlashCardsActivity : AppCompatActivity() {
 
             // Interactions
         }
-
         setupViewFragment()
         setupNavigationDrawer()
 

@@ -31,10 +31,11 @@ class MathView : WebView {
         setInitialScale(resources.displayMetrics.densityDpi)
 
         if (attrs != null) {
-            var math = context?.obtainStyledAttributes(attrs, R.styleable.MathView)
+            val math = context.obtainStyledAttributes(attrs, R.styleable.MathView)
             if (math.hasValue(R.styleable.MathView_text)) {
                 this.text = math.getString(R.styleable.MathView_text)
             }
+            math.recycle()
         }
     }
 
@@ -43,13 +44,21 @@ class MathView : WebView {
             update()
     }
 
+    var textAlign: TextAlign by Delegates.observable(TextAlign.CENTER) { _, old, new ->
+        if (old != new)
+            update()
+    }
 
-    var textAlign: TextAlign = TextAlign.CENTER
 
+    var textColor: String by Delegates.observable("Black") { _, old, new ->
+        if (old != new)
+            update()
+    }
 
-    var textColor: String = "Black"
-
-    var backgroundColor: String = "White"
+    var backgroundColor: String by Delegates.observable("White") { _, old, new ->
+        if (old != new)
+            update()
+    }
 
     var textZoom: Int = 100
         set(value) {
@@ -57,7 +66,7 @@ class MathView : WebView {
         }
 
 
-    fun update() = loadDataWithBaseURL(path,
+    private fun update() = loadDataWithBaseURL(path,
             "<html><head><link rel='stylesheet' href='" + path + "jqmath-0.4.3.css'>" +
                     "<script src='" + path + "jquery-1.4.3.min.js'></script>" +
                     "<script src='" + path + "jqmath-etc-0.4.5.min.js'></script>" +
