@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.clakestudio.pc.fizykor.R
-import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.databinding.FragmentEquationsBinding
 
 class EquationsFragment : Fragment() {
@@ -48,7 +46,7 @@ class EquationsFragment : Fragment() {
         if (viewDataBinding.viewmodel != null) {
             viewDataBinding.rvEquations.apply {
                 equationsAdapter = EquationsAdapter(arrayListOf())
-                layoutManager = LinearLayoutManager(context) as RecyclerView.LayoutManager?
+                layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 viewDataBinding.rvEquations.adapter = equationsAdapter
             }
