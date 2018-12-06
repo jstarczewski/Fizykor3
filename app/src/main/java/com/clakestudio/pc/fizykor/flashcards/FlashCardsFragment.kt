@@ -1,18 +1,17 @@
 package com.clakestudio.pc.fizykor.flashcards
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v4.view.GestureDetectorCompat
+import android.view.*
+import android.widget.Toast
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
-import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
 
-class FlashCardsFragment : Fragment() {
+class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 
 
     private lateinit var viewFragmentBinding: FragmentFlashCardsBinding
+    private lateinit var gestureDetector: GestureDetectorCompat
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -25,6 +24,8 @@ class FlashCardsFragment : Fragment() {
 
             }
         }
+
+        gestureDetector = GestureDetectorCompat(context, this)
 
         return viewFragmentBinding.root
     }
@@ -44,7 +45,47 @@ class FlashCardsFragment : Fragment() {
         /// Not working
     }
 
+
+    override fun onShowPress(e: MotionEvent?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onDown(e: MotionEvent?): Boolean {
+        return true
+    }
+
+    override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+        Toast.makeText(context, "elooo", Toast.LENGTH_SHORT).show()
+        return true
+    }
+
+    override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onLongPress(e: MotionEvent?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    override fun onDoubleTap(e: MotionEvent?): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onDoubleTapEvent(e: MotionEvent?): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
     companion object {
         fun newInstance() = FlashCardsFragment()
     }
+
+
 }
