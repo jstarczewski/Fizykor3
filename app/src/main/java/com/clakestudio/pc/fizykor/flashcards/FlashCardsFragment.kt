@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.GestureDetectorCompat
 import android.view.*
+import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -25,7 +26,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         // Layout inflater because <layout></layout> makes no need for R.layout.fragment_flash_cards
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
-
 
             }
         }
@@ -69,9 +69,24 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
         var cvOutAnimation = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out)
         var cvInAnimation = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_in)
-        var animationSet = AnimationSet(false)
-        animationSet.addAnimation(cvOutAnimation)
-        animationSet.addAnimation(cvInAnimation)
+
+        cvOutAnimation.setAnimationListener(object : Animation.AnimationListener {
+
+            override fun onAnimationRepeat(animation: Animation?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onAnimationEnd(animation: Animation?) {
+               viewFragmentBinding.cvFlashCard.startAnimation(cvInAnimation)
+            }
+
+            override fun onAnimationStart(animation: Animation?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+
+        })
+
         viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimation)
         return true
     }
