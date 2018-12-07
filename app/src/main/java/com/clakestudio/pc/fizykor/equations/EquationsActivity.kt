@@ -3,16 +3,12 @@ package com.clakestudio.pc.fizykor.equations
 import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+import android.support.v4.view.GestureDetectorCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.flashcards.FlashCardsActivity
 import com.clakestudio.pc.fizykor.util.obtainViewModel
@@ -45,9 +41,6 @@ class EquationsActivity : AppCompatActivity() {
 
         }
 
-
-
-
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)
             setDisplayHomeAsUpEnabled(true)
@@ -58,6 +51,7 @@ class EquationsActivity : AppCompatActivity() {
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 */
+
     }
 
     private fun openFlashCards() {
@@ -68,7 +62,6 @@ class EquationsActivity : AppCompatActivity() {
         supportFragmentManager.findFragmentById(R.id.contentFrame)
                 ?: replaceFragmentInActivity(EquationsFragment.newInstance(), R.id.contentFrame)
     }
-
 
 
     private fun setupNavigationDrawer() {
@@ -127,4 +120,6 @@ class EquationsActivity : AppCompatActivity() {
             }
 
     fun obtainViewModel(): EquationsViewModel = obtainViewModel(EquationsViewModel::class.java)
+
+
 }
