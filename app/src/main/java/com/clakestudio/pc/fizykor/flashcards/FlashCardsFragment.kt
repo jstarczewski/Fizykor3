@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.GestureDetectorCompat
 import android.view.*
+import android.view.animation.AnimationSet
+import android.view.animation.AnimationUtils
 import android.widget.Toast
+import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
+import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
 
-class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener {
+class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener {
 
 
     private lateinit var viewFragmentBinding: FragmentFlashCardsBinding
+
 
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -26,10 +31,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener {
         }
 
         gestureDetectorCompat = GestureDetectorCompat(this.activity, this)
-
-        viewFragmentBinding.root.setOnTouchListener { v, event -> gestureDetectorCompat.onTouchEvent(event) }
-
-
+        viewFragmentBinding.root.cvFlashCard.setOnTouchListener(this)
         return viewFragmentBinding.root
     }
 
@@ -64,6 +66,13 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener {
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
         Toast.makeText(context, "Eloo", Toast.LENGTH_SHORT).show()
+
+        var cvOutAnimation = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out)
+        var cvInAnimation = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_in)
+        var animationSet = AnimationSet(false)
+        animationSet.addAnimation(cvOutAnimation)
+        animationSet.addAnimation(cvInAnimation)
+        viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimation)
         return true
     }
 
@@ -73,6 +82,10 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener {
 
     override fun onLongPress(e: MotionEvent?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+        return gestureDetectorCompat.onTouchEvent(event)
     }
 
     companion object {
