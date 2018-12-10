@@ -70,24 +70,8 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         var cvOutAnimation = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out)
         var cvInAnimation = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_in)
 
-        cvOutAnimation.setAnimationListener(object : Animation.AnimationListener {
-
-            override fun onAnimationRepeat(animation: Animation?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onAnimationEnd(animation: Animation?) {
-               viewFragmentBinding.cvFlashCard.startAnimation(cvInAnimation)
-            }
-
-            override fun onAnimationStart(animation: Animation?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-
-        })
-
         viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimation)
+        viewFragmentBinding.cvFlashCard.startAnimation(cvInAnimation)
         return true
     }
 
