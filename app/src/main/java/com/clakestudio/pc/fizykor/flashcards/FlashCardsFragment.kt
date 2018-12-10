@@ -5,18 +5,21 @@ import android.support.v4.app.Fragment
 import android.support.v4.view.GestureDetectorCompat
 import android.view.*
 import android.view.animation.Animation
-import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
 import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
 
-class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener {
-
+class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener, Animation.AnimationListener {
 
     private lateinit var viewFragmentBinding: FragmentFlashCardsBinding
 
+    private var cvOutAnimationToRight = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out_to_right)
+    private var cvInAnimationFromLeft = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_in_from_left)
+    private var cvOutAnimationToLeft = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out_to_left)
+    private var cvInAnimationFromRight = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_in_from_right)
+    private val delta: Double  = 50.0
 
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +35,27 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
         gestureDetectorCompat = GestureDetectorCompat(this.activity, this)
         viewFragmentBinding.root.cvFlashCard.setOnTouchListener(this)
+
+        cvOutAnimationToLeft.setAnimationListener(this)
+        cvOutAnimationToRight.setAnimationListener(object : Animation.AnimationListener {
+
+            override fun onAnimationRepeat(animation: Animation?) {
+
+            }
+
+            override fun onAnimationStart(animation: Animation?) {
+
+            }
+
+            override fun onAnimationEnd(animation: Animation?) {
+                viewFragmentBinding.cvFlashCard.startAnimation(cvInAnimationFromLeft)
+            }
+
+        })
+
+
+
+
         return viewFragmentBinding.root
     }
 
@@ -67,11 +91,9 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
         Toast.makeText(context, "Eloo", Toast.LENGTH_SHORT).show()
 
-        var cvOutAnimation = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out)
-        var cvInAnimation = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_in)
 
-        viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimation)
-        viewFragmentBinding.cvFlashCard.startAnimation(cvInAnimation)
+
+        viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToRight)
         return true
     }
 
@@ -86,6 +108,17 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         return gestureDetectorCompat.onTouchEvent(event)
     }
+
+    override fun onAnimationRepeat(animation: Animation?) {
+    }
+
+    override fun onAnimationEnd(animation: Animation?) {
+        viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToLeft)
+    }
+
+    override fun onAnimationStart(animation: Animation?) {
+    }
+
 
     companion object {
         fun newInstance() = FlashCardsFragment()
