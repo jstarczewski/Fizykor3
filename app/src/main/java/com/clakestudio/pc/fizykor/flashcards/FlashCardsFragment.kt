@@ -20,9 +20,9 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     private lateinit var cvOutAnimationToLeft: Animation
     private lateinit var cvInAnimationFromRight: Animation
 
-    private val minDistance: Double = 150.0
-
+    private val minDistance: Double = 200.0
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -38,10 +38,21 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+    }
 
+    override fun onResume() {
+        super.onResume()
+
+        viewFragmentBinding.viewmodel?.start()
+        setupAnimations()
+
+        /// Not working
+    }
+
+    private fun setupAnimations() {
+
+        // Setting up gestureDetector
         gestureDetectorCompat = GestureDetectorCompat(this.activity, this)
-
-
         /**
          * Setting up needed animations and animations listeners
          * */
@@ -54,15 +65,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         viewFragmentBinding.root.cvFlashCard.setOnTouchListener(this)
         cvOutAnimationToLeft.setAnimationListener(this)
         cvOutAnimationToRight.setAnimationListener(this)
-    }
 
-    override fun onResume() {
-        super.onResume()
-
-        viewFragmentBinding.viewmodel?.start()
-
-
-        /// Not working
     }
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
@@ -76,7 +79,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
          *  |---------------|
          *  |---------------|
          * */
-        
+
         val delta = e2!!.x - e1!!.x
         if (e2.x > e1.x && delta > minDistance)
             viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToRight)
