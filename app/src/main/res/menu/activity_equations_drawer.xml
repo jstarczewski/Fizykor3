@@ -9,18 +9,86 @@
 
             <menu>
 
-             <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/ruch"
-                    android:title="Ruch prostoliniowy" />
-                <item
-                    android:id="@+id/ruch_po_okregu"
-                    android:title="Ruch po okręgu" />
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/ruch"
+                        android:title="Ruch prostoliniowy" />
+                    <item
+                        android:id="@+id/ruch_po_okregu"
+                        android:title="Ruch po okręgu" />
+                    <item
+                        android:id="@+id/rzuty"
+                        android:title="Rzuty" />
+                </group>
+            </menu>
+        </item>
 
-                <item
-                    android:id="@+id/rzuty"
-                    android:title="Rzuty" />
-            </group>
+        <item
+            android:id="@+id/dynamika"
+            android:title="@string/dynamika">
+
+            <menu>
+
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/zasadyDynamiki"
+                        android:title="Zasady dynamiki Newtona" />
+                    <item
+                        android:id="@+id/rownaniaRuchuTarcie"
+                        android:title="Równania ruchu i tarcie"></item>
+                </group>
+
+            </menu>
+
+
+        </item>
+        <item
+            android:id="@+id/pracaMocEnergia"
+            android:title="@string/praca_moc_energia">
+
+            <menu>
+
+                <group android:checkableBehavior="single">
+
+                    <item
+                        android:id="@+id/pracaMoc"
+                        android:title="Praca i moc"></item>
+
+                    <item
+                        android:id="@+id/energiaKinetycznaPotencjalna"
+                        android:title="Energia kinetyczna i potencjalna">
+
+                    </item>
+
+                </group>
+
+            </menu>
+
+
+        </item>
+        <item
+            android:id="@+id/bryla"
+            android:title="@string/bry_a_szytywna">
+
+
+            <menu>
+
+                <group android:checkableBehavior="single">
+
+                    <item
+                        android:id="@+id/drogaKatowaMomentSily"
+                        android:title="Droga kątowa i moment siły"></item>
+
+                    <item
+                        android:id="@+id/MomentBezwladnosciSteinerPed"
+                        android:title="Energia kinetyczna i potencjalna">
+
+                    </item>
+
+                    <item
+                        android:id="@+id/zasadyDynamikiObrotowy"
+                        android:title="Zasady dynamiki w ruchu obrotowym" />
+                </group>
 
             </menu>
 
@@ -28,17 +96,37 @@
         </item>
 
         <item
-            android:id="@+id/dynamika"
-            android:title="@string/dynamika" />
-        <item
-            android:id="@+id/pracaMocEnergia"
-            android:title="@string/praca_moc_energia" />
-        <item
-            android:id="@+id/bryla"
-            android:title="@string/bry_a_szytywna" />
-        <item
             android:id="@+id/termodynamika"
-            android:title="@string/termodynamika" />
+            android:title="@string/termodynamika">
+
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/cisnienieCieploClapeyron"
+                    android:title="Ciśnienie, Ciepło, Równanie Clapeyrona"></item>
+
+                <item
+                    android:id="@+id/przemianyTermiczne"
+                    android:title="Przemiany Termiczne">
+
+                </item>
+
+                <item
+                    android:id="@+id/cieploEnergiaKinetycznaSprawnosc"
+                    android:title="Ciepło, Energia Kinetyczna, Sprawnosc" />
+
+                <item
+                    android:id="@+id/zasadyTermodynamikiPracaEntropia"
+                    android:title="Zasady Termodynamiki, Praca, Entropia" />
+
+            </group>
+
+        </menu>
+        </item>
+
         <item
             android:id="@+id/grawitacja"
             android:title="@string/grawitacja_kosmos" />

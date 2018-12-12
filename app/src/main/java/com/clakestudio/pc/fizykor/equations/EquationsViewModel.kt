@@ -35,7 +35,7 @@ class EquationsViewModel(
 
 
     fun start() {
-        //testBaseInjection()
+       //testBaseInjection()
         if (equations.isEmpty())
             loadData()
 

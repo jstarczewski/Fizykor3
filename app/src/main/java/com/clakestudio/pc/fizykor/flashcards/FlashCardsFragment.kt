@@ -38,13 +38,13 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setupAnimations()
     }
 
     override fun onResume() {
         super.onResume()
 
         viewFragmentBinding.viewmodel?.start()
-        setupAnimations()
 
         /// Not working
     }
