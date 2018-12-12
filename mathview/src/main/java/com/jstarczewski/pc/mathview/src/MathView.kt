@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
+import android.view.WindowManager
 import android.webkit.WebSettings
 import android.webkit.WebView
 import com.jstarczewski.pc.mathview.R
@@ -24,6 +25,7 @@ class MathView : WebView {
             javaScriptEnabled = true
             cacheMode = WebSettings.LOAD_NO_CACHE
         }
+        WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
             setLayerType(View.LAYER_TYPE_HARDWARE, null)
         else

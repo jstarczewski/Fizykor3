@@ -229,17 +229,70 @@
             </menu>
 
         </item>
+
         <item
             android:id="@+id/pradstatly"
             android:title="@string/pr_d_sta_y">
 
+
+            <menu>
+                <group android:checkableBehavior="single">
+
+                    <item
+                        android:id="@+id/pradOpor"
+                        android:title="Prąd i opór"></item>
+
+                    <item
+                        android:id="@+id/ohmObowdy"
+                        android:title="Prawo Ohma, obwody">
+
+                    </item>
+
+
+                    <item
+                        android:id="@+id/pracaMocSilaElektromotoryczna"
+                        android:title="Praca, moc, siła elektromotoryczna"></item>
+
+
+                    <item
+                        android:id="@+id/kirchoffZwarcie"
+                        android:title="Prawa Kirchoffa i prąd zwarcia"></item>
+
+                </group>
+
+            </menu>
+
         </item>
         <item
             android:id="@+id/magnetyzm"
-            android:title="@string/magnetyzm" />
+            android:title="@string/magnetyzm">
+
+
+            <menu>
+                <group android:checkableBehavior="single">
+
+                    <item
+                        android:id="@+id/indukcjaMagnetyczna"
+                        android:title="Indukcja Magnetyczna"></item>
+
+                    <item
+                        android:id="@+id/energiaPraca"
+                        android:title="Regula lewej dłowni, praca energia">
+
+                    </item>
+
+                </group>
+
+            </menu>
+
+        </item>
         <item
             android:id="@+id/IndukcjaElektro"
-            android:title="@string/indukcja_elektromagnetyczna" />
+            android:title="@string/indukcja_elektromagnetyczna" >
+
+
+        </item>
+
         <item
             android:id="@+id/przemienny"
             android:title="@string/pr_d_przemienny_i_obwody" />
