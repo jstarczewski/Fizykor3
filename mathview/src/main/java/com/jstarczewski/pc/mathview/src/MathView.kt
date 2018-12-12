@@ -35,6 +35,7 @@ class MathView : WebView {
             if (math.hasValue(R.styleable.MathView_text)) {
                 this.text = math.getString(R.styleable.MathView_text)
             }
+
             math.recycle()
         }
     }
