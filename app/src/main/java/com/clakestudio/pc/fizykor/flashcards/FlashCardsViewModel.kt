@@ -47,13 +47,15 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
 
     fun prepareNextFlashCard() {
         val index = getRandomFlashCardIndex()
-        indexStack.push(index)
         this.title.set(flashcards[index].title)
         this.equation.set(flashcards[index].equation)
+        // stack push bug
+        indexStack.push(index)
     }
 
     fun preparePreviousFlashCard() {
-        val index = indexStack.pop()
+        // double peak bug
+        var index = indexStack.pop()
         this.title.set(flashcards[index].title)
         this.equation.set(flashcards[index].equation)
     }

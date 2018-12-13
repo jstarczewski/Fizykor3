@@ -3,7 +3,6 @@ package com.clakestudio.pc.fizykor.equations
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +31,11 @@ class EquationsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+
+        /**
+         * Double query or double injection bug
+         * */
+
         viewDataBinding.viewmodel?.start()
 
     }

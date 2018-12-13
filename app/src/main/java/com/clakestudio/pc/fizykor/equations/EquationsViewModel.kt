@@ -27,7 +27,7 @@ class EquationsViewModel(
 
     var equations: ObservableArrayList<Equation> = ObservableArrayList()
 
-    var rawEquations: ArrayList<Equation> = ArrayList()
+    private var rawEquations: ArrayList<Equation> = ArrayList()
 
     var flashCardsEvent: SingleLiveEvent<Void> = SingleLiveEvent()
 
@@ -39,6 +39,8 @@ class EquationsViewModel(
     }
 
     fun testBaseInjection() {
+
+
 
         equationsRepository.saveEquation(Equation("Kinematyka", "Ruch jednostajny", "$\\{v↖{→}={∆s}/t [m/s]}$ <br> $\\{v↖{→}}$ prędkość, $∆s$ przemieszczenie/przebyta droga, $\\t$ czas"))
         equationsRepository.saveEquation(Equation("Kinematyka", "Ruch jednostajny zmienny", "$\\{v↖{→}=v_0+at [m/s]}$ , s$\\a↖{→}={∆v}/t [m/s^2]$ <br> $\\{v↖{→}}$ prędkość, $\\v_0$ prędkość początkowa, $\\a↖{→}$ przyśpieszenie, $\\t$ czas, dla $\\a↖{→}>0$ ruch jednostajnie przyśpieszony, dla $\\a↖{→}<0$ ruch jednostajnie opóźniony"))

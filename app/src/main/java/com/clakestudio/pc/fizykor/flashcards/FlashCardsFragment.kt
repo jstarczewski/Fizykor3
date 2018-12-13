@@ -73,7 +73,8 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
 
         defineAnimationType(e1!!.x, e2!!.x)
-        switchMathViewVisibility()
+        // to small fling bug -> no delta check
+        viewFragmentBinding.mvFlashcard.visibility = View.INVISIBLE
         return true
     }
 
