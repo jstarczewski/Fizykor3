@@ -23,6 +23,8 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     private val minDistance: Double = 200.0
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
 
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -69,22 +71,9 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
-        /**
-         * Basic fling logic gonna be tested in separate file
-         *
-         *  |---------------|
-         *  |-e1<-delta->e2-|
-         *  |---------------|
-         *  |-----SCREEN----|
-         *  |---------------|
-         *  |---------------|
-         * */
 
-        val delta = e2!!.x - e1!!.x
-        if (e2.x > e1.x && delta > minDistance)
-            viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToRight)
-        else if (e1.x > e2.x && abs(delta) > minDistance)
-            viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToLeft)
+        defineAnimationType(e1!!.x, e2!!.x)
+        switchMathViewVisibility()
         return true
     }
 
@@ -106,14 +95,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     override fun onLongPress(e: MotionEvent?) {
-        /**
-         * Simple Visibility switch on longClick()
-         * Not working with smth ? a : b
-         * */
-        if (viewFragmentBinding.mvFlashcard.visibility == View.VISIBLE)
-            viewFragmentBinding.mvFlashcard.visibility = View.INVISIBLE
-        else
-            viewFragmentBinding.mvFlashcard.visibility = View.VISIBLE
+        switchMathViewVisibility()
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
@@ -134,6 +116,53 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     }
 
+    private fun defineAnimationType(x1: Float, x2: Float) {
+        /**
+         * Basic fling logic gonna be tested in separate file
+         *
+         *  |---------------|
+         *  |-x1<-delta->x2-|
+         *  |---------------|
+         *  |-----SCREEN----|
+         *  |---------------|
+         *  |---------------|
+         * */
+        val delta = x2 - x1
+        if (x2 > x1 && delta > minDistance) {
+            viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToRight)
+            getNextFlashCard()
+        }
+        else if (x1 > x2 && abs(delta) > minDistance) {
+            viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToLeft)
+            getPreviousFlashCard()
+        }
+
+        /**
+         * Seems like Fragment contains too much logic, gonna check it out !
+
+         * */
+
+    }
+
+    private fun switchMathViewVisibility() {
+        /**
+         * Simple Visibility switch on longClick()
+         * Not working with smth ? a : b
+         * */
+        if (viewFragmentBinding.mvFlashcard.visibility == View.VISIBLE)
+            viewFragmentBinding.mvFlashcard.visibility = View.INVISIBLE
+        else
+            viewFragmentBinding.mvFlashcard.visibility = View.VISIBLE
+
+    }
+
+    private fun getNextFlashCard() {
+       viewFragmentBinding.viewmodel!!.prepareNextFlashCard()
+    }
+
+    private fun getPreviousFlashCard() {
+        viewFragmentBinding.viewmodel!!.preparePreviousFlashCard()
+    }
 
     companion object {
         fun newInstance() = FlashCardsFragment()

@@ -3,10 +3,11 @@ package com.clakestudio.pc.fizykor.flashcards
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableField
-import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
+import java.util.*
+import kotlin.random.Random
 
 class FlashCardsViewModel(context: Application, private val equationsRepository: EquationsRepository) : AndroidViewModel(context) {
 
@@ -18,8 +19,10 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
     private var flashcards: ArrayList<FlashCard> = arrayListOf()
     private var isDataLoaded: Boolean = false
 
+    private val indexStack = Stack<Int>()
+
     fun start() {
-       // testDataInjection()
+        //testDataInjection()
         if (!isDataLoaded) loadData()
     }
 
@@ -39,14 +42,23 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
         this.flashcards.clear()
         this.flashcards.addAll(flashCards)
         isDataLoaded = true
-        prepareFlashCard()
+        prepareNextFlashCard()
     }
 
-    private fun prepareFlashCard() {
-        this.title.set(flashcards[0].title)
-        this.equation.set(flashcards[0].equation)
+    fun prepareNextFlashCard() {
+        val index = getRandomFlashCardIndex()
+        indexStack.push(index)
+        this.title.set(flashcards[index].title)
+        this.equation.set(flashcards[index].equation)
     }
 
+    fun preparePreviousFlashCard() {
+        val index = indexStack.pop()
+        this.title.set(flashcards[index].title)
+        this.equation.set(flashcards[index].equation)
+    }
+
+    private fun getRandomFlashCardIndex(): Int = Random.nextInt(flashcards.size)
 
     private fun testDataInjection() {
         /*
@@ -76,7 +88,12 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
         Częstotliwość @ '$f=1/T$'
 */
 
-        equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Prędkość w ruchu jednostajnym", "$\\{v↖{→}} = { ∆s }/t[m/s]$"))
+        //equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Prędkość w ruchu jednostajnym", "$\\{v↖{→}} = { ∆s }/t[m/s]$"))
+
+        //equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Prędkość w ruchu jednostajnym", "$\\{v↖{→}} = { ∆s }/t[m/s]$"))
+        equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Prędkość w ruchu zmiennym", "$\\{v↖{→}}={∆s}/t [m/s]$"))
+        equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Przyśpieszenie w ruchu zmiennym", "$\\{a↖{ → }} = { ∆v } / t[m / s^2]$"))
+
 
     }
 }

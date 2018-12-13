@@ -25,13 +25,10 @@ class MathView : WebView {
             javaScriptEnabled = true
             cacheMode = WebSettings.LOAD_NO_CACHE
         }
-        WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
             setLayerType(View.LAYER_TYPE_HARDWARE, null)
         else
             setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-        setInitialScale(resources.displayMetrics.densityDpi)
-
         if (attrs != null) {
             val math = context.obtainStyledAttributes(attrs, R.styleable.MathView)
             if (math.hasValue(R.styleable.MathView_text))
@@ -82,5 +79,5 @@ class MathView : WebView {
 }
 
 enum class TextAlign {
-    CENTER, LEFT, RIGHT, JUSTIFY
+    CENTER, START, RIGHT, JUSTIFY
 }
