@@ -76,14 +76,11 @@ class EquationsActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
 
-                R.id.rzuty -> {
+                R.id.kinematyka -> {
                     equationsViewModel.filterEquations("Rzuty")
                 }
-                R.id.ruch_po_okregu -> {
-                    equationsViewModel.filterEquations("Ruch po okręgu")
-                }
-                R.id.ruch -> {
-                    equationsViewModel.filterEquations("Ruch")
+                R.id.dynamika -> {
+
                 }
 
                 /*
