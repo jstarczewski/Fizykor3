@@ -1,5 +1,5 @@
 # Fizykor3
-Third version of an app I created back in 2016.
+Third version of an app I created back in 2016 .
 ## About Fizykor3
 Third version of my most popular app relesed in Google Play Store back in 2016 now with new architecutre.  
 * Kotlin
