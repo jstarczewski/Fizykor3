@@ -1,298 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
 
-        <item android:title="@string/kinematyka">
-
-            <menu>
-
-                <group android:checkableBehavior="single">
-                    <item
-                        android:id="@+id/ruch"
-                        android:title="Ruch prostoliniowy" />
-                    <item
-                        android:id="@+id/ruch_po_okregu"
-                        android:title="Ruch po okręgu" />
-                    <item
-                        android:id="@+id/rzuty"
-                        android:title="Rzuty" />
-                </group>
-            </menu>
-        </item>
-
+        <item android:title="@string/kinematyka" />
         <item
             android:id="@+id/dynamika"
-            android:title="@string/dynamika">
-
-            <menu>
-
-                <group android:checkableBehavior="single">
-                    <item
-                        android:id="@+id/zasadyDynamiki"
-                        android:title="Zasady dynamiki Newtona" />
-                    <item
-                        android:id="@+id/rownaniaRuchuTarcie"
-                        android:title="Równania ruchu i tarcie"></item>
-                </group>
-
-            </menu>
-
-
-        </item>
+            android:title="@string/dynamika" />
         <item
             android:id="@+id/pracaMocEnergia"
-            android:title="@string/praca_moc_energia">
-
-            <menu>
-
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/pracaMoc"
-                        android:title="Praca i moc"></item>
-
-                    <item
-                        android:id="@+id/energiaKinetycznaPotencjalna"
-                        android:title="Energia kinetyczna i potencjalna">
-
-                    </item>
-
-                </group>
-
-            </menu>
-
-
-        </item>
+            android:title="@string/praca_moc_energia" />
         <item
             android:id="@+id/bryla"
-            android:title="@string/bry_a_szytywna">
-
-
-            <menu>
-
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/drogaKatowaMomentSily"
-                        android:title="Droga kątowa i moment siły"></item>
-
-                    <item
-                        android:id="@+id/MomentBezwladnosciSteinerPed"
-                        android:title="Energia kinetyczna i potencjalna">
-
-                    </item>
-
-                    <item
-                        android:id="@+id/zasadyDynamikiObrotowy"
-                        android:title="Zasady dynamiki w ruchu obrotowym" />
-                </group>
-
-            </menu>
-
-
-        </item>
-
+            android:title="@string/bry_a_szytywna" />
         <item
             android:id="@+id/termodynamika"
-            android:title="@string/termodynamika">
-
-
-            <menu>
-
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/cisnienieCieploClapeyron"
-                        android:title="Ciśnienie, Ciepło, Równanie Clapeyrona"></item>
-
-                    <item
-                        android:id="@+id/przemianyTermiczne"
-                        android:title="Przemiany Termiczne">
-
-                    </item>
-
-                    <item
-                        android:id="@+id/cieploEnergiaKinetycznaSprawnosc"
-                        android:title="Ciepło, Energia Kinetyczna, Sprawnosc" />
-
-                    <item
-                        android:id="@+id/zasadyTermodynamikiPracaEntropia"
-                        android:title="Zasady Termodynamiki, Praca, Entropia" />
-
-                </group>
-
-            </menu>
-        </item>
-
+            android:title="@string/termodynamika" />
         <item
             android:id="@+id/grawitacja"
-            android:title="@string/grawitacja_kosmos">
-            <menu>
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/keplerCiazenie"
-                        android:title="Prawa Keplera i powszegnego ciążenia"></item>
-
-                    <item
-                        android:id="@+id/przyspieszenieNatezenieEnergia"
-                        android:title="Przyśpieszenie, natężenie i energia">
-
-                    </item>
-
-                    <item
-                        android:id="@+id/predkosciKosmiczneOdleglosciZiemia"
-                        android:title="Prędkości kosmiczne i odległość" />
-
-                </group>
-
-            </menu>
-
-
-        </item>
-
-
+            android:title="@string/grawitacja_kosmos" />
         <item
             android:id="@+id/drgajacy"
-            android:title="@string/ruch_drgaj_cy">
-            <menu>
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/polozeniePredkoscSila"
-                        android:title="Położenie, przyspieszenie siła"></item>
-
-                    <item
-                        android:id="@+id/energiaWahadla"
-                        android:title="Energia i wahadła">
-
-                    </item>
-
-                </group>
-
-            </menu>
-
-
-        </item>
+            android:title="@string/ruch_drgaj_cy" />
         <item
             android:id="@+id/mechaniczne"
-            android:title="@string/fale_mechaniczne">
-
-            <menu>
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/predkoscRownaniaInterferencja"
-                        android:title="Interferencja i równania fali"></item>
-
-                    <item
-                        android:id="@+id/wypadkowaAmplitudaWygaszeniaWzmocnienia"
-                        android:title="Wygaszenie, wzmocnienie, nateżenie fali">
-
-                    </item>
-
-
-                    <item
-                        android:id="@+id/piszczalkiDopplerNatezenie"
-                        android:title="Zjawisko Doppler, piszczałki">
-
-                    </item>
-
-                </group>
-
-            </menu>
-
-        </item>
+            android:title="@string/fale_mechaniczne" />
         <item
             android:id="@+id/Elektorstatyka"
-            android:title="@string/elektrostatyka">
-
-
-            <menu>
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/ladunekPole"
-                        android:title="Ładunek i pole elektrostatyczne"></item>
-
-                    <item
-                        android:id="@+id/kondensatory"
-                        android:title="Kondensatory">
-
-                    </item>
-
-                </group>
-
-            </menu>
-
-        </item>
-
+            android:title="@string/elektrostatyka" />
         <item
             android:id="@+id/pradstatly"
-            android:title="@string/pr_d_sta_y">
-
-
-            <menu>
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/pradOpor"
-                        android:title="Prąd i opór"></item>
-
-                    <item
-                        android:id="@+id/ohmObowdy"
-                        android:title="Prawo Ohma, obwody">
-
-                    </item>
-
-
-                    <item
-                        android:id="@+id/pracaMocSilaElektromotoryczna"
-                        android:title="Praca, moc, siła elektromotoryczna"></item>
-
-
-                    <item
-                        android:id="@+id/kirchoffZwarcie"
-                        android:title="Prawa Kirchoffa i prąd zwarcia"></item>
-
-                </group>
-
-            </menu>
-
-        </item>
+            android:title="@string/pr_d_sta_y" />
         <item
             android:id="@+id/magnetyzm"
-            android:title="@string/magnetyzm">
-
-
-            <menu>
-                <group android:checkableBehavior="single">
-
-                    <item
-                        android:id="@+id/indukcjaMagnetyczna"
-                        android:title="Indukcja Magnetyczna"></item>
-
-                    <item
-                        android:id="@+id/energiaPraca"
-                        android:title="Regula lewej dłowni, praca energia">
-
-                    </item>
-
-                </group>
-
-            </menu>
-
-        </item>
+            android:title="@string/magnetyzm" />
         <item
             android:id="@+id/IndukcjaElektro"
-            android:title="@string/indukcja_elektromagnetyczna" >
-
-
-        </item>
-
+            android:title="@string/indukcja_elektromagnetyczna" />
         <item
             android:id="@+id/przemienny"
             android:title="@string/pr_d_przemienny_i_obwody" />
