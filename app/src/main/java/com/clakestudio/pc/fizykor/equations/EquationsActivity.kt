@@ -77,10 +77,10 @@ class EquationsActivity : AppCompatActivity() {
             when (menuItem.itemId) {
 
                 R.id.kinematyka -> {
-                    equationsViewModel.filterEquations("Rzuty")
+                    equationsViewModel.filterEquations("Kinematyka")
                 }
                 R.id.dynamika -> {
-
+                    equationsViewModel.filterEquations("Dynamika")
                 }
 
                 /*

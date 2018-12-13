@@ -3,7 +3,9 @@
 
     <group android:checkableBehavior="single">
 
-        <item android:title="@string/kinematyka" />
+        <item
+            android:id="@+id/kinematyka"
+            android:title="@string/kinematyka" />
         <item
             android:id="@+id/dynamika"
             android:title="@string/dynamika" />
