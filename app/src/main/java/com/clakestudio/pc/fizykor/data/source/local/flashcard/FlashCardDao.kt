@@ -13,7 +13,7 @@ interface FlashCardDao {
     @Query("SELECT * FROM flashcard")
     fun getAllFlashCards(): Flowable<List<FlashCard>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveFlashCard(flashCard: FlashCard)
 
 }

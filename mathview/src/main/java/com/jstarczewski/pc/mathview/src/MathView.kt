@@ -36,6 +36,7 @@ class MathView : WebView {
             val math = context.obtainStyledAttributes(attrs, R.styleable.MathView)
             if (math.hasValue(R.styleable.MathView_text)) {
                 this.text = math.getString(R.styleable.MathView_text)
+                this.textZoom = math.getInt(R.styleable.MathView_textZoom, 100)
             }
 
             math.recycle()

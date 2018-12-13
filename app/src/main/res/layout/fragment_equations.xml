@@ -12,19 +12,535 @@
 
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvEquations"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:equations="@{viewmodel.equations}" />
+            android:orientation="vertical">
 
 
-    </LinearLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 0 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[0].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[0].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 1 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[1].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[1].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 2 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[2].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[2].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 3 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[3].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[3].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 4 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[4].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[4].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 5 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[5].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[5].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 6 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[6].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[6].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 7 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[7].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[7].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 8 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[8].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[8].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 9 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[9].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[9].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 10 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[10].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[10].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 11 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[11].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[11].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 12 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[12].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[12].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 13 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[13].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[13].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 14 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[14].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[14].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="@{viewmodel.equations.size > 15 ? View.VISIBLE : View.GONE}"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewmodel.equations[15].title}"
+                        android:textSize="20sp" />
+
+
+                    <com.jstarczewski.pc.mathview.src.MathView
+                        android:id="@+id/mvEquation16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:text="@{viewmodel.equations[15].equation}" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 </layout>

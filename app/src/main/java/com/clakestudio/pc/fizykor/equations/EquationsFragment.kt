@@ -25,13 +25,15 @@ class EquationsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setupRecyclerView()
+       // setupRecyclerView()
         setupFab()
+        //setMathViewTextZoom()
     }
 
     override fun onResume() {
         super.onResume()
         viewDataBinding.viewmodel?.start()
+
     }
 
     private fun setupFab() {
@@ -42,6 +44,7 @@ class EquationsFragment : Fragment() {
         }
     }
 
+    /*
     private fun setupRecyclerView() {
         if (viewDataBinding.viewmodel != null) {
             viewDataBinding.rvEquations.apply {
@@ -51,7 +54,31 @@ class EquationsFragment : Fragment() {
                 viewDataBinding.rvEquations.adapter = equationsAdapter
             }
         }
-    }
+    }*/
+/*
+    private fun setMathViewTextZoom() {
+
+        viewDataBinding.apply {
+            mvEquation1.textZoom = 75
+            mvEquation2.textZoom = 75
+            mvEquation3.textZoom = 75
+            mvEquation4.textZoom = 75
+            mvEquation5.textZoom = 75
+            mvEquation6.textZoom = 75
+            mvEquation7.textZoom = 75
+            mvEquation8.textZoom = 75
+            mvEquation9.textZoom = 75
+            mvEquation10.textZoom = 75
+            mvEquation11.textZoom = 75
+            mvEquation12.textZoom = 75
+            mvEquation13.textZoom = 75
+            mvEquation14.textZoom = 75
+            mvEquation15.textZoom = 75
+            mvEquation16.textZoom = 75
+
+        }
+
+    }*/
 
     companion object {
         fun newInstance() = EquationsFragment()

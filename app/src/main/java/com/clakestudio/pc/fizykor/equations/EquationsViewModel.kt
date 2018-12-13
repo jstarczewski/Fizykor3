@@ -3,16 +3,13 @@ package com.clakestudio.pc.fizykor.equations
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.content.Context
-import android.databinding.Bindable
 import android.databinding.ObservableArrayList
 import android.databinding.ObservableBoolean
-import android.util.Log
 import android.widget.Toast
 import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
-import io.reactivex.Flowable
 import io.reactivex.disposables.CompositeDisposable
 
 class EquationsViewModel(
@@ -35,7 +32,7 @@ class EquationsViewModel(
 
 
     fun start() {
-       //   testBaseInjection()
+        //  testBaseInjection()
         if (equations.isEmpty())
             loadData()
 
@@ -55,7 +52,7 @@ class EquationsViewModel(
         equationsRepository.saveEquation(Equation("Kinematyka", "Ruch po okręgu", "Ruch po okręgu", "$\\{v↖{→}}= s/t= {2πr}/T = {2πrf}$, $\\f=1/T$ <br> $\\v↖{→}$ prędkość ciała w ruchu po okręgu, $\\f$ czestotliwość, $\\r$ promień okręgu, $\\T$ okres, czas jednego pełnego ruchu,"))
         /*
 
-        
+
 
   przyspieszenie_dosrodkowe $a_d↖{→}=v^2/r$ $[m/s^2]$ <br> $a_d↖{→}$ przyśpieszenie dośrodkowe, $r$ promień, $v$ prędkość
     pierwsza_zasada_dynamiki Jeżeli $F↖{→}_w=0$ to w izolowanym układzie ciało/punkt materialny spoczywa, lub porusza się ruchem jednostajnym, $F↖{→}_w$ siła wypadkowa
@@ -88,7 +85,7 @@ class EquationsViewModel(
 
     fun filterEquations(filtering: String) {
         equations.clear()
-        equations.addAll(rawEquations.filter { it.subsection == filtering })
+        equations.addAll(rawEquations)
 
     }
 
