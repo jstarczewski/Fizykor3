@@ -106,7 +106,14 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     override fun onLongPress(e: MotionEvent?) {
-
+        /**
+         * Simple Visibility switch on longClick()
+         * Not working with smth ? a : b
+         * */
+        if (viewFragmentBinding.mvFlashcard.visibility == View.VISIBLE)
+            viewFragmentBinding.mvFlashcard.visibility = View.INVISIBLE
+        else
+            viewFragmentBinding.mvFlashcard.visibility = View.VISIBLE
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
