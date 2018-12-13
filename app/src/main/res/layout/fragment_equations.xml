@@ -48,7 +48,8 @@
                         android:id="@+id/mvEquation1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[0].equation}" />
+                        app:text="@{viewmodel.equations[0].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -81,7 +82,8 @@
                         android:id="@+id/mvEquation2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[1].equation}" />
+                        app:text="@{viewmodel.equations[1].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -113,7 +115,8 @@
                         android:id="@+id/mvEquation3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[2].equation}" />
+                        app:text="@{viewmodel.equations[2].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -145,7 +148,8 @@
                         android:id="@+id/mvEquation4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[3].equation}" />
+                        app:text="@{viewmodel.equations[3].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -177,7 +181,8 @@
                         android:id="@+id/mvEquation5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[4].equation}" />
+                        app:text="@{viewmodel.equations[4].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -210,7 +215,8 @@
                         android:id="@+id/mvEquation6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[5].equation}" />
+                        app:text="@{viewmodel.equations[5].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -242,7 +248,8 @@
                         android:id="@+id/mvEquation7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[6].equation}" />
+                        app:text="@{viewmodel.equations[6].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -274,7 +281,8 @@
                         android:id="@+id/mvEquation8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[7].equation}" />
+                        app:text="@{viewmodel.equations[7].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -306,7 +314,8 @@
                         android:id="@+id/mvEquation9"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[8].equation}" />
+                        app:text="@{viewmodel.equations[8].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -339,7 +348,8 @@
                         android:id="@+id/mvEquation10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[9].equation}" />
+                        app:text="@{viewmodel.equations[9].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -371,7 +381,8 @@
                         android:id="@+id/mvEquation11"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[10].equation}" />
+                        app:text="@{viewmodel.equations[10].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -403,7 +414,8 @@
                         android:id="@+id/mvEquation12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[11].equation}" />
+                        app:text="@{viewmodel.equations[11].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -435,7 +447,8 @@
                         android:id="@+id/mvEquation13"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[12].equation}" />
+                        app:text="@{viewmodel.equations[12].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -468,7 +481,8 @@
                         android:id="@+id/mvEquation14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[13].equation}" />
+                        app:text="@{viewmodel.equations[13].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -500,7 +514,8 @@
                         android:id="@+id/mvEquation15"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[14].equation}" />
+                        app:text="@{viewmodel.equations[14].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>
@@ -532,7 +547,8 @@
                         android:id="@+id/mvEquation16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:text="@{viewmodel.equations[15].equation}" />
+                        app:text="@{viewmodel.equations[15].equation}"
+                        app:textZoom="75" />
 
 
                 </LinearLayout>

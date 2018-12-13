@@ -34,11 +34,10 @@ class MathView : WebView {
 
         if (attrs != null) {
             val math = context.obtainStyledAttributes(attrs, R.styleable.MathView)
-            if (math.hasValue(R.styleable.MathView_text)) {
+            if (math.hasValue(R.styleable.MathView_text))
                 this.text = math.getString(R.styleable.MathView_text)
-                this.textZoom = math.getInt(R.styleable.MathView_textZoom, 100)
-            }
-
+            if (math.hasValue(R.styleable.MathView_textZoom))
+                setInitialScale((resources.displayMetrics.densityDpi) / 100 * math.getInt(R.styleable.MathView_textZoom, 100))
             math.recycle()
         }
     }
