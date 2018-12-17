@@ -3,9 +3,11 @@ package com.clakestudio.pc.fizykor.flashcards
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableField
+import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
+import kotlin.math.abs
 import java.util.*
 import kotlin.random.Random
 
@@ -18,6 +20,9 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
     var equation: ObservableField<String> = ObservableField()
     private var flashcards: ArrayList<FlashCard> = arrayListOf()
     private var isDataLoaded: Boolean = false
+    private var isLastOperationPush = falses
+    var switchFlashCardEvent: SingleLiveEvent<> = SingleLiveEvent()
+    private val minDistance: Double = 200.0
 
     private val indexStack = Stack<Int>()
 
@@ -42,23 +47,52 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
         this.flashcards.clear()
         this.flashcards.addAll(flashCards)
         isDataLoaded = true
-        prepareNextFlashCard()
+        setNewFlashCard()
     }
 
-    fun prepareNextFlashCard() {
+
+    fun defineAnimationType(x1: Float, x2: Float) {
+        /**
+         * Basic fling logic gonna be tested in separate file
+         *
+         *  |---------------|
+         *  |-x1<-delta->x2-|
+         *  |---------------|
+         *  |-----SCREEN----|
+         *  |---------------|
+         *  |---------------|
+         * */
+        val delta = x2 - x1
+        if (x2 > x1 && delta > minDistance) {
+            setNewFlashCard()
+        } else if (x1 > x2 && abs(delta) > minDistance) {
+            setPreviousFlashCard()
+        }
+    }
+
+    private fun setNewFlashCard() {
         val index = getRandomFlashCardIndex()
         this.title.set(flashcards[index].title)
         this.equation.set(flashcards[index].equation)
         // stack push bug
         indexStack.push(index)
+        isLastOperationPush = true
     }
 
-    fun preparePreviousFlashCard() {
+    private fun setPreviousFlashCard() {
         // double peak bug
         var index = indexStack.pop()
+
+        if (isDoublePeek(index))
+            index = indexStack.pop()
+
         this.title.set(flashcards[index].title)
         this.equation.set(flashcards[index].equation)
+
+        isLastOperationPush = false
     }
+
+    private fun isDoublePeek(index: Int) = isLastOperationPush && flashcards[index].title == this.title.toString() && flashcards[index].equation == this.equation.toString()
 
     private fun getRandomFlashCardIndex(): Int = Random.nextInt(flashcards.size)
 

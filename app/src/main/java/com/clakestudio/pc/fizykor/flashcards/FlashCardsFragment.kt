@@ -1,5 +1,6 @@
 package com.clakestudio.pc.fizykor.flashcards
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.GestureDetectorCompat
@@ -8,8 +9,8 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
+import com.jstarczewski.pc.mathview.src.MathView
 import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
-import kotlin.math.abs
 
 class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener, Animation.AnimationListener {
 
@@ -20,7 +21,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     private lateinit var cvOutAnimationToLeft: Animation
     private lateinit var cvInAnimationFromRight: Animation
 
-    private val minDistance: Double = 200.0
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
 
 
@@ -32,6 +32,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         // Layout inflater because <layout></layout> makes no need for R.layout.fragment_flash_cards
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
+              //  switchFlashCardEvent.observe(this@FlashCardsFragment, Observer<MathView> {  } })
 
             }
         }
@@ -74,7 +75,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
         defineAnimationType(e1!!.x, e2!!.x)
         // to small fling bug -> no delta check
-        viewFragmentBinding.mvFlashcard.visibility = View.INVISIBLE
         return true
     }
 
@@ -118,30 +118,8 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     private fun defineAnimationType(x1: Float, x2: Float) {
-        /**
-         * Basic fling logic gonna be tested in separate file
-         *
-         *  |---------------|
-         *  |-x1<-delta->x2-|
-         *  |---------------|
-         *  |-----SCREEN----|
-         *  |---------------|
-         *  |---------------|
-         * */
-        val delta = x2 - x1
-        if (x2 > x1 && delta > minDistance) {
-            viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToRight)
-            getNextFlashCard()
-        }
-        else if (x1 > x2 && abs(delta) > minDistance) {
-            viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToLeft)
-            getPreviousFlashCard()
-        }
 
-        /**
-         * Seems like Fragment contains too much logic, gonna check it out !
-
-         * */
+        viewFragmentBinding.viewmodel
 
     }
 
