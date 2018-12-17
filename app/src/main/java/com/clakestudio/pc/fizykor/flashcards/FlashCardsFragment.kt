@@ -31,8 +31,8 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         // Layout inflater because <layout></layout> makes no need for R.layout.fragment_flash_cards
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
-                switchFlashCardEvent.observe(this@FlashCardsFragment, Observer { mathView ->
-                    if (mathView?.visibility == View.VISIBLE) mathView.visibility = View.INVISIBLE else mathView?.visibility = View.VISIBLE
+                animateFlashCardEvent.observe(this@FlashCardsFragment, Observer {
+                    mathView ->
                 })
             }
 
@@ -44,7 +44,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupAnimations()
-        setupMathView()
     }
 
     override fun onResume() {
@@ -54,10 +53,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
 
         /// Not working
-    }
-
-    private fun setupMathView() {
-        viewFragmentBinding.viewmodel?.switchFlashCardEvent?.value = viewFragmentBinding.mvFlashcard
     }
 
     private fun setupAnimations() {
@@ -82,6 +77,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
 
         viewFragmentBinding.viewmodel?.defineAnimationType(e1!!.x, e2!!.x)
+        viewFragmentBinding.mvFlashcard.visibility=View.INVISIBLE
         // to small fling bug -> no delta check
         return true
     }
@@ -104,10 +100,10 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     override fun onLongPress(e: MotionEvent?) {
-        viewFragmentBinding.viewmodel?.switchMathViewVisibility()
+        switchMathViewVisibility(viewFragmentBinding.mvFlashcard)
     }
 
-    private fun switchMathViewVisiblity(mathView: MathView) = if (mathView.visibility == View.VISIBLE) mathView.visibility = View.INVISIBLE else mathView.visibility = View.VISIBLE
+    private fun switchMathViewVisibility(mathView: MathView) = if (mathView.visibility == View.VISIBLE) mathView.visibility = View.INVISIBLE else mathView.visibility = View.VISIBLE
 
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {

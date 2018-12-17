@@ -22,7 +22,7 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
     private var flashcards: ArrayList<FlashCard> = arrayListOf()
     private var isDataLoaded: Boolean = false
     private var isLastOperationPush = false
-    var switchFlashCardEvent: SingleLiveEvent<MathView> = SingleLiveEvent()
+    var animateFlashCardEvent: SingleLiveEvent<MathView> = SingleLiveEvent()
     private val minDistance: Double = 200.0
 
     private val indexStack = Stack<Int>()
