@@ -7,6 +7,7 @@ import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
+import com.jstarczewski.pc.mathview.src.MathView
 import kotlin.math.abs
 import java.util.*
 import kotlin.random.Random
@@ -20,8 +21,8 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
     var equation: ObservableField<String> = ObservableField()
     private var flashcards: ArrayList<FlashCard> = arrayListOf()
     private var isDataLoaded: Boolean = false
-    private var isLastOperationPush = falses
-    var switchFlashCardEvent: SingleLiveEvent<> = SingleLiveEvent()
+    private var isLastOperationPush = false
+    var switchFlashCardEvent: SingleLiveEvent<MathView> = SingleLiveEvent()
     private val minDistance: Double = 200.0
 
     private val indexStack = Stack<Int>()
@@ -90,6 +91,9 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
         this.equation.set(flashcards[index].equation)
 
         isLastOperationPush = false
+    }
+
+    fun switchMathViewVisibility() {
     }
 
     private fun isDoublePeek(index: Int) = isLastOperationPush && flashcards[index].title == this.title.toString() && flashcards[index].equation == this.equation.toString()

@@ -24,7 +24,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
 
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -32,16 +31,20 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         // Layout inflater because <layout></layout> makes no need for R.layout.fragment_flash_cards
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
-              //  switchFlashCardEvent.observe(this@FlashCardsFragment, Observer<MathView> {  } })
-
+                switchFlashCardEvent.observe(this@FlashCardsFragment, Observer { mathView ->
+                    if (mathView?.visibility == View.VISIBLE) mathView.visibility = View.INVISIBLE else mathView?.visibility = View.VISIBLE
+                })
             }
+
         }
+
         return viewFragmentBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupAnimations()
+        setupMathView()
     }
 
     override fun onResume() {
@@ -49,7 +52,12 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
         viewFragmentBinding.viewmodel?.start()
 
+
         /// Not working
+    }
+
+    private fun setupMathView() {
+        viewFragmentBinding.viewmodel?.switchFlashCardEvent?.value = viewFragmentBinding.mvFlashcard
     }
 
     private fun setupAnimations() {
@@ -73,7 +81,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
 
-        defineAnimationType(e1!!.x, e2!!.x)
+        viewFragmentBinding.viewmodel?.defineAnimationType(e1!!.x, e2!!.x)
         // to small fling bug -> no delta check
         return true
     }
@@ -96,8 +104,11 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     override fun onLongPress(e: MotionEvent?) {
-        switchMathViewVisibility()
+        viewFragmentBinding.viewmodel?.switchMathViewVisibility()
     }
+
+    private fun switchMathViewVisiblity(mathView: MathView) = if (mathView.visibility == View.VISIBLE) mathView.visibility = View.INVISIBLE else mathView.visibility = View.VISIBLE
+
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
         return gestureDetectorCompat.onTouchEvent(event)
@@ -115,32 +126,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     override fun onAnimationStart(animation: Animation?) {
 
-    }
-
-    private fun defineAnimationType(x1: Float, x2: Float) {
-
-        viewFragmentBinding.viewmodel
-
-    }
-
-    private fun switchMathViewVisibility() {
-        /**
-         * Simple Visibility switch on longClick()
-         * Not working with smth ? a : b
-         * */
-        if (viewFragmentBinding.mvFlashcard.visibility == View.VISIBLE)
-            viewFragmentBinding.mvFlashcard.visibility = View.INVISIBLE
-        else
-            viewFragmentBinding.mvFlashcard.visibility = View.VISIBLE
-
-    }
-
-    private fun getNextFlashCard() {
-       viewFragmentBinding.viewmodel!!.prepareNextFlashCard()
-    }
-
-    private fun getPreviousFlashCard() {
-        viewFragmentBinding.viewmodel!!.preparePreviousFlashCard()
     }
 
     companion object {
