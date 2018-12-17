@@ -25,6 +25,14 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
 
 
+
+    /**
+     * TO-DO move all logic to viewModel and via observable fields and databinding bind all to xml objects
+     *
+     *
+     * ***/
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -76,6 +84,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
 
         viewFragmentBinding.mvFlashcard.visibility = View.INVISIBLE
+        runFlashCardAnimation(e1!!.x, e2!!.x)
         // to small fling bug -> no delta check
         return true
     }
@@ -101,6 +110,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         switchMathViewVisibility(viewFragmentBinding.mvFlashcard)
     }
 
+    // Switching visibility is basic logic that in my opinion does not need to be tested so that's why it is inside fragments code
     private fun switchMathViewVisibility(mathView: MathView) = if (mathView.visibility == View.VISIBLE) mathView.visibility = View.INVISIBLE else mathView.visibility = View.VISIBLE
 
 
@@ -123,9 +133,9 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
 
-    fun runFlashCardAnimation(x1: Float, x2: Float) {
+    private fun runFlashCardAnimation(x1: Float, x2: Float) {
         /**
-         * Basic fling logic gonna be tested in separate file
+         * Basic fling logic that is simple and also does not need some special testing
          *
          *  |---------------|
          *  |-x1<-delta->x2-|
@@ -141,7 +151,9 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         } else if (x1 > x2 && abs(delta) > minDistance) {
             viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToLeft)
         }
-        viewFragmentBinding.viewmodel?.isNewFlashCard(x2 > x1)
+        if ((delta > minDistance) || (abs(delta) > minDistance))
+            // Letting the viewmodel prepare needed data based on fling type depends on fling type
+            viewFragmentBinding.viewmodel?.isNewFlashCard(x2 > x1)
     }
 
     companion object {

@@ -2,15 +2,10 @@ package com.clakestudio.pc.fizykor.flashcards
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableField
-import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
-import com.jstarczewski.pc.mathview.src.MathView
-import kotlin.math.abs
 import java.util.*
 import kotlin.random.Random
 
@@ -54,34 +49,36 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
 
     fun isNewFlashCard(boolean: Boolean) = if (boolean) setNewFlashCard() else setPreviousFlashCard()
 
-    private fun setNewFlashCard() {
-        val index = getRandomFlashCardIndex()
+    private fun isDoublePeek(index: Int) = isLastOperationPush && flashcards[index].title == this.title.toString() && flashcards[index].equation == this.equation.toString()
+
+    private fun getRandomFlashCardIndex(): Int = Random.nextInt(flashcards.size)
+
+    private fun setData(index: Int) {
         this.title.set(flashcards[index].title)
         this.equation.set(flashcards[index].equation)
+    }
+
+    private fun setNewFlashCard() {
+        val index = getRandomFlashCardIndex()
+
+        setData(index)
+
         // stack push bug
         indexStack.push(index)
         isLastOperationPush = true
     }
 
     private fun setPreviousFlashCard() {
-        // double peak bug
         var index = indexStack.pop()
-
         if (isDoublePeek(index))
             index = indexStack.pop()
-
-        this.title.set(flashcards[index].title)
-        this.equation.set(flashcards[index].equation)
-
+        if (index == null)
+            setNewFlashCard()
+        else
+            setData(index)
         isLastOperationPush = false
     }
 
-    fun switchMathViewVisibility() {
-    }
-
-    private fun isDoublePeek(index: Int) = isLastOperationPush && flashcards[index].title == this.title.toString() && flashcards[index].equation == this.equation.toString()
-
-    private fun getRandomFlashCardIndex(): Int = Random.nextInt(flashcards.size)
 
     private fun testDataInjection() {
         /*
