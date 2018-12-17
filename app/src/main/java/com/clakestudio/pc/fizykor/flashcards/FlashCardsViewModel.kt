@@ -2,6 +2,8 @@ package com.clakestudio.pc.fizykor.flashcards
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableField
 import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.FlashCard
@@ -22,8 +24,6 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
     private var flashcards: ArrayList<FlashCard> = arrayListOf()
     private var isDataLoaded: Boolean = false
     private var isLastOperationPush = false
-    var animateFlashCardEvent: SingleLiveEvent<MathView> = SingleLiveEvent()
-    private val minDistance: Double = 200.0
 
     private val indexStack = Stack<Int>()
 
@@ -52,24 +52,7 @@ class FlashCardsViewModel(context: Application, private val equationsRepository:
     }
 
 
-    fun defineAnimationType(x1: Float, x2: Float) {
-        /**
-         * Basic fling logic gonna be tested in separate file
-         *
-         *  |---------------|
-         *  |-x1<-delta->x2-|
-         *  |---------------|
-         *  |-----SCREEN----|
-         *  |---------------|
-         *  |---------------|
-         * */
-        val delta = x2 - x1
-        if (x2 > x1 && delta > minDistance) {
-            setNewFlashCard()
-        } else if (x1 > x2 && abs(delta) > minDistance) {
-            setPreviousFlashCard()
-        }
-    }
+    fun isNewFlashCard(boolean: Boolean) = if (boolean) setNewFlashCard() else setPreviousFlashCard()
 
     private fun setNewFlashCard() {
         val index = getRandomFlashCardIndex()
