@@ -9,7 +9,7 @@ import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import java.util.*
 import kotlin.random.Random
 
-class FlashCardsViewModel(context: Application, private val equationsRepository: EquationsRepository) : AndroidViewModel(context) {
+class FlashCardsViewModel(private val equationsRepository: EquationsRepository) : ViewModel {
 
 
     // Observables

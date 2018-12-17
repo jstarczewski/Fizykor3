@@ -17,9 +17,9 @@ class ViewModelFactory private constructor(
             with(modelClass) {
                 when {
                     isAssignableFrom(EquationsViewModel::class.java) ->
-                        EquationsViewModel(application, equationsRepository)
+                        EquationsViewModel(equationsRepository)
                     isAssignableFrom(FlashCardsViewModel::class.java) ->
-                        FlashCardsViewModel(application, equationsRepository)
+                        FlashCardsViewModel(equationsRepository)
 
                     else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }
