@@ -8,6 +8,7 @@ import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import java.util.*
+import kotlin.math.abs
 import kotlin.random.Random
 
 class FlashCardsViewModel(private val equationsRepository: EquationsRepository) : ViewModel() {
@@ -18,8 +19,12 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     var title: ObservableField<String> = ObservableField()
     var equation: ObservableField<String> = ObservableField()
 
-    var flashCardVisibilityId : SingleLiveEvent<Int> = SingleLiveEvent()
+    var flashCardVisibilityEvent: SingleLiveEvent<Int> = SingleLiveEvent()
+    var animateCardViewEvent: SingleLiveEvent<Int> = SingleLiveEvent()
+    private val invisible = 0x00000004
+    private val visible = 0x00000000
 
+    private val minDistance: Double = 200.0
 
     private var flashcards: ArrayList<FlashCard> = arrayListOf()
     private var isDataLoaded: Boolean = false
@@ -49,18 +54,11 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         this.flashcards.addAll(flashCards)
         isDataLoaded = true
         setNewFlashCard()
-
-
         View.VISIBLE
     }
 
-    fun showIt() {
-        flashCardVisibilityId.value = 0x00000000
-    }
 
-    fun isNewFlashCard(boolean: Boolean) = if (boolean) setNewFlashCard() else setPreviousFlashCard()
-
-    private fun isDoublePeek(index: Int) = isLastOperationPush && flashcards[index].title == this.title.toString() && flashcards[index].equation == this.equation.toString()
+    fun switchMathViewVisibility(visibility: Int) = if (visibility == visible) flashCardVisibilityEvent.value = invisible else flashCardVisibilityEvent.value = visible
 
     private fun getRandomFlashCardIndex(): Int = Random.nextInt(flashcards.size)
 
@@ -71,25 +69,45 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
 
     private fun setNewFlashCard() {
         val index = getRandomFlashCardIndex()
-
         setData(index)
-
-        // stack push bug
         indexStack.push(index)
         isLastOperationPush = true
     }
 
     private fun setPreviousFlashCard() {
-        var index = indexStack.pop()
-        if (isDoublePeek(index))
-            index = indexStack.pop()
-        if (index == null)
-            setNewFlashCard()
-        else
+        if (!indexStack.isEmpty()) {
+            var index = indexStack.pop()
+            if (isLastOperationPush && !indexStack.isEmpty())
+                index = indexStack.pop()
             setData(index)
-        isLastOperationPush = false
+            isLastOperationPush = false
+        } else setNewFlashCard()
     }
 
+    fun determineAnimation(x1: Float, x2: Float) {
+
+        // Switching MathView visibility to invisible for better user experience while animating
+        switchMathViewVisibility(visible)
+
+        /**
+         * Basic fling logic that is simple and also does not need some special testing
+         *
+         *  |---------------|
+         *  |-x1<-delta->x2-|
+         *  |---------------|
+         *  |-----SCREEN----|
+         *  |---------------|
+         *  |---------------|
+         * */
+        val delta = x2 - x1
+        if (x2 > x1 && delta > minDistance) {
+            setNewFlashCard()
+            animateCardViewEvent.value = 1
+        } else if (x1 > x2 && abs(delta) > minDistance) {
+            setPreviousFlashCard()
+            animateCardViewEvent.value = 0
+        }
+    }
 
     private fun testDataInjection() {
         /*
