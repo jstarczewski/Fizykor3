@@ -9,7 +9,6 @@ import com.clakestudio.pc.fizykor.flashcards.FlashCardsViewModel
 import com.clakestudio.pc.fizykor.util.Injection
 
 class ViewModelFactory private constructor(
-        private val application: Application,
         private val equationsRepository: EquationsRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
@@ -36,7 +35,7 @@ class ViewModelFactory private constructor(
                 ?: synchronized(ViewModelFactory::class.java) {
 
                     INSTANCE
-                            ?: ViewModelFactory(application, Injection.provideEquationsRepository(application.applicationContext)).also { INSTANCE = it }
+                            ?: ViewModelFactory(Injection.provideEquationsRepository(application.applicationContext)).also { INSTANCE = it }
 
                 }
 

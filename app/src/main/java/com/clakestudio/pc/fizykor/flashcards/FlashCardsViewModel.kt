@@ -1,21 +1,26 @@
 package com.clakestudio.pc.fizykor.flashcards
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
+import android.view.View
+import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import java.util.*
 import kotlin.random.Random
 
-class FlashCardsViewModel(private val equationsRepository: EquationsRepository) : ViewModel {
+class FlashCardsViewModel(private val equationsRepository: EquationsRepository) : ViewModel() {
 
 
     // Observables
 
     var title: ObservableField<String> = ObservableField()
     var equation: ObservableField<String> = ObservableField()
+
+    var flashCardVisibilityId : SingleLiveEvent<Int> = SingleLiveEvent()
+
+
     private var flashcards: ArrayList<FlashCard> = arrayListOf()
     private var isDataLoaded: Boolean = false
     private var isLastOperationPush = false
@@ -44,8 +49,14 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         this.flashcards.addAll(flashCards)
         isDataLoaded = true
         setNewFlashCard()
+
+
+        View.VISIBLE
     }
 
+    fun showIt() {
+        flashCardVisibilityId.value = 0x00000000
+    }
 
     fun isNewFlashCard(boolean: Boolean) = if (boolean) setNewFlashCard() else setPreviousFlashCard()
 

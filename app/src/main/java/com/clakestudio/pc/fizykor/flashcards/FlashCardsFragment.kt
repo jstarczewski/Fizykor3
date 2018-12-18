@@ -40,7 +40,9 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         // Layout inflater because <layout></layout> makes no need for R.layout.fragment_flash_cards
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
-
+                flashCardVisibilityId.observe(this@FlashCardsFragment, Observer { v ->
+                    viewFragmentBinding.mvFlashcard.visibility = v!!
+                })
             }
 
         }
@@ -107,7 +109,8 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     override fun onLongPress(e: MotionEvent?) {
-        switchMathViewVisibility(viewFragmentBinding.mvFlashcard)
+        //switchMathViewVisibility(viewFragmentBinding.mvFlashcard)
+        viewFragmentBinding.viewmodel?.showIt()
     }
 
     // Switching visibility is basic logic that in my opinion does not need to be tested so that's why it is inside fragments code

@@ -1,11 +1,8 @@
 package com.clakestudio.pc.fizykor.equations
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.content.Context
+import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableArrayList
 import android.databinding.ObservableBoolean
-import android.widget.Toast
 import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
@@ -15,7 +12,7 @@ import java.util.*
 
 class EquationsViewModel(
         private val equationsRepository: EquationsRepository
-) {
+): ViewModel() {
 
     private val isDataLoadingError = ObservableBoolean(false)
     internal val openFlashCardsEvent = SingleLiveEvent<String>()
@@ -24,6 +21,7 @@ class EquationsViewModel(
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     var equations: ObservableArrayList<Equation> = ObservableArrayList()
+
 
     private var rawEquations: ArrayList<Equation> = ArrayList()
 

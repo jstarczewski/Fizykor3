@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:textZoom="120"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:text="@{viewmodel.equation}" />
 
                 <TextView
