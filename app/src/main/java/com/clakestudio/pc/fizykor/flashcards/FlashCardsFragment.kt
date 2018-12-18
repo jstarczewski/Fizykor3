@@ -46,14 +46,12 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupAnimations()
+        setupCheckBox()
     }
 
     override fun onResume() {
         super.onResume()
         viewFragmentBinding.viewmodel?.start()
-
-
-        /// Not working
     }
 
     private fun setupAnimations() {
@@ -73,6 +71,12 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         viewFragmentBinding.root.cvFlashCard.setOnTouchListener(this)
         cvOutAnimationToLeft.setAnimationListener(this)
         cvOutAnimationToRight.setAnimationListener(this)
+
+    }
+
+    private fun setupCheckBox() {
+
+        viewFragmentBinding.cbMode.setOnClickListener { viewFragmentBinding.viewmodel?.setMaturalneFlashCards(viewFragmentBinding.cbMode.isChecked) }
 
     }
 

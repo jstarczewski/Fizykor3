@@ -84,6 +84,10 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         } else setNewFlashCard()
     }
 
+    fun setMaturalneFlashCards(checked: Boolean) {
+        // handle switch to maturalne FlashCards
+    }
+
     fun determineAnimation(x1: Float, x2: Float) {
 
         // Switching MathView visibility to invisible for better user experience while animating
