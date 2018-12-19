@@ -88,7 +88,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         // handle switch to maturalne FlashCards
     }
 
-    fun determineAnimation(x1: Float, x2: Float) {
+    fun determineAnimation(x1: Float, x2: Float, animationNewFlashCards: Int, animationOldPreviousFlashCard: Int) {
 
         // Switching MathView visibility to invisible for better user experience while animating
         switchMathViewVisibility(visible)
@@ -106,10 +106,10 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         val delta = x2 - x1
         if (x2 > x1 && delta > minDistance) {
             setNewFlashCard()
-            animateCardViewEvent.value = 1
+            animateCardViewEvent.value = animationNewFlashCards
         } else if (x1 > x2 && abs(delta) > minDistance) {
             setPreviousFlashCard()
-            animateCardViewEvent.value = 0
+            animateCardViewEvent.value = animationOldPreviousFlashCard
         }
     }
 

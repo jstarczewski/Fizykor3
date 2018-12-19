@@ -5,22 +5,15 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.GestureDetectorCompat
 import android.view.*
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
 import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
 
-class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener, Animation.AnimationListener {
+class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener {
 
     private lateinit var viewFragmentBinding: FragmentFlashCardsBinding
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
-
-    //Animations
-    private lateinit var cvOutAnimationToRight: Animation
-    private lateinit var cvInAnimationFromLeft: Animation
-    private lateinit var cvOutAnimationToLeft: Animation
-    private lateinit var cvInAnimationFromRight: Animation
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +26,8 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
                 flashCardVisibilityEvent.observe(this@FlashCardsFragment, Observer { v ->
                     viewFragmentBinding.mvFlashcard.visibility = v!!
                 })
-                animateCardViewEvent.observe(this@FlashCardsFragment, Observer { flag ->
-                    animateBasedOnFlagValue(flag!!)
+                animateCardViewEvent.observe(this@FlashCardsFragment, Observer { animation ->
+                    cvFlashCard.startAnimation(AnimationUtils.loadAnimation(context, animation!!))
                 })
             }
 
@@ -45,7 +38,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setupAnimations()
+        setupGestureDetector()
         setupCheckBox()
     }
 
@@ -54,7 +47,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         viewFragmentBinding.viewmodel?.start()
     }
 
-    private fun setupAnimations() {
+    private fun setupGestureDetector() {
 
         // Setting up gestureDetector
         gestureDetectorCompat = GestureDetectorCompat(this.activity, this)
@@ -62,15 +55,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         /**
          * Setting up needed animations and animations listeners
          * */
-
-        cvOutAnimationToRight = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out_to_right)
-        cvInAnimationFromLeft = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_in_from_left)
-        cvOutAnimationToLeft = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out_to_left)
-        cvInAnimationFromRight = AnimationUtils.loadAnimation(context, R.anim.card_view_transition_in_from_right)
-
         viewFragmentBinding.root.cvFlashCard.setOnTouchListener(this)
-        cvOutAnimationToLeft.setAnimationListener(this)
-        cvOutAnimationToRight.setAnimationListener(this)
 
     }
 
@@ -80,8 +65,12 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     }
 
+    /**
+     * Gesture detectore methods
+     * */
+
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
-        viewFragmentBinding.viewmodel?.determineAnimation(e1!!.x, e2!!.x)
+        viewFragmentBinding.viewmodel?.determineAnimation(e1!!.x, e2!!.x, R.anim.card_view_transition_out_to_right, R.anim.card_view_transition_out_to_left)
         return true
     }
 
@@ -110,21 +99,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         return gestureDetectorCompat.onTouchEvent(event)
     }
 
-    override fun onAnimationRepeat(animation: Animation?) {
-    }
-
-    override fun onAnimationEnd(animation: Animation?) {
-        if (animation.toString() == (cvOutAnimationToRight.toString()))
-            viewFragmentBinding.cvFlashCard.startAnimation(cvInAnimationFromLeft)
-        else
-            viewFragmentBinding.cvFlashCard.startAnimation(cvInAnimationFromRight)
-    }
-
-    override fun onAnimationStart(animation: Animation?) {
-
-    }
-
-    private fun animateBasedOnFlagValue(flag: Int) = if (flag != 0) viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToRight) else viewFragmentBinding.cvFlashCard.startAnimation(cvOutAnimationToLeft)
 
     companion object {
         fun newInstance() = FlashCardsFragment()
