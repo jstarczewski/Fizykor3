@@ -35,9 +35,9 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     private val flashCardsBackStack = Stack<FlashCard>()
 
     fun start() {
-       // testDataInjection()
+        // testDataInjection()
 
-        equationsRepository.saveFlashCard(FlashCard("Kinematyka", true, "Droga w ruchu zmiennym z wyk . czasu i prędkości końcowej", "$\\{s} = {v_0 + v_k}/2 t$"))
+//        equationsRepository.saveFlashCard(FlashCard("Kinematyka", true, "Droga w ruchu zmiennym z wyk . czasu i prędkości końcowej", "$\\{s} = {v_0 + v_k}/2 t$"))
         if (!isDataLoaded) loadData()
     }
 
@@ -73,6 +73,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
             this.equation.set(flashCards[index].equation)
         }
     }
+
     private fun setData(flashCard: FlashCard) {
         this.title.set(flashCard.title)
         this.equation.set(flashCard.equation)
@@ -119,11 +120,12 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         if (x2 > x1 && delta > minDistance) {
             setNewFlashCard()
             animateCardViewEvent.value = animationNewFlashCards
+            switchMathViewVisibility(visible)
         } else if (x1 > x2 && abs(delta) > minDistance) {
             setPreviousFlashCard()
             animateCardViewEvent.value = animationOldPreviousFlashCard
+            switchMathViewVisibility(visible)
         }
-        switchMathViewVisibility(visible)
     }
 
     private fun testDataInjection() {
@@ -182,8 +184,8 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
 
         //equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Prędkość w ruchu jednostajnym", "$\\{v↖{→}} = { ∆s }/t[m/s]$"))
 
-      //  equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Prędkość w ruchu jednostajnym", "$\\{v↖{→}} = { ∆s }/t[m/s]$"))
-       // equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Prędkość w ruchu zmiennym", "$\\{v↖{→}}={∆s}/t [m/s]$"))
+        //  equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Prędkość w ruchu jednostajnym", "$\\{v↖{→}} = { ∆s }/t[m/s]$"))
+        // equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Prędkość w ruchu zmiennym", "$\\{v↖{→}}={∆s}/t [m/s]$"))
         //equationsRepository.saveFlashCard(FlashCard("Kinematyka", false, "Przyśpieszenie w ruchu zmiennym", "$\\{a↖{ → }} = { ∆v } / t[m / s^2]$"))
 
 

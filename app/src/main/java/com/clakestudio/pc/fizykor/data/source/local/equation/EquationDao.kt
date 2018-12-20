@@ -22,7 +22,8 @@ import io.reactivex.Flowable
     @Insert(onConflict =  OnConflictStrategy.REPLACE)
     fun insertEquation(equation: Equation)
 
-
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllEquations(vararg equation: Equation)
 
 
 }

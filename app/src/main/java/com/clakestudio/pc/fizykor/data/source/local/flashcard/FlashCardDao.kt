@@ -16,4 +16,8 @@ interface FlashCardDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveFlashCard(flashCard: FlashCard)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun saveAllFlashCards(vararg flashCard: FlashCard)
+
+
 }

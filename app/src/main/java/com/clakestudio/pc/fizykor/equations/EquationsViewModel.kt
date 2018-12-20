@@ -17,7 +17,6 @@ class EquationsViewModel(
     private val isDataLoadingError = ObservableBoolean(false)
     internal val openFlashCardsEvent = SingleLiveEvent<String>()
 
-
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     var equations: ObservableArrayList<Equation> = ObservableArrayList()
@@ -27,8 +26,8 @@ class EquationsViewModel(
 
 
     fun start() {
-       //  testBaseInjection()
-       if (!isDataLoaded) loadData()
+        //  testBaseInjection()
+        loadData()
     }
 
     fun testBaseInjection() {
