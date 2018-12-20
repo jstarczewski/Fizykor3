@@ -61,7 +61,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     private fun setupCheckBox() {
 
-        viewFragmentBinding.cbMode.setOnClickListener { viewFragmentBinding.viewmodel?.setMaturalneFlashCards(viewFragmentBinding.cbMode.isChecked) }
+        viewFragmentBinding.cbMode.setOnClickListener { viewFragmentBinding.viewmodel?.setMaturaMode(viewFragmentBinding.cbMode.isChecked) }
 
     }
 
@@ -84,7 +84,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     override fun onDown(e: MotionEvent?): Boolean {
-        return true
+        return false
     }
 
     override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {

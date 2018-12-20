@@ -12,7 +12,7 @@ import java.util.*
 
 class EquationsViewModel(
         private val equationsRepository: EquationsRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val isDataLoadingError = ObservableBoolean(false)
     internal val openFlashCardsEvent = SingleLiveEvent<String>()
@@ -21,17 +21,14 @@ class EquationsViewModel(
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     var equations: ObservableArrayList<Equation> = ObservableArrayList()
-
-
     private var rawEquations: ArrayList<Equation> = ArrayList()
-
+    private var isDataLoaded = false
     var flashCardsEvent: SingleLiveEvent<Void> = SingleLiveEvent()
 
 
     fun start() {
-        //  testBaseInjection()
-        loadData()
-
+       //  testBaseInjection()
+       if (!isDataLoaded) loadData()
     }
 
     fun testBaseInjection() {
@@ -50,7 +47,7 @@ class EquationsViewModel(
 
         // Dynamika
 
-/*        equationsRepository.saveEquation(Equation("Dynamika", "Pierwsza zasada dynamiki", "$\\{F↖{→}}_w=0$ to w izolowanym układzie ciało/punkt materialny spoczywa, lub porusza się ruchem jednostajnym, $\\{F↖{→}}_w$ siła wypadkowa"))
+        equationsRepository.saveEquation(Equation("Dynamika", "Pierwsza zasada dynamiki", "$\\{F↖{→}}_w=0$ to w izolowanym układzie ciało/punkt materialny spoczywa, lub porusza się ruchem jednostajnym, $\\{F↖{→}}_w$ siła wypadkowa"))
         equationsRepository.saveEquation(Equation("Dynamika", "Druga zasada dynamiki i pęd", "$\\{a↖{→}}=F↖{→}/m [{{kg*m/{s^2}}/{kg}=N/{kg}]$ <br> $\\{F↖{→}}={∆p↖{→}}/{t}$ <br> $\\{p↖{→}}=mv↖{→}$ $[kg*{m/s}]$ <br> $\\{F↖{→}}$ siła, $\\{a↖{→}}$ przyśpieszenie, $\\m$ masa, $∆p$ zmiana pędu, $\\t$ czas, $\\N$ Newton, jednostka siły <br> $\\{p↖{→}}=p↖{→}_1+p↖{→}_{2}...p↖{→}_n={const}↖{→}$ <br> Suma pędów ciał wchodzących w skład układu izolowanego jest stała. <br> $\\{p↖{→}}$ pęd, $\\{v↖{→}}$ prędkość, $\\m$ masa, $\\{p↖{→}}_c$ pęd całkowity"))
         equationsRepository.saveEquation(Equation("Dynamika", "Trzecia zasada dynamiki", "$\\F↖{→}_{AB}=-F↖{→}_{BA}$ <br> $\\F↖{→}_{AB}$ siła z jaką ciało A działa na ciało B, $\\F↖{→}_{BA}$ siła z jaką ciało B działa na ciało"))
         equationsRepository.saveEquation(Equation("Dynamika", "Dynamiczne równania ruchu", "Dla dwóch bloczków o masach $\\m_1$ i $\\m_2$ połączonych nierozciągliwą, lekką nitką, bez siły tarcia ciągniętych siłą $\\F↖{→}$, zaczepioną o drugi bloczek, o zwrocie skierowanym w prawo <br> $\\F_{w1}=F_n$, $\\F_{w2}=F-F_n$ <br> $\\m_1a=F_n$, $\\m_2a=F-F_n$ <br>  $\\m_1a+m_2a=F ⇒ a(m_1+m_2)=F ⇒$ $\\a=F/{m_1+m_2}$ <br> $\\F_{w1}$, $\\F_{w2}$ siła wypadkowa pierwsza u druga, $\\F_n$ siła naciągu miedzy bloczkami, $\\a_1$, $\\a_2$ przyśpieszenie pierwszego, drugie ciała, $\\a$ przyśpieszenie układu"))
@@ -59,9 +56,7 @@ class EquationsViewModel(
         equationsRepository.saveEquation(Equation("Dynamika", "Nieważkość i winda", "Dla windy jadącej w górę $\\F↖{→}_n=mg+ma$, Dla windy jadącej w dół $\\F↖{→}_n=mg-ma$, Ruch przyśpieszony w górę to ruch opóźniony w dół, a przyśpieszony w dół, to opóźniony w górę <br> $\\F↖{→}_n$ siła nacisku, $\\g$ przyśpieszenie ziemskie, $\\a$ przyśpieszenie windy, $\\m$ masa obiektu w windzie. Jeżeli $\\a=g$ to występuje nieważkość"))
 
 
-
-
-
+/*
 
   przyspieszenie_dosrodkowe $a_d↖{→}=v^2/r$ $[m/s^2]$ <br> $a_d↖{→}$ przyśpieszenie dośrodkowe, $r$ promień, $v$ prędkość
     pierwsza_zasada_dynamiki Jeżeli $F↖{→}_w=0$ to w izolowanym układzie ciało/punkt materialny spoczywa, lub porusza się ruchem jednostajnym, $F↖{→}_w$ siła wypadkowa
@@ -86,12 +81,12 @@ class EquationsViewModel(
                             // error here
                         }
                 )
-        compositeDisposable.add(disposable)
     }
 
     private fun addEquations(equations: List<Equation>) {
         rawEquations.clear()
         rawEquations.addAll(equations)
+        isDataLoaded = true
         filterEquations("Kinematyka")
     }
 
@@ -103,7 +98,6 @@ class EquationsViewModel(
     fun openFlashCards() {
         flashCardsEvent.call()
     }
-
 
 
     //val equations : ObservableList<Equation> = ObservableArrayList()
