@@ -74,23 +74,7 @@ class EquationsActivity : AppCompatActivity() {
     private fun setUpDrawerContent(navigationView: NavigationView) {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-
-                R.id.kinematyka -> {
-                    equationsViewModel.filterEquations("Kinematyka")
-                }
-                R.id.dynamika -> {
-                    equationsViewModel.filterEquations("Dynamika")
-                }
-
-                /*
-                R.id.nav_camera -> {
-                    Log.e("NavDrawer", "Camera")
-                }
-                R.id.nav_gallery -> {
-                    Log.e("NavDrawer", "Gallery")
-                }*/
-            }
+            equationsViewModel.filterEquations(menuItem.title.toString())
             menuItem.isChecked = true
             drawerLayout.closeDrawers()
             true

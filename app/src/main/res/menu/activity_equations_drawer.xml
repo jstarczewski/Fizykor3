@@ -5,6 +5,7 @@
 
         <item
             android:id="@+id/kinematyka"
+            android:checked="true"
             android:title="@string/kinematyka" />
         <item
             android:id="@+id/dynamika"
