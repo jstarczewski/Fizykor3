@@ -18,8 +18,8 @@
     <string name="elektrostatyka">Elektrostatyka</string>
     <string name="pr_d_sta_y">Prąd stały</string>
     <string name="magnetyzm">Magnetyzm</string>
-    <string name="indukcja_elektromagnetyczna">Indukcja elektromag.</string>
-    <string name="pr_d_przemienny_i_obwody">Prąd przemienny obw.</string>
+    <string name="indukcja_elektromagnetyczna">Indukcja elektromagnetyczna</string>
+    <string name="pr_d_przemienny_i_obwody">Prąd przemienny, obwody</string>
     <string name="optyka">Optyka</string>
     <string name="fizyka_wsp_czesna">Fizyka współczesna</string>
     <string name="rozdzia_y">Rozdziały</string>
