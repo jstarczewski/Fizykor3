@@ -26,11 +26,13 @@
     <string name="sta_e_fizyczne">Stałe fizyczne</string>
     <string name="przedrostki">Przedrostki</string>
     <string name="dodatkowo">Dodatkowo</string>
-    <string name="informacje">Informacje</string>
+    <string name="info">Informacje</string>
     <string name="sta_e_i_przedrostki">Stałe i przedrostki</string>
     <string name="title_activity_flash_cards">FlashCardsActivity</string>
     <string name="tryb_maturalny">Tryb maturalny</string>
-    <string name="podzi_kowania_dla_adama_i_zespo_u_beta_tester_w_w_razie_pyta_sugestii_prosz_o_kontakt_przez_komentarz_e_mail_tre_ci_b_d_progresywnie_rozwijane">Podziękowania dla Adama i zespołu Beta-testerów. W razie pytań, sugestii, proszę o kontakt przez komentarz/e-mail. Treści będą progresywnie rozwijane.</string>
+    <string name="podzi_kowania_dla_adama_i_zespo_u_beta_tester_w_w_razie_pyta_sugestii_prosz_o_kontakt_przez_komentarz_e_mail_tre_ci_b_d_progresywnie_rozwijane">Podziękowania dla Adama i zespołu Beta-testerów. W razie pytań, sugestii, proszę o kontakt przez komentarz/e-mail. Treści raczej nie będą progresywnie rozwijane, szkoda było mi zabić projekt, który był na sklepie juz przez dwa lata.</string>
     <string name="clake_studio_2018">cLake Studio 2018</string>
     <string name="fizykor_v3_0">Fizykor v3.0</string>
+    <string name="informacje">Informacje</string>
+    <string name="clake">cLake</string>
 </resources>

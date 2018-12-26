@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/naukadwa"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#ffffff"
     android:fillViewport="true"
     android:orientation="vertical"
@@ -14,22 +13,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <ImageView
-            android:id="@+id/Image"
-            android:layout_width="wrap_content"
+            android:id="@+id/ivClake"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/clake" />
+            android:layout_margin="16dp"
+            android:contentDescription="@string/clake"
+            android:src="@drawable/clake"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/tekst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_margin="16dp"
             android:fontFamily="sans-serif-thin"
             android:text="@string/fizykor_v3_0"
             android:textAlignment="center"
@@ -40,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_margin="16dp"
             android:fontFamily="sans-serif-thin"
             android:text="@string/clake_studio_2018"
             android:textAlignment="center"
@@ -51,10 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="0dp"
+            android:layout_margin="16dp"
             android:fontFamily="sans-serif-thin"
             android:text="@string/podzi_kowania_dla_adama_i_zespo_u_beta_tester_w_w_razie_pyta_sugestii_prosz_o_kontakt_przez_komentarz_e_mail_tre_ci_b_d_progresywnie_rozwijane"
             android:textAlignment="center"

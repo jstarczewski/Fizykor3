@@ -9,9 +9,11 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.flashcards.FlashCardsActivity
+import com.clakestudio.pc.fizykor.util.InfoActivity
 import com.clakestudio.pc.fizykor.util.obtainViewModel
 import com.clakestudio.pc.fizykor.util.replaceFragmentInActivity
 import com.clakestudio.pc.fizykor.util.setupActionBar
@@ -55,6 +57,12 @@ class EquationsActivity : AppCompatActivity() {
         toggle.syncState()
 */
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.equations, menu)
+        return true
     }
 
     private fun openFlashCards() {
@@ -103,6 +111,10 @@ class EquationsActivity : AppCompatActivity() {
             when (item?.itemId) {
                 android.R.id.home -> {
                     drawerLayout.openDrawer(GravityCompat.START)
+                    true
+                }
+                R.id.action_info -> {
+                    startActivity(Intent(this, InfoActivity::class.java))
                     true
                 }
                 else -> super.onOptionsItemSelected(item)

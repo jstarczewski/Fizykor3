@@ -1,5 +1,6 @@
 package com.clakestudio.pc.fizykor.flashcards
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.clakestudio.pc.fizykor.R
+import com.clakestudio.pc.fizykor.util.InfoActivity
 import com.clakestudio.pc.fizykor.util.obtainViewModel
 import com.clakestudio.pc.fizykor.util.replaceFragmentInActivity
 import com.clakestudio.pc.fizykor.util.setupActionBar
@@ -100,6 +102,9 @@ class FlashCardsActivity : AppCompatActivity() {
             android.R.id.home -> {
                 drawerLayout.openDrawer(GravityCompat.START)
                 return true
+            }
+            R.id.action_info -> {
+                startActivity(Intent(this, InfoActivity::class.java))
             }
         }
         return super.onOptionsItemSelected(item)
