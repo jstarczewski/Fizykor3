@@ -8,6 +8,7 @@ import android.support.v4.view.GestureDetectorCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.flashcards.FlashCardsActivity
@@ -22,6 +23,7 @@ class EquationsActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
 
     private lateinit var equationsViewModel: EquationsViewModel
+    private var checkedItemId: Int = R.id.kinematyka
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,8 +59,8 @@ class EquationsActivity : AppCompatActivity() {
     private fun openFlashCards() {
         val intent = Intent(this, FlashCardsActivity::class.java)
         intent.putExtra("Filtering", (findViewById<NavigationView>(R.id.nav_view).checkedItem?.title.toString()))
-        intent.putExtra("CheckedItemIndex", (findViewById<NavigationView>(R.id.nav_view).checkedItem?.itemId))
-        startActivity(Intent(this, FlashCardsActivity::class.java))
+        intent.putExtra("CheckedItemIndex", checkedItemId)
+        startActivity(intent)
     }
 
     private fun setupViewFragment() {
@@ -79,6 +81,7 @@ class EquationsActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             equationsViewModel.filterEquations(menuItem.title.toString())
             menuItem.isChecked = true
+            checkedItemId = menuItem.itemId
             drawerLayout.closeDrawers()
             true
         }

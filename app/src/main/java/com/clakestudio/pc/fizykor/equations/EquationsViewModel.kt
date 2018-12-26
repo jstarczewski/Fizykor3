@@ -23,6 +23,7 @@ class EquationsViewModel(
     private var rawEquations: ArrayList<Equation> = ArrayList()
     private var isDataLoaded = false
     var flashCardsEvent: SingleLiveEvent<Void> = SingleLiveEvent()
+    private var currentFiltering: String = "Kinematyka"
 
 
     fun start() {
@@ -86,12 +87,13 @@ class EquationsViewModel(
         rawEquations.clear()
         rawEquations.addAll(equations)
         isDataLoaded = true
-        filterEquations("Kinematyka")
+        filterEquations(currentFiltering)
     }
 
     fun filterEquations(filtering: String) {
         this.equations.clear()
         this.equations.addAll(rawEquations.filter { equation -> equation.section == filtering })
+        currentFiltering = filtering
     }
 
     fun openFlashCards() {

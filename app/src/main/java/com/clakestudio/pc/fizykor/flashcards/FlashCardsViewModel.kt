@@ -33,6 +33,8 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     private var isLastOperationPush = false
     private var isMaturaMode = false
 
+    var startupFiltering = "Kinematyka"
+
     private val flashCardsBackStack = Stack<FlashCard>()
 
     fun start() {
@@ -45,8 +47,8 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     fun filterFlashCards(filtering: String) {
         flashCards.clear()
         flashCards.addAll(rawFlashCards.filter { flashCard -> flashCard.section == filtering })
-    }
 
+    }
     private fun loadData() {
 
 
@@ -63,6 +65,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         this.rawFlashCards.clear()
         this.rawFlashCards.addAll(flashCards)
         isDataLoaded = true
+        filterFlashCards(startupFiltering)
         setNewFlashCard()
     }
 

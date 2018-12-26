@@ -34,13 +34,19 @@ class FlashCardsActivity : AppCompatActivity() {
         setupViewFragment()
         setupNavigationDrawer()
 
-        startupCheckedItem = intent.getIntExtra("CheckedItemIndex", 0)
-
-
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)
             setDisplayHomeAsUpEnabled(true)
         }
+
+        /**
+         * Not sure whether it is the right approach
+         * */
+
+        startupCheckedItem = intent.getIntExtra("CheckedItemIndex", 0)
+        flashCardsViewModel.startupFiltering = intent.getStringExtra("Filtering")
+        (findViewById<NavigationView>(R.id.nav_view)).setCheckedItem(startupCheckedItem)
+
 
     }
 
@@ -75,8 +81,6 @@ class FlashCardsActivity : AppCompatActivity() {
     }
 
     private fun setupDrawerContent(navigationView: NavigationView) {
-
-        navigationView.setCheckedItem(startupCheckedItem)
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
 

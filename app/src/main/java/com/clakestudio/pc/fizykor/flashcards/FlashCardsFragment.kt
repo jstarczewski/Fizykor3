@@ -45,8 +45,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     override fun onResume() {
         super.onResume()
         viewFragmentBinding.viewmodel?.start()
-        startupFiltering = activity?.intent?.getStringExtra("Filtering")
-        viewFragmentBinding.viewmodel?.filterFlashCards(startupFiltering.toString())
     }
 
     private fun setupGestureDetector() {
