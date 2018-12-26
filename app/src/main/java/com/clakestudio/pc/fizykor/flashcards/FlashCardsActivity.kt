@@ -45,6 +45,7 @@ class FlashCardsActivity : AppCompatActivity() {
 
         startupCheckedItem = intent.getIntExtra("CheckedItemIndex", 0)
         flashCardsViewModel.startupFiltering = intent.getStringExtra("Filtering")
+        toolbar.title = flashCardsViewModel.startupFiltering
         (findViewById<NavigationView>(R.id.nav_view)).setCheckedItem(startupCheckedItem)
 
 
@@ -86,6 +87,7 @@ class FlashCardsActivity : AppCompatActivity() {
 
             flashCardsViewModel.filterFlashCards(menuItem.title.toString())
             menuItem.isChecked = true
+            toolbar.title = menuItem.title.toString()
             drawerLayout.closeDrawers()
             true
 

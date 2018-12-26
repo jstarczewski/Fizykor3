@@ -45,6 +45,7 @@ class EquationsActivity : AppCompatActivity() {
 
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)
+            title = "Kinematyka"
             setDisplayHomeAsUpEnabled(true)
         }
 /*
@@ -81,6 +82,7 @@ class EquationsActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             equationsViewModel.filterEquations(menuItem.title.toString())
             menuItem.isChecked = true
+            toolbar.title = menuItem.title.toString()
             checkedItemId = menuItem.itemId
             drawerLayout.closeDrawers()
             true

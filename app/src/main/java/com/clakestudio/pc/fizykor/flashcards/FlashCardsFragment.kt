@@ -14,7 +14,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     private lateinit var viewFragmentBinding: FragmentFlashCardsBinding
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
-    private var startupFiltering: String? = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
