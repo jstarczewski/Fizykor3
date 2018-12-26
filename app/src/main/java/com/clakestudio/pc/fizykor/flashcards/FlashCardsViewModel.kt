@@ -28,6 +28,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     private val minDistance: Double = 200.0
 
     private var flashCards: ArrayList<FlashCard> = ArrayList()
+    private var rawFlashCards: ArrayList<FlashCard> = ArrayList()
     private var isDataLoaded: Boolean = false
     private var isLastOperationPush = false
     private var isMaturaMode = false
@@ -39,6 +40,11 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
 
 //        equationsRepository.saveFlashCard(FlashCard("Kinematyka", true, "Droga w ruchu zmiennym z wyk . czasu i prędkości końcowej", "$\\{s} = {v_0 + v_k}/2 t$"))
         if (!isDataLoaded) loadData()
+    }
+
+    fun filterFlashCards(filtering: String) {
+        flashCards.clear()
+        flashCards.addAll(rawFlashCards.filter { flashCard -> flashCard.section == filtering })
     }
 
     private fun loadData() {
@@ -54,8 +60,8 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     }
 
     private fun loadFlashCards(flashCards: List<FlashCard>) {
-        this.flashCards
-        this.flashCards.addAll(flashCards)
+        this.rawFlashCards.clear()
+        this.rawFlashCards.addAll(flashCards)
         isDataLoaded = true
         setNewFlashCard()
     }

@@ -55,6 +55,9 @@ class EquationsActivity : AppCompatActivity() {
     }
 
     private fun openFlashCards() {
+        val intent = Intent(this, FlashCardsActivity::class.java)
+        intent.putExtra("Filtering", (findViewById<NavigationView>(R.id.nav_view).checkedItem?.title.toString()))
+        intent.putExtra("CheckedItemIndex", (findViewById<NavigationView>(R.id.nav_view).checkedItem?.itemId))
         startActivity(Intent(this, FlashCardsActivity::class.java))
     }
 

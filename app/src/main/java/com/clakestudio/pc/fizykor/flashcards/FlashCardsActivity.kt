@@ -20,6 +20,8 @@ class FlashCardsActivity : AppCompatActivity() {
 
     private lateinit var flashCardsViewModel: FlashCardsViewModel
 
+    private var startupCheckedItem: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flash_cards)
@@ -31,6 +33,9 @@ class FlashCardsActivity : AppCompatActivity() {
         }
         setupViewFragment()
         setupNavigationDrawer()
+
+        startupCheckedItem = intent.getIntExtra("CheckedItemIndex", 0)
+
 
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)
@@ -62,6 +67,7 @@ class FlashCardsActivity : AppCompatActivity() {
 
     private fun setupNavigationDrawer() {
 
+
         drawerLayout = (findViewById<DrawerLayout>(R.id.drawer_layout)).apply {
             setStatusBarBackground(R.color.colorPrimaryDark)
         }
@@ -70,16 +76,11 @@ class FlashCardsActivity : AppCompatActivity() {
 
     private fun setupDrawerContent(navigationView: NavigationView) {
 
+        navigationView.setCheckedItem(startupCheckedItem)
+
         navigationView.setNavigationItemSelectedListener { menuItem ->
 
-            when (menuItem.itemId) {
-
-                /*
-                R.id.nav_camera -> {
-
-                }*/
-
-            }
+            flashCardsViewModel.filterFlashCards(menuItem.title.toString())
             menuItem.isChecked = true
             drawerLayout.closeDrawers()
             true
@@ -99,7 +100,6 @@ class FlashCardsActivity : AppCompatActivity() {
     }
 
     fun obtainViewModel(): FlashCardsViewModel = obtainViewModel(FlashCardsViewModel::class.java)
-
 
 
 }

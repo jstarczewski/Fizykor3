@@ -11,7 +11,6 @@ import com.clakestudio.pc.fizykor.databinding.FragmentEquationsBinding
 
 class EquationsFragment : Fragment() {
 
-    private lateinit var equationsAdapter: EquationsAdapter
     private lateinit var viewDataBinding: FragmentEquationsBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
