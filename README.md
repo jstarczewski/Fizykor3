@@ -17,7 +17,7 @@ Third version of my most popular app relesed in Google Play Store back in 2016 n
 - [x] RxJava | RxAndroid
 - [x] MathView (my own third party view library for kotlin)
 ## Future of Fizykor
-I set myself a goal to publish Fizykor in 2018. Now app is working, but there are several issues that I will add and then solve. Tje biggest problem is the amount of memory app needs. I have an idea of restructure the data to smaller sections and display or example, 3 or 5 equations in one RecyclerView "objects". In the nearest furure I would like to:  
+I set myself a goal to publish Fizykor in 2018. Now app is working, but there are several issues that I will add and then solve. The biggest problem is the amount of memory app needs. In the nearest furure I would like to:  
 - [ ] Get rid of useless activities and refactor code to one activity with multiple fragments.
 - [ ] Refactor code to use Android navigation library instead of using raw intents.
 - [ ] Refactor code so it uses RecyclerView.

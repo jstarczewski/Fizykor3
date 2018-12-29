@@ -1,3 +1,6 @@
+# Gimp logo/icon files
+*.xcf
+
 # Built application files
 *.apk
 *.ap_
