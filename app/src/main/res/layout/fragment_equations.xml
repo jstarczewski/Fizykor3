@@ -556,6 +556,16 @@
             </android.support.v7.widget.CardView>
 
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/sprawdz_swoja_wiedze_w_fiszkach"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:visibility="visible" />
+
         </LinearLayout>
 
     </ScrollView>

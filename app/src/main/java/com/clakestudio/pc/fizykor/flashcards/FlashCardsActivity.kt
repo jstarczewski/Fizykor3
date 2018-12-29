@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.util.InfoActivity
 import com.clakestudio.pc.fizykor.util.obtainViewModel
@@ -85,6 +86,7 @@ class FlashCardsActivity : AppCompatActivity() {
 
     private fun setupDrawerContent(navigationView: NavigationView) {
 
+
         navigationView.setNavigationItemSelectedListener { menuItem ->
 
             flashCardsViewModel.filterFlashCards(menuItem.title.toString())
@@ -94,6 +96,7 @@ class FlashCardsActivity : AppCompatActivity() {
             true
 
         }
+        navigationView.menu.findItem(R.id.stale_i_przedrostki).isVisible = false
 
     }
 

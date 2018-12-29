@@ -1,11 +1,14 @@
 package com.clakestudio.pc.fizykor.flashcards
 
 import android.arch.lifecycle.Observer
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.GestureDetectorCompat
 import android.view.*
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
 import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
@@ -39,6 +42,12 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         super.onActivityCreated(savedInstanceState)
         setupGestureDetector()
         setupCheckBox()
+        // not to best way to do it but deadline coming :(
+        if (!context!!.getSharedPreferences("prefs", Context.MODE_PRIVATE).getBoolean("toast", false)) {
+            showNavigationToast()
+            context!!.getSharedPreferences("prefs", Context.MODE_PRIVATE).edit().putBoolean("toast", true).apply()
+        }
+
     }
 
     override fun onResume() {
@@ -58,6 +67,12 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     }
 
+    private fun showNavigationToast() {
+        for (x in 0..2)
+            Toast.makeText(context, getString(R.string.flashCards_navigation), Toast.LENGTH_LONG).show()
+    }
+
+
     private fun setupCheckBox() {
 
         viewFragmentBinding.cbMode.setOnClickListener { viewFragmentBinding.viewmodel?.setMaturaMode(viewFragmentBinding.cbMode.isChecked) }
@@ -74,7 +89,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     override fun onShowPress(e: MotionEvent?) {
-        
+
     }
 
     override fun onSingleTapUp(e: MotionEvent?): Boolean {

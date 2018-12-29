@@ -1,8 +1,11 @@
 package com.clakestudio.pc.fizykor.equations
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.CoordinatorLayout
+import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GestureDetectorCompat
 import android.support.v4.view.GravityCompat
@@ -11,6 +14,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.flashcards.FlashCardsActivity
 import com.clakestudio.pc.fizykor.util.InfoActivity
@@ -85,9 +89,16 @@ class EquationsActivity : AppCompatActivity() {
         setUpDrawerContent(findViewById(R.id.nav_view))
     }
 
+    @SuppressLint("RestrictedApi")
     private fun setUpDrawerContent(navigationView: NavigationView) {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
+
+            when (menuItem.itemId) {
+                R.id.stale -> fab.hide()
+                R.id.przedrostki -> fab.hide()
+                else -> fab.show()
+            }
             equationsViewModel.filterEquations(menuItem.title.toString())
             menuItem.isChecked = true
             toolbar.title = menuItem.title.toString()
@@ -95,9 +106,8 @@ class EquationsActivity : AppCompatActivity() {
             drawerLayout.closeDrawers()
             true
         }
-
+        navigationView.menu.findItem(R.id.stale_i_przedrostki).isVisible = true
     }
-
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {

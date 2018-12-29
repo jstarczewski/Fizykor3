@@ -114,4 +114,5 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
             switchMathViewVisibility(visible)
         }
     }
+
 }

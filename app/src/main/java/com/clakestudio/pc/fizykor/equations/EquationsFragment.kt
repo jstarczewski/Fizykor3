@@ -1,6 +1,7 @@
 package com.clakestudio.pc.fizykor.equations
 
 import android.os.Bundle
+import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.databinding.FragmentEquationsBinding
+import kotlinx.android.synthetic.main.app_bar_equations.view.*
 
 class EquationsFragment : Fragment() {
 
@@ -23,7 +25,7 @@ class EquationsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-       // setupRecyclerView()
+        // setupRecyclerView()
         setupFab()
         //setMathViewTextZoom()
     }
@@ -45,6 +47,12 @@ class EquationsFragment : Fragment() {
                 viewDataBinding.viewmodel!!.openFlashCards()
             }
         }
+        var fab =  activity!!.findViewById<FloatingActionButton>(R.id.fab)
+        var p: CoordinatorLayout.LayoutParams = fab.layoutParams as CoordinatorLayout.LayoutParams
+        p.anchorId = View.NO_ID
+        fab.layoutParams = p
+
+
     }
 
     /*

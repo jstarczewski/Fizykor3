@@ -50,7 +50,9 @@
             android:title="@string/fizyka_wsp_czesna" />
     </group>
 
-    <item android:title="@string/sta_e_i_przedrostki">
+    <item android:title="@string/sta_e_i_przedrostki"
+        android:visible="true"
+        android:id="@+id/stale_i_przedrostki">
 
         <menu>
             <group android:checkableBehavior="single">
@@ -61,18 +63,6 @@
                     android:id="@+id/przedrostki"
                     android:title="@string/przedrostki" />
             </group>
-        </menu>
-
-
-    </item>
-    <item android:title="@string/dodatkowo">
-
-        <menu>
-
-            <item
-                android:id="@+id/onas"
-                android:title="@string/informacje" />
-
         </menu>
 
 
