@@ -2,7 +2,6 @@ package com.clakestudio.pc.fizykor.flashcards
 
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
-import android.view.View
 import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
@@ -35,6 +34,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     }
 
     fun filterFlashCards(filtering: String) {
+
         flashCards.clear()
         flashCards.addAll(rawFlashCards.filter { flashCard -> flashCard.section == filtering })
 
@@ -42,8 +42,6 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
 
     private fun loadData() {
 
-
-        // add error handling
         var disposable = equationsRepository.getAllFlashCards()
                 .subscribeOn(AppSchedulersProvider.ioScheduler())
                 .subscribe {
