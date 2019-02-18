@@ -4,7 +4,6 @@ import android.databinding.BindingAdapter
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.clakestudio.pc.fizykor.data.Equation
-import com.clakestudio.pc.fizykor.util.MultiEquation
 
 object EquationsRecyclerViewBinding {
 
@@ -16,11 +15,12 @@ object EquationsRecyclerViewBinding {
         Log.e("eqt adapter ->", equations.toString())
         with(recyclerView.adapter as EquationsAdapter) {
 
-            var smallerLists : List<List<Equation>> = equations.chunked(4)
-            while(smallerLists[smallerLists.size-1].size < 4)
-                (smallerLists[smallerLists.size-1] as ArrayList<Equation>).add(Equation("","", ""))
-            replaceData(smallerLists as ArrayList<List<Equation>>)
-
+            if (!equations.isEmpty()) {
+                val smallerLists: List<List<Equation>> = equations.chunked(4)
+                while (smallerLists[smallerLists.size - 1].size < 4)
+                    (smallerLists[smallerLists.size - 1] as ArrayList<Equation>).add(Equation("", "", ""))
+                replaceData(smallerLists as ArrayList<List<Equation>>)
+            }
 
 /*
             var multiEquations = arrayListOf<MultiEquation>()
