@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--
+        <data>
 
-    <data>
+            <variable
+                name="mEqt"
+                type="com.clakestudio.pc.fizykor.util.MultiEquation" />
 
-        <variable
-            name="mEqt"
-            type="com.clakestudio.pc.fizykor.util.MultiEquation" />
-
-    </data>
+        </data>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +16,7 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cvEquation1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -31,15 +32,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="@{mEqt.equations[0].title}"
                     android:textSize="20sp" />
 
 
                 <com.jstarczewski.pc.mathview.src.MathView
                     android:id="@+id/mvEquation1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:text="@{mEqt.equations[0].equation}" />
+                    android:layout_height="wrap_content" />
 
 
             </LinearLayout>
@@ -48,6 +47,7 @@
 
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cvEquation2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -63,15 +63,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="@{mEqt.equations[1].title}"
                     android:textSize="20sp" />
 
 
                 <com.jstarczewski.pc.mathview.src.MathView
                     android:id="@+id/mvEquation2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:text="@{mEqt.equations[1].equation}" />
+                    android:layout_height="wrap_content" />
 
 
             </LinearLayout>
@@ -80,6 +78,7 @@
 
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cvEquation3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -95,15 +94,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="@{mEqt.equations[2].title}"
                     android:textSize="20sp" />
 
 
                 <com.jstarczewski.pc.mathview.src.MathView
                     android:id="@+id/mvEquation3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:text="@{mEqt.equations[2].equation}" />
+                    android:layout_height="wrap_content" />
 
 
             </LinearLayout>
@@ -112,6 +109,7 @@
 
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cvEquation4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -127,15 +125,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="@{mEqt.equations[3].title}"
                     android:textSize="20sp" />
 
 
                 <com.jstarczewski.pc.mathview.src.MathView
                     android:id="@+id/mvEquation4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:text="@{mEqt.equations[3].equation}" />
+                    android:layout_height="wrap_content" />
 
 
             </LinearLayout>

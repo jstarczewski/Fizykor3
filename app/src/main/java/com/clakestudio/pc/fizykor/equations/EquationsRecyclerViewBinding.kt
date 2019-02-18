@@ -16,7 +16,13 @@ object EquationsRecyclerViewBinding {
         Log.e("eqt adapter ->", equations.toString())
         with(recyclerView.adapter as EquationsAdapter) {
 
+            var smallerLists : List<List<Equation>> = equations.chunked(4)
+            while(smallerLists[smallerLists.size-1].size < 4)
+                (smallerLists[smallerLists.size-1] as ArrayList<Equation>).add(Equation("","", ""))
+            replaceData(smallerLists as ArrayList<List<Equation>>)
 
+
+/*
             var multiEquations = arrayListOf<MultiEquation>()
             var loops = equations.size / 4
             var extra = equations.size % 4
@@ -34,7 +40,7 @@ object EquationsRecyclerViewBinding {
                 multiEquations.add()
             }
 
-
+*/
 
 /*
             if (a < 3) {
