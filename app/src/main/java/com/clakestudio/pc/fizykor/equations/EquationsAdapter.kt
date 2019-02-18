@@ -44,17 +44,18 @@ class EquationsAdapter(private var equations: ArrayList<MultiEquation>) : Recycl
     fun replaceData(equations: ArrayList<Equation>) = setEquations(equations)
 
     private fun setEquations(equations: ArrayList<Equation>) {
+        this.equations.clear()
         var s = equations.size % 4
         for (x in 0..s)
-            equations.add(Equation(equations[x].section, "", ""))
+            equations.add(Equation("", "", ""))
 
 
         var multiEquations = arrayListOf<MultiEquation>()
-        for (x in 3..equations.size step 4)
+        for (x in 3..(equations.size-1)  step 4)
             multiEquations.add(MultiEquation(equations[x - 3], equations[x - 2], equations[x - 1], equations[x]))
 
 
-        this.equations = multiEquations
+        this.equations.addAll(multiEquations)
         notifyDataSetChanged()
     }
 }

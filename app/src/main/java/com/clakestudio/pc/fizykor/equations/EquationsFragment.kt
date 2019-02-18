@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
+import android.support.v7.recyclerview.R.attr.layoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,7 @@ import kotlinx.android.synthetic.main.app_bar_equations.view.*
 class EquationsFragment : Fragment() {
 
     private lateinit var viewDataBinding: FragmentEquationsBinding
+    private lateinit var equationsAdapter: EquationsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -25,7 +28,7 @@ class EquationsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        // setupRecyclerView()
+        setupRecyclerView()
         setupFab()
         //setMathViewTextZoom()
     }
@@ -55,17 +58,17 @@ class EquationsFragment : Fragment() {
 
     }
 
-    /*
+
     private fun setupRecyclerView() {
         if (viewDataBinding.viewmodel != null) {
             viewDataBinding.rvEquations.apply {
                 equationsAdapter = EquationsAdapter(arrayListOf())
-                layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(context)
                 viewDataBinding.rvEquations.adapter = equationsAdapter
             }
         }
-    }*/
+    }
 /*
     private fun setMathViewTextZoom() {
 

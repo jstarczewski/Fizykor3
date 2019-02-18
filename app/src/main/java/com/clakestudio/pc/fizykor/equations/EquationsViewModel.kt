@@ -62,9 +62,5 @@ class EquationsViewModel(
     }
 
 
-    //val equations : ObservableList<Equation> = ObservableArrayList()
 
-    /**
-     * Backend ->
-     * */
 }
