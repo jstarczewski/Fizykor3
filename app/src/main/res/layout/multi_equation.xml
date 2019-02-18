@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="@{mEqt.equation1.title}"
+                    android:text="@{mEqt.equations[0].title}"
                     android:textSize="20sp" />
 
 
@@ -39,7 +39,7 @@
                     android:id="@+id/mvEquation1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:text="@{mEqt.equation1.equation}" />
+                    app:text="@{mEqt.equations[0].equation}" />
 
 
             </LinearLayout>
@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="@{mEqt.equation2.title}"
+                    android:text="@{mEqt.equations[1].title}"
                     android:textSize="20sp" />
 
 
@@ -71,7 +71,7 @@
                     android:id="@+id/mvEquation2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:text="@{mEqt.equation2.equation}" />
+                    app:text="@{mEqt.equations[1].equation}" />
 
 
             </LinearLayout>
@@ -95,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="@{mEqt.equation3.title}"
+                    android:text="@{mEqt.equations[2].title}"
                     android:textSize="20sp" />
 
 
@@ -103,7 +103,7 @@
                     android:id="@+id/mvEquation3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:text="@{mEqt.equation3.equation}" />
+                    app:text="@{mEqt.equations[2].equation}" />
 
 
             </LinearLayout>
@@ -127,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="@{mEqt.equation4.title}"
+                    android:text="@{mEqt.equations[3].title}"
                     android:textSize="20sp" />
 
 
@@ -135,7 +135,7 @@
                     android:id="@+id/mvEquation4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:text="@{mEqt.equation4.equation}" />
+                    app:text="@{mEqt.equations[3].equation}" />
 
 
             </LinearLayout>

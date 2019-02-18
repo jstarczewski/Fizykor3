@@ -11,15 +11,15 @@ class EquationsAdapter(private var equations: ArrayList<MultiEquation>) : Recycl
 
     class ViewHolder(private val binding: MultiEquationBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(equation1: Equation, equation2: Equation, equation3: Equation, equation4: Equation) {
-            binding.tvTitle1.text = equation1.title
-            binding.mvEquation1.text = equation1.equation
-            binding.tvTitle2.text = equation2.title
-            binding.mvEquation2.text = equation2.equation
-            binding.tvTitle3.text = equation3.title
-            binding.mvEquation3.text = equation3.equation
-            binding.tvTitle4.text = equation4.title
-            binding.mvEquation4.text = equation4.equation
+        fun bind(equationsList: List<Equation>) {
+            binding.tvTitle1.text = equationsList[0].title
+            binding.mvEquation1.text = equationsList[0].equation
+            binding.tvTitle2.text = equationsList[1].title
+            binding.mvEquation2.text = equationsList[1].equation
+            binding.tvTitle3.text = equationsList[2].title
+            binding.mvEquation3.text = equationsList[2].equation
+            binding.tvTitle4.text = equationsList[3].title
+            binding.mvEquation4.text = equationsList[3].equation
         }
     }
 
@@ -37,25 +37,17 @@ class EquationsAdapter(private var equations: ArrayList<MultiEquation>) : Recycl
     }
 
     override fun onBindViewHolder(holder: EquationsAdapter.ViewHolder, position: Int) {
-        holder.bind(equations[position].equation1, equations[position].equation2, equations[position].equation3, equations[position].equation4)
+        holder.bind(equations[position])
     }
 
 
-    fun replaceData(equations: ArrayList<Equation>) = setEquations(equations)
+    fun replaceData(equations: ArrayList<MultiEquation>) = setEquations(equations)
 
-    private fun setEquations(equations: ArrayList<Equation>) {
-        this.equations.clear()
-        var s = equations.size % 4
-        for (x in 0..s)
-            equations.add(Equation("", "", ""))
+    private fun setEquations(equations: ArrayList<MultiEquation>) {
 
-
-        var multiEquations = arrayListOf<MultiEquation>()
-        for (x in 3..(equations.size-1)  step 4)
-            multiEquations.add(MultiEquation(equations[x - 3], equations[x - 2], equations[x - 1], equations[x]))
-
-
-        this.equations.addAll(multiEquations)
+        this.equations = equations
         notifyDataSetChanged()
+
+
     }
 }
