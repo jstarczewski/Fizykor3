@@ -22,9 +22,9 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
                               savedInstanceState: Bundle?): View? {
 
 
-        // Layout inflater because <layout></layout> makes no need for R.layout.fragment_flash_cards
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
+
                 flashCardVisibilityEvent.observe(this@FlashCardsFragment, Observer { v ->
                     viewFragmentBinding.mvFlashcard.visibility = v!!
                 })

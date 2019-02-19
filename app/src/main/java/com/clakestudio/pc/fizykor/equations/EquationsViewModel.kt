@@ -8,14 +8,12 @@ import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import java.util.*
 
 class EquationsViewModel(
         private val equationsRepository: EquationsRepository
 ) : ViewModel() {
-
-    private val isDataLoadingError = ObservableBoolean(false)
-    internal val openFlashCardsEvent = SingleLiveEvent<String>()
 
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -32,16 +30,11 @@ class EquationsViewModel(
     }
 
     private fun loadData() {
-        var disposable = equationsRepository.getAllEquations()
+        val disposable = equationsRepository.getAllEquations()
                 .subscribeOn(AppSchedulersProvider.ioScheduler())
-                .subscribe(
-                        {
-                            addEquations(it)
-                        },
-                        {
-                            // error here
-                        }
-                )
+                .subscribe({ addEquations(it) },
+                        { addEquations(listOf(Equation("Kinematyka", "Wystąpił problem z załadowaniem danych" + it.localizedMessage, ""))) })
+        compositeDisposable.add(disposable)
     }
 
     private fun addEquations(equations: List<Equation>) {
@@ -49,18 +42,19 @@ class EquationsViewModel(
         rawEquations.addAll(equations)
         isDataLoaded = true
         filterEquations(currentFiltering)
+        compositeDisposable.clear()
     }
 
     fun filterEquations(filtering: String) {
         this.equations.clear()
         this.equations.addAll(rawEquations.filter { equation -> equation.section == filtering })
         currentFiltering = filtering
+
     }
 
     fun openFlashCards() {
         flashCardsEvent.call()
     }
-
 
 
 }

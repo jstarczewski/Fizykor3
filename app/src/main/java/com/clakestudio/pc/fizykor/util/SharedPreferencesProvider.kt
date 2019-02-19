@@ -11,7 +11,6 @@ object SharedPreferencesProvider {
 
     }
 
-    fun
 
 
 }

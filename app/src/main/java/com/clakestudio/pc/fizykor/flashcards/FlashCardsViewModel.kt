@@ -6,6 +6,7 @@ import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
+import io.reactivex.disposables.CompositeDisposable
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.abs
@@ -17,6 +18,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     var equation: ObservableField<String> = ObservableField()
     var flashCardVisibilityEvent: SingleLiveEvent<Int> = SingleLiveEvent()
     var animateCardViewEvent: SingleLiveEvent<Int> = SingleLiveEvent()
+    private val compositeDisposable = CompositeDisposable()
     private val invisible = 0x00000004
     private val visible = 0x00000000
     private val minDistance: Double = 200.0
@@ -42,11 +44,12 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
 
     private fun loadData() {
 
-        var disposable = equationsRepository.getAllFlashCards()
+        val disposable = equationsRepository.getAllFlashCards()
                 .subscribeOn(AppSchedulersProvider.ioScheduler())
                 .subscribe {
                     loadFlashCards(it)
                 }
+        compositeDisposable.add(disposable)
 
     }
 
@@ -56,6 +59,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         isDataLoaded = true
         filterFlashCards(startupFiltering)
         setNewFlashCard()
+        compositeDisposable.clear()
     }
 
     fun switchMathViewVisibility(visibility: Int) = if (visibility == visible) flashCardVisibilityEvent.value = invisible else flashCardVisibilityEvent.value = visible

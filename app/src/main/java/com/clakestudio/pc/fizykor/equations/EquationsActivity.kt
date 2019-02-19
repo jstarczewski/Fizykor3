@@ -27,7 +27,6 @@ import kotlinx.android.synthetic.main.app_bar_equations.*
 class EquationsActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
-
     private lateinit var equationsViewModel: EquationsViewModel
     private var checkedItemId: Int = R.id.kinematyka
 
@@ -46,12 +45,11 @@ class EquationsActivity : AppCompatActivity() {
                 this@EquationsActivity.openFlashCards()
             })
 
-
         }
 
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)
-            title = "Kinematyka"
+            title = resources.getString(R.string.kinematyka)
             setDisplayHomeAsUpEnabled(true)
         }
 
