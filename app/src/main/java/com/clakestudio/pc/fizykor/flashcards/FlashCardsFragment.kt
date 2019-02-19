@@ -57,18 +57,13 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     private fun setupGestureDetector() {
 
-        // Setting up gestureDetector
         gestureDetectorCompat = GestureDetectorCompat(this.activity, this)
-
-        /**
-         * Setting up needed animations and animations listeners
-         * */
         viewFragmentBinding.root.cvFlashCard.setOnTouchListener(this)
 
     }
 
     private fun showNavigationToast() {
-        for (x in 0..2)
+        for (x in 0..3)
             Toast.makeText(context, getString(R.string.flashCards_navigation), Toast.LENGTH_LONG).show()
     }
 
@@ -79,9 +74,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     }
 
-    /**
-     * Gesture detectore methods
-     * */
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
         viewFragmentBinding.viewmodel?.determineAnimation(e1!!.x, e2!!.x, R.anim.card_view_transition_out_to_right, R.anim.card_view_transition_out_to_left)
