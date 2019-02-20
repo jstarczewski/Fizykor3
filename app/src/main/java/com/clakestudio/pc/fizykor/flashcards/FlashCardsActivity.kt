@@ -20,10 +20,8 @@ import kotlinx.android.synthetic.main.app_bar_flash_cards.*
 class FlashCardsActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
-
     private lateinit var flashCardsViewModel: FlashCardsViewModel
 
-    private var startupCheckedItem: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,22 +34,19 @@ class FlashCardsActivity : AppCompatActivity() {
         }
         setupViewFragment()
         setupNavigationDrawer()
+        retriveIntentData()
 
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)
+            title = flashCardsViewModel.startupFiltering
             setDisplayHomeAsUpEnabled(true)
         }
 
-        /**
-         * Not sure whether it is the right approach
-         * */
 
-        startupCheckedItem = intent.getIntExtra("CheckedItemIndex", 0)
-        flashCardsViewModel.startupFiltering = intent.getStringExtra("Filtering")
-        toolbar.title = flashCardsViewModel.startupFiltering
-        (findViewById<NavigationView>(R.id.nav_view)).setCheckedItem(startupCheckedItem)
+    }
 
-
+    private fun retriveIntentData() {
+        (findViewById<NavigationView>(R.id.nav_view)).setCheckedItem(intent.getIntExtra("CheckedItemIndex", 0))
     }
 
     override fun onBackPressed() {
@@ -70,7 +65,6 @@ class FlashCardsActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.flash_cards, menu)
         return true
     }
@@ -81,7 +75,7 @@ class FlashCardsActivity : AppCompatActivity() {
         drawerLayout = (findViewById<DrawerLayout>(R.id.drawer_layout)).apply {
             setStatusBarBackground(R.color.colorPrimaryDark)
         }
-        setupDrawerContent(findViewById<NavigationView>(R.id.nav_view))
+        setupDrawerContent(findViewById(R.id.nav_view))
     }
 
     private fun setupDrawerContent(navigationView: NavigationView) {

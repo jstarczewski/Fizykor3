@@ -45,9 +45,9 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         setupCheckBox()
 
         val prefs = SharedPreferencesProvider.getDefaultSharedPreferences(context!!)
-        if (prefs["toast", false]!!) {
+        if (prefs[getString(R.string.toast), false]!!) {
             showNavigationToast()
-            prefs["toast"] = true
+            prefs[getString(R.string.toast)] = true
         }
 
     }

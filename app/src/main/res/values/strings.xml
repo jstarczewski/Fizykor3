@@ -44,4 +44,5 @@
     <string name="tryb_fiszek_maturalnych_zawiera_te_wzory_kt_re_zosta_y_om_wione_w_rozdzia_ach_ale_nie_znajduj_si_na_karcie_wzor_w_cke_podczas_egzaminu_maturalnego_aby_zmieni_fiszk_nale_y_przesun_c_palcem_po_ekranie_od_lewej_do_prawej_aby_wy_wietli_schowa_fiszk_przytrzymaj_palcem_na_ekranie">Tryb Fiszek maturalnych zawiera te wzory, które zostały omówione w rozdziałach, ale nie znajdują się na karcie wzorów CKE podczas egzaminu maturalnego, aby zmienić fiszkę należy przesunąc palcem po ekranie od lewej do prawej, aby wyświetlić/schować fiszkę przytrzymaj palcem na ekranie.</string>
     <string name="sprawdz_swoja_wiedze_w_fiszkach">Sprawdź swoją wiedzę w fiszkach!</string>
     <string name="flashCards_navigation">Przesuń w prawo by wyświetlić nową fiszkę, przesuń w lewo by wyświetlic poprzednią, przytrzymaj aby wyświetlić odpowiedź</string>
+    <string name="toast">toast</string>
 </resources>

@@ -32,8 +32,8 @@ object SharedPreferencesProvider {
     inline operator fun <reified T : Any> SharedPreferences.get(key: String, defaultValue: T? = null): T? {
         return when (T::class) {
             String::class -> getString(key, defaultValue as String) as T?
-            Int::class.java -> getInt(key, defaultValue as Int) as T?
-            Boolean::class.java -> getBoolean(key, defaultValue as Boolean) as T?
+            Int::class -> getInt(key, defaultValue as Int) as T?
+            Boolean::class -> getBoolean(key, defaultValue as Boolean) as T?
             else -> throw UnsupportedOperationException("Wrong type")
         }
 
