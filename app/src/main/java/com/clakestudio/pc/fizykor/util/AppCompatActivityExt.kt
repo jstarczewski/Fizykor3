@@ -23,19 +23,19 @@ fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String) {
     }
 }
 
-fun AppCompatActivity.setupActionBar(@IdRes toolbarId: Int, action : ActionBar.() -> Unit) {
+fun AppCompatActivity.setupActionBar(@IdRes toolbarId: Int, action: ActionBar.() -> Unit) {
     setSupportActionBar(findViewById(toolbarId))
-    supportActionBar?.run{
+    supportActionBar?.run {
         action()
     }
 }
 
-fun <T: ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =
+fun <T : ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =
         ViewModelProviders.of(this, ViewModelFactory.getInstance(application)).get(viewModelClass)
 
 
-private inline fun  FragmentManager.transact(action: FragmentTransaction.() -> Unit) {
-    beginTransaction().apply{
+private inline fun FragmentManager.transact(action: FragmentTransaction.() -> Unit) {
+    beginTransaction().apply {
         action()
     }.commit()
 

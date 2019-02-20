@@ -1,8 +1,6 @@
 package com.clakestudio.pc.fizykor.flashcards
 
 import android.arch.lifecycle.Observer
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.GestureDetectorCompat
@@ -12,6 +10,8 @@ import android.widget.Toast
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
 import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider
+import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider.set
+import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider.get
 import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
 
 class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener {
@@ -43,12 +43,11 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         super.onActivityCreated(savedInstanceState)
         setupGestureDetector()
         setupCheckBox()
-        // not to best way to do it but deadline coming :(
 
-
-        if (!context!!.getSharedPreferences("prefs", Context.MODE_PRIVATE).getBoolean("toast", false)) {
+        val prefs = SharedPreferencesProvider.getDefaultSharedPreferences(context!!)
+        if (prefs["toast", false]!!) {
             showNavigationToast()
-            context!!.getSharedPreferences("prefs", Context.MODE_PRIVATE).edit().putBoolean("toast", true).apply()
+            prefs["toast"] = true
         }
 
     }
@@ -113,3 +112,5 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
 }
+
+
