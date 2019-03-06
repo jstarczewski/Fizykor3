@@ -14,11 +14,10 @@ import com.jstarczewski.pc.mathview.src.MathView
 class EquationsAdapter(private var equations: ArrayList<List<Equation>>) : RecyclerView.Adapter<EquationsAdapter.ViewHolder>() {
 
 
-    class ViewHolder(private val binding: MultiEquationBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: com.clakestudio.pc.fizykor.databinding.MultiEquationBinding) : RecyclerView.ViewHolder(binding.root) {
 
         val updateData = { tv: TextView, mv: MathView, cv: CardView, equation: Equation ->
             (if (equation.title == "") cv.visibility = View.GONE else { tv.text = equation.title; mv.text = equation.equation }) }
-
 
         private val textViews = arrayListOf(binding.tvTitle1, binding.tvTitle2, binding.tvTitle3, binding.tvTitle4)
         private val mathViews = arrayListOf(binding.mvEquation1, binding.mvEquation2, binding.mvEquation3, binding.mvEquation4)
