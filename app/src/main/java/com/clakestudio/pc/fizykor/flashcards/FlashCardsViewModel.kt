@@ -29,18 +29,18 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     private var flashCards: ArrayList<FlashCard> = ArrayList()
     private var rawFlashCards: ArrayList<FlashCard> = ArrayList()
 
-    private var isDataLoaded: Boolean = false
     private var isLastOperationPush = false
-    private var isMaturaMode = false
+    
+    var isMaturaMode = false
 
     var visibility: ObservableField<Boolean> = ObservableField(true)
 
-    var startupFiltering = "Kinematyka"
+    var filtering = "Kinematyka"
 
     private val flashCardsBackStack = Stack<FlashCard>()
 
     fun start() {
-        if (!isDataLoaded) loadData()
+        if (!rawFlashCards.isEmpty()) loadData()
     }
 
     fun filterFlashCards(filtering: String) {
@@ -64,8 +64,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     private fun loadFlashCards(flashCards: List<FlashCard>) {
         this.rawFlashCards.clear()
         this.rawFlashCards.addAll(flashCards)
-        isDataLoaded = true
-        filterFlashCards(startupFiltering)
+        filterFlashCards(filtering)
         setNewFlashCard()
         compositeDisposable.clear()
     }
@@ -110,10 +109,6 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
             setData(previousFlashCard)
             isLastOperationPush = false
         } else setNewFlashCard()
-    }
-
-    fun setMaturaMode(checked: Boolean) {
-        isMaturaMode = checked
     }
 
     fun determineAnimation(x1: Float, x2: Float) {

@@ -74,7 +74,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     private fun setupCheckBox() {
-        viewFragmentBinding.cbMode.setOnClickListener { viewFragmentBinding.viewmodel?.setMaturaMode(viewFragmentBinding.cbMode.isChecked) }
+        viewFragmentBinding.cbMode.setOnClickListener { viewFragmentBinding.viewmodel?.isMaturaMode = viewFragmentBinding.cbMode.isChecked }
     }
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {

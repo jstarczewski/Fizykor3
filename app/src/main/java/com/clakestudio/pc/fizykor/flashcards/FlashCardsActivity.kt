@@ -38,7 +38,7 @@ class FlashCardsActivity : AppCompatActivity() {
 
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)
-            title = flashCardsViewModel.startupFiltering
+            title = flashCardsViewModel.filtering
             setDisplayHomeAsUpEnabled(true)
         }
 
