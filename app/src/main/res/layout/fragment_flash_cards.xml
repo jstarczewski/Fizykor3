@@ -21,11 +21,12 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/cvFlashCard"
-            android:layout_width="339dp"
-            android:layout_height="413dp"
-            android:layout_margin="16dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/card_view_margin"
             app:cardElevation="4dp"
             app:layout_constraintBottom_toTopOf="@id/cbMode"
+            app:layout_constraintDimensionRatio="3:4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -33,47 +34,39 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_margin="@dimen/constraint_layout_default_margin"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <com.jstarczewski.pc.mathview.src.MathView
                     android:id="@+id/mvFlashcard"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_margin="@dimen/math_view_margin"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toTopOf="@id/tvFlashCardTitle"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_chainStyle="packed"
                     app:text="@{viewmodel.equation}"
-                    app:textZoom="120" />
+                    app:textZoom="120"
+                    tools:visibility="visible" />
 
                 <TextView
                     android:id="@+id/tvFlashCardTitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_margin="@dimen/default_text_view_margin"
                     android:text="@{viewmodel.title}"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mvFlashcard" />
+                    app:layout_constraintTop_toBottomOf="@+id/mvFlashcard"
+                    app:layout_constraintWidth_default="wrap"
+                    tools:text="Szybkość średnia" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -81,7 +74,7 @@
 
         <CheckBox
             android:id="@+id/cbMode"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
@@ -90,9 +83,9 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cvFlashCard" />
+            app:layout_constraintTop_toBottomOf="@+id/cvFlashCard"
+            app:layout_constraintWidth_default="wrap" />
 
 
     </android.support.constraint.ConstraintLayout>
