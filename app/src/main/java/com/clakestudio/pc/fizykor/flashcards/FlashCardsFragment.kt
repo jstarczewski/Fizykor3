@@ -26,11 +26,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
-
-                //animateCardViewEvent.observe(this@FlashCardsFragment, Observer {
-                  //
-                //})
-
                 animatePreviousFlashCardEvent.observe(this@FlashCardsFragment, Observer { animatePrevious() })
                 animateNewFlashCardEvent.observe(this@FlashCardsFragment, Observer { animateNext() })
             }
@@ -80,9 +75,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
 
     private fun setupCheckBox() {
         viewFragmentBinding.cbMode.setOnClickListener { viewFragmentBinding.viewmodel?.setMaturaMode(viewFragmentBinding.cbMode.isChecked) }
-
     }
-
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
         viewFragmentBinding.viewmodel?.determineAnimation(e1!!.x, e2!!.x)

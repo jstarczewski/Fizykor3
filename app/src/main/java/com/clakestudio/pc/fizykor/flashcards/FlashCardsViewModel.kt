@@ -25,7 +25,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     var animatePreviousFlashCardEvent: SingleLiveEvent<Unit> = SingleLiveEvent()
 
     private val compositeDisposable = CompositeDisposable()
-    
+
     private var flashCards: ArrayList<FlashCard> = ArrayList()
     private var rawFlashCards: ArrayList<FlashCard> = ArrayList()
 
@@ -74,7 +74,9 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         if (visibility.get()!!) visibility.set(false) else visibility.set(true)
     }
 
-    private fun getRandomFlashCardIndex(): Int = if (isMaturaMode) Random.nextInt(flashCards.filter { it.isMatura }.size) else Random.nextInt(flashCards.size)
+    private fun getRandomFlashCardIndex(): Int =
+            if (isMaturaMode) Random.nextInt(flashCards.filter { it.isMatura }.size)
+            else Random.nextInt(flashCards.size)
 
     private fun setData(index: Int) {
         if (isMaturaMode) {
@@ -123,6 +125,8 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
             setPreviousFlashCard()
             animatePreviousFlashCardEvent.call()
         }
+        // despite being true hides the equation
+        visibility.set(true)
     }
 
 
