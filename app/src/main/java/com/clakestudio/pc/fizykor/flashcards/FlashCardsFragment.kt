@@ -26,9 +26,6 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
 
-                flashCardVisibilityEvent.observe(this@FlashCardsFragment, Observer { v ->
-                    viewFragmentBinding.mvFlashcard.visibility = v!!
-                })
                 animateCardViewEvent.observe(this@FlashCardsFragment, Observer { animation ->
                     cvFlashCard.startAnimation(AnimationUtils.loadAnimation(context, animation!!))
                 })
@@ -99,7 +96,7 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
     }
 
     override fun onLongPress(e: MotionEvent?) {
-        viewFragmentBinding.viewmodel?.switchMathViewVisibility(viewFragmentBinding.mvFlashcard.visibility)
+        viewFragmentBinding.viewmodel?.switchMathViewVisibility()
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {

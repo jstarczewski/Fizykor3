@@ -12,6 +12,8 @@ import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.random.Random
 
+private const val MIN_DISTANCE = 200.0
+
 class FlashCardsViewModel(private val equationsRepository: EquationsRepository) : ViewModel() {
 
     var title: ObservableField<String> = ObservableField()
@@ -19,14 +21,13 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     var flashCardVisibilityEvent: SingleLiveEvent<Int> = SingleLiveEvent()
     var animateCardViewEvent: SingleLiveEvent<Int> = SingleLiveEvent()
     private val compositeDisposable = CompositeDisposable()
-    private val invisible = 0x00000004
-    private val visible = 0x00000000
     private val minDistance: Double = 200.0
     private var flashCards: ArrayList<FlashCard> = ArrayList()
     private var rawFlashCards: ArrayList<FlashCard> = ArrayList()
     private var isDataLoaded: Boolean = false
     private var isLastOperationPush = false
     private var isMaturaMode = false
+    var visibility: ObservableField<Boolean> = ObservableField(true)
     var startupFiltering = "Kinematyka"
 
     private val flashCardsBackStack = Stack<FlashCard>()
@@ -62,7 +63,9 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         compositeDisposable.clear()
     }
 
-    fun switchMathViewVisibility(visibility: Int) = if (visibility == visible) flashCardVisibilityEvent.value = invisible else flashCardVisibilityEvent.value = visible
+    fun switchMathViewVisibility() {
+        if (visibility.get()!!) visibility.set(false) else visibility.set(true)
+    }
 
     private fun getRandomFlashCardIndex(): Int = if (isMaturaMode) Random.nextInt(flashCards.filter { it.isMatura }.size) else Random.nextInt(flashCards.size)
 
@@ -109,11 +112,12 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
         if (x2 > x1 && delta > minDistance) {
             setNewFlashCard()
             animateCardViewEvent.value = animationNewFlashCards
-            switchMathViewVisibility(visible)
+            switchMathViewVisibility()
+
         } else if (x1 > x2 && abs(delta) > minDistance) {
             setPreviousFlashCard()
             animateCardViewEvent.value = animationOldPreviousFlashCard
-            switchMathViewVisibility(visible)
+            switchMathViewVisibility()
         }
     }
 
