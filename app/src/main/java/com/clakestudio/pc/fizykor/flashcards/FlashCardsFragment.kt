@@ -12,6 +12,7 @@ import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
 import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider
 import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider.set
 import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider.get
+import kotlinx.android.synthetic.main.fragment_flash_cards.*
 import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
 
 class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener {
@@ -26,9 +27,12 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
 
-                animateCardViewEvent.observe(this@FlashCardsFragment, Observer { animation ->
-                    cvFlashCard.startAnimation(AnimationUtils.loadAnimation(context, animation!!))
-                })
+                //animateCardViewEvent.observe(this@FlashCardsFragment, Observer {
+                  //
+                //})
+
+                animatePreviousFlashCardEvent.observe(this@FlashCardsFragment, Observer { animatePrevious() })
+                animateNewFlashCardEvent.observe(this@FlashCardsFragment, Observer { animateNext() })
             }
 
         }
@@ -66,16 +70,22 @@ class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.O
             Toast.makeText(context, getString(R.string.flashCards_navigation), Toast.LENGTH_LONG).show()
     }
 
+    private fun animateNext() {
+        cvFlashCard.startAnimation(AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out_to_right))
+    }
+
+    private fun animatePrevious() {
+        cvFlashCard.startAnimation(AnimationUtils.loadAnimation(context, R.anim.card_view_transition_out_to_left))
+    }
 
     private fun setupCheckBox() {
-
         viewFragmentBinding.cbMode.setOnClickListener { viewFragmentBinding.viewmodel?.setMaturaMode(viewFragmentBinding.cbMode.isChecked) }
 
     }
 
 
     override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
-        viewFragmentBinding.viewmodel?.determineAnimation(e1!!.x, e2!!.x, R.anim.card_view_transition_out_to_right, R.anim.card_view_transition_out_to_left)
+        viewFragmentBinding.viewmodel?.determineAnimation(e1!!.x, e2!!.x)
         return true
     }
 
