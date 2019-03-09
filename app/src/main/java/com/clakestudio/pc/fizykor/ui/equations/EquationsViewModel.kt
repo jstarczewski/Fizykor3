@@ -19,7 +19,6 @@ class EquationsViewModel @Inject constructor(var equationsRepository: EquationsR
     val equations: ObservableArrayList<Equation> = ObservableArrayList()
     private val rawEquations: ArrayList<Equation> = ArrayList()
     private var isDataLoaded = false
-    var flashCardsEvent: SingleLiveEvent<Void> = SingleLiveEvent()
     private var currentFiltering: String = "Kinematyka"
     private val errorMessage: String = "Wystąpił problem z załadowaniem danych "
 
@@ -52,9 +51,6 @@ class EquationsViewModel @Inject constructor(var equationsRepository: EquationsR
 
     }
 
-    fun openFlashCards() {
-        flashCardsEvent.call()
-    }
 
 
 }
