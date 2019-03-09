@@ -58,5 +58,8 @@ ext {
     gradlePluginVersion = '3.2.1'
 
 
+    // navigation
+    navigationVersion = '1.0.0-rc02'
+
 
 }
