@@ -8,32 +8,20 @@ import androidx.core.view.GravityCompat
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.clakestudio.pc.fizykor.R
-import com.clakestudio.pc.fizykor.flashcards.FlashCardsActivity
-import com.clakestudio.pc.fizykor.ui.equations.EquationsFragment
 import com.clakestudio.pc.fizykor.util.InfoActivity
-import com.clakestudio.pc.fizykor.util.replaceFragmentInActivity
 import com.clakestudio.pc.fizykor.util.setupActionBar
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_equations.*
 import kotlinx.android.synthetic.main.app_bar_equations.*
-import kotlinx.android.synthetic.main.fragment_equations.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = dispatchingAndroidInjector
-
     private lateinit var drawerLayout: androidx.drawerlayout.widget.DrawerLayout
-    // private lateinit var equationsViewModel: EquationsViewModel
-    private var checkedItemId: Int = R.id.kinematyka
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
@@ -45,17 +33,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
 
         setupNavigationDrawer()
-        setupViewFragment()
 
-        /*
-        equationsViewModel = obtainViewModel().apply {
-
-            flashCardsEvent.observe(this@MainActivity, Observer<Void> {
-                this@MainActivity.openFlashCards()
-            })
-
-        }
-*/
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)
             title = resources.getString(R.string.kinematyka)
@@ -64,24 +42,9 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     }
 
-
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
         menuInflater.inflate(R.menu.equations, menu)
         return true
-    }
-
-    private fun openFlashCards() {
-        val intent = Intent(this, FlashCardsActivity::class.java)
-        intent.putExtra("Filtering", (findViewById<NavigationView>(R.id.nav_view).checkedItem?.title.toString()))
-        intent.putExtra("CheckedItemIndex", checkedItemId)
-        startActivity(intent)
-    }
-
-    private fun setupViewFragment() {
-        supportFragmentManager.findFragmentById(R.id.contentFrame)
-                ?: replaceFragmentInActivity(EquationsFragment.newInstance(), R.id.contentFrame)
     }
 
 
@@ -89,28 +52,9 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         drawerLayout = (findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawer_layout)).apply {
             setStatusBarBackground(R.color.colorPrimaryDark)
         }
-        setUpDrawerContent(findViewById(R.id.nav_view))
+        //setUpDrawerContent(findViewById(R.id.nav_view))
     }
 
-    @SuppressLint("RestrictedApi")
-    private fun setUpDrawerContent(navigationView: NavigationView) {
-
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-
-            when (menuItem.itemId) {
-                R.id.stale -> fab.hide()
-                R.id.przedrostki -> fab.hide()
-                else -> fab.show()
-            }
-            //     equationsViewModel.filterEquations(menuItem.title.toString())
-            menuItem.isChecked = true
-            toolbar.title = menuItem.title.toString()
-            checkedItemId = menuItem.itemId
-            drawerLayout.closeDrawers()
-            true
-        }
-        navigationView.menu.findItem(R.id.stale_i_przedrostki).isVisible = true
-    }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -133,7 +77,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 else -> super.onOptionsItemSelected(item)
             }
 
-    //   fun obtainViewModel(): EquationsViewModel = obtainViewModel(EquationsViewModel::class.java)
-
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = dispatchingAndroidInjector
 
 }
