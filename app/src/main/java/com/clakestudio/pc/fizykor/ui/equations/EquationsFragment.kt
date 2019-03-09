@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.databinding.FragmentEquationsBinding
 import com.clakestudio.pc.fizykor.di.Injectable
@@ -52,14 +55,15 @@ class EquationsFragment : Fragment(), Injectable {
         equationsViewModel.start()
 
     }
-
     private fun setupFab() {
-        activity!!.findViewById<FloatingActionButton>(R.id.fab).run {
-            setOnClickListener {
-                equationsViewModel.openFlashCards()
-            }
-            (layoutParams as androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams).anchorId = View.NO_ID
+        var fab = activity?.findViewById<FloatingActionButton>(R.id.fab)
+        fab?.setOnClickListener{
+            findNavController().navigate(R.id.action_equationsFragment_to_flashCardsFragment)
         }
+
+
+        //equationsViewModel.openFlashCards()
+        //(layoutParams as androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams).anchorId = View.NO_ID
     }
 
 
@@ -67,7 +71,7 @@ class EquationsFragment : Fragment(), Injectable {
         viewDataBinding.rvEquations.apply {
             equationsAdapter = EquationsAdapter(arrayListOf())
             setHasFixedSize(true)
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(context)
             viewDataBinding.rvEquations.adapter = equationsAdapter
         }
     }

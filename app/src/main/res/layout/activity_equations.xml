@@ -23,4 +23,5 @@
         app:headerLayout="@layout/nav_header_equations"
         app:menu="@menu/activity_drawer" />
 
+
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -18,6 +18,7 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_equations" />
@@ -28,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@layout/content_equations"
         app:srcCompat="@drawable/ic_bookmark_white_24dp" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

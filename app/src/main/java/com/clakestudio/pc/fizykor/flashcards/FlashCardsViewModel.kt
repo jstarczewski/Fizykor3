@@ -8,6 +8,7 @@ import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import io.reactivex.disposables.CompositeDisposable
 import java.util.*
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.random.Random
@@ -16,7 +17,7 @@ import kotlin.random.Random
 private const val MIN_DISTANCE = 200
 
 
-class FlashCardsViewModel(private val equationsRepository: EquationsRepository) : ViewModel() {
+class FlashCardsViewModel @Inject constructor(private val equationsRepository: EquationsRepository) : ViewModel() {
 
 
     var title: ObservableField<String> = ObservableField()
@@ -31,7 +32,7 @@ class FlashCardsViewModel(private val equationsRepository: EquationsRepository) 
     private var rawFlashCards: ArrayList<FlashCard> = ArrayList()
 
     private var isLastOperationPush = false
-    
+
     var isMaturaMode = false
 
     var visibility: ObservableField<Boolean> = ObservableField(true)

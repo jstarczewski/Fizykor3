@@ -5,26 +5,35 @@ import androidx.core.view.GestureDetectorCompat
 import android.view.*
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.clakestudio.pc.fizykor.R
+import com.clakestudio.pc.fizykor.ViewModelFactory
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
+import com.clakestudio.pc.fizykor.di.Injectable
 import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider
 import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider.set
 import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider.get
 import kotlinx.android.synthetic.main.fragment_flash_cards.*
 import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
+import javax.inject.Inject
 
-class FlashCardsFragment : androidx.fragment.app.Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener {
+class FlashCardsFragment : androidx.fragment.app.Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener, Injectable {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var viewFragmentBinding: FragmentFlashCardsBinding
     private lateinit var gestureDetectorCompat: GestureDetectorCompat
+    private lateinit var flashCardsViewModel : FlashCardsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
+        flashCardsViewModel = ViewModelProviders.of(this, viewModelFactory).get(FlashCardsViewModel::class.java)
 
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
-
-
+            viewmodel = flashCardsViewModel
         }
 
                 /*.apply {

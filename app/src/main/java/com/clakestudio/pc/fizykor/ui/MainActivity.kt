@@ -8,18 +8,23 @@ import androidx.core.view.GravityCompat
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.flashcards.FlashCardsActivity
 import com.clakestudio.pc.fizykor.ui.equations.EquationsFragment
 import com.clakestudio.pc.fizykor.util.InfoActivity
 import com.clakestudio.pc.fizykor.util.replaceFragmentInActivity
 import com.clakestudio.pc.fizykor.util.setupActionBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_equations.*
 import kotlinx.android.synthetic.main.app_bar_equations.*
+import kotlinx.android.synthetic.main.fragment_equations.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
@@ -27,7 +32,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = dispatchingAndroidInjector
 
     private lateinit var drawerLayout: androidx.drawerlayout.widget.DrawerLayout
-   // private lateinit var equationsViewModel: EquationsViewModel
+    // private lateinit var equationsViewModel: EquationsViewModel
     private var checkedItemId: Int = R.id.kinematyka
 
     @Inject
@@ -58,6 +63,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
 
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
@@ -95,7 +102,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 R.id.przedrostki -> fab.hide()
                 else -> fab.show()
             }
-       //     equationsViewModel.filterEquations(menuItem.title.toString())
+            //     equationsViewModel.filterEquations(menuItem.title.toString())
             menuItem.isChecked = true
             toolbar.title = menuItem.title.toString()
             checkedItemId = menuItem.itemId
@@ -126,7 +133,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 else -> super.onOptionsItemSelected(item)
             }
 
- //   fun obtainViewModel(): EquationsViewModel = obtainViewModel(EquationsViewModel::class.java)
+    //   fun obtainViewModel(): EquationsViewModel = obtainViewModel(EquationsViewModel::class.java)
 
 
 }
