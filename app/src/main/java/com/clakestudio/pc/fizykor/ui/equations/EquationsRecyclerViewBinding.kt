@@ -1,8 +1,6 @@
-package com.clakestudio.pc.fizykor.equations
+package com.clakestudio.pc.fizykor.ui.equations
 
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
-import android.util.Log
 import com.clakestudio.pc.fizykor.data.Equation
 
 object EquationsRecyclerViewBinding {

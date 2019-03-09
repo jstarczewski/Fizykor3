@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/equationsFragment"
-        android:name="com.clakestudio.pc.fizykor.equations.EquationsFragment"
+        android:name="com.clakestudio.pc.fizykor.ui.equations.EquationsFragment"
         android:label="EquationsFragment" >
         <action
             android:id="@+id/action_equationsFragment_to_flashCardsFragment"

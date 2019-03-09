@@ -1,14 +1,14 @@
 package com.clakestudio.pc.fizykor.di
 
-import com.clakestudio.pc.fizykor.equations.EquationsActivity
+import com.clakestudio.pc.fizykor.ui.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-abstract class EquationsActivityModule {
+abstract class MainActivityModule {
 
 
     @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
-    abstract fun contributeEquationsModuleModule() : EquationsActivity
+    abstract fun contributeMainActivityModuleModule() : MainActivity
 
 }

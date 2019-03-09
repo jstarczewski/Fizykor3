@@ -1,6 +1,7 @@
 package com.clakestudio.pc.fizykor.di
 
-import com.clakestudio.pc.fizykor.equations.EquationsFragment
+import com.clakestudio.pc.fizykor.flashcards.FlashCardsFragment
+import com.clakestudio.pc.fizykor.ui.equations.EquationsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,5 +10,9 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeEquationsFragment() : EquationsFragment
+
+
+    @ContributesAndroidInjector
+    abstract fun contributeFlashCardsFragment() : FlashCardsFragment
 
 }

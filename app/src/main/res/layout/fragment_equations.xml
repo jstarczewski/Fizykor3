@@ -8,7 +8,7 @@
 
         <variable
             name="viewmodel"
-            type="com.clakestudio.pc.fizykor.equations.EquationsViewModel" />
+            type="com.clakestudio.pc.fizykor.ui.equations.EquationsViewModel" />
 
     </data>
 

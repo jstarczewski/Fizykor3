@@ -1,4 +1,4 @@
-package com.clakestudio.pc.fizykor.equations
+package com.clakestudio.pc.fizykor.ui.equations
 
 import androidx.lifecycle.ViewModel
 import androidx.databinding.ObservableArrayList

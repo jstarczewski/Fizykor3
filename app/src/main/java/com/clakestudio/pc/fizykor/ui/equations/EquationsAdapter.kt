@@ -1,8 +1,5 @@
-package com.clakestudio.pc.fizykor.equations
+package com.clakestudio.pc.fizykor.ui.equations
 
-import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +26,7 @@ class EquationsAdapter(private var equations: ArrayList<List<Equation>>) : andro
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EquationsAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val binding: MultiEquationBinding
         val inflater = LayoutInflater.from(parent.context)
@@ -42,7 +39,7 @@ class EquationsAdapter(private var equations: ArrayList<List<Equation>>) : andro
         return equations.size
     }
 
-    override fun onBindViewHolder(holder: EquationsAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(equations[position])
     }
 

@@ -1,4 +1,4 @@
-package com.clakestudio.pc.fizykor.equations
+package com.clakestudio.pc.fizykor.ui.equations
 
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -30,7 +30,6 @@ class EquationsFragment : Fragment(), Injectable {
 
         equationsViewModel = ViewModelProviders.of(this, viewModelFactory).get(EquationsViewModel::class.java)
         viewDataBinding = FragmentEquationsBinding.inflate(inflater, container, false).apply {
-
             viewmodel = equationsViewModel
         }
         return viewDataBinding.root

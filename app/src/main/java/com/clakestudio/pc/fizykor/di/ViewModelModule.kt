@@ -2,7 +2,7 @@ package com.clakestudio.pc.fizykor.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.clakestudio.pc.fizykor.equations.EquationsViewModel
+import com.clakestudio.pc.fizykor.ui.equations.EquationsViewModel
 import com.clakestudio.pc.fizykor.viewmodel.FizykorViewModelFactory
 import dagger.Binds
 import dagger.Module

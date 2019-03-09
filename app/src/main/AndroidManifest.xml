@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".equations.EquationsActivity"
+            android:name=".ui.MainActivity"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_equations"
             android:theme="@style/AppTheme.NoActionBar" />

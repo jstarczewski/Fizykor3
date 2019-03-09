@@ -1,8 +1,6 @@
 package com.clakestudio.pc.fizykor.flashcards
 
-import androidx.lifecycle.Observer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.core.view.GestureDetectorCompat
 import android.view.*
 import android.view.animation.AnimationUtils
