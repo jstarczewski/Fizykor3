@@ -122,7 +122,7 @@ class EquationsActivity : AppCompatActivity() {
                 else -> super.onOptionsItemSelected(item)
             }
 
-    fun obtainViewModel(): EquationsViewModel = obtainViewModel(EquationsViewModel::class.java)
+ //   fun obtainViewModel(): EquationsViewModel = obtainViewModel(EquationsViewModel::class.java)
 
 
 }

@@ -2,11 +2,13 @@ package com.clakestudio.pc.fizykor.data.source
 
 import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.data.FlashCard
-import com.clakestudio.pc.fizykor.data.source.local.flashcard.FlashCardsLocalDataSource
 import io.reactivex.Flowable
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class EquationsRepository(private var equationsLocalDataSource: EquationsDataSource,
-                          private var flashCardsLocalDataSource: FlashCardsDataSource
+@Singleton
+class EquationsRepository @Inject constructor(private var equationsLocalDataSource: EquationsDataSource,
+                                              private var flashCardsLocalDataSource: FlashCardsDataSource
 ) : EquationsDataSource, FlashCardsDataSource {
 
 
@@ -31,7 +33,7 @@ class EquationsRepository(private var equationsLocalDataSource: EquationsDataSou
     override fun getAllFlashCards(): Flowable<List<FlashCard>> = flashCardsLocalDataSource.getAllFlashCards()
 
     override fun saveFlashCard(flashCard: FlashCard) = flashCardsLocalDataSource.saveFlashCard(flashCard)
-
+/*
     companion object {
 
         private var INSTANCE: EquationsRepository? = null
@@ -52,6 +54,6 @@ class EquationsRepository(private var equationsLocalDataSource: EquationsDataSou
 
 
     }
-
+*/
 
 }
