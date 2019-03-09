@@ -9,7 +9,7 @@
     app:defaultNavHost="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:navGraph="@navigation/main"
-    tools:context=".ui.MainActivity"
+    tools:context=".equations.EquationsActivity"
     tools:showIn="@layout/app_bar_equations">
 
 </fragment>

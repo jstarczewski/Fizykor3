@@ -1,11 +1,13 @@
 package com.clakestudio.pc.fizykor.di
 
 import android.app.Application
-import androidx.room.Room
-import com.clakestudio.pc.fizykor.FizykorApp
+import com.clakestudio.pc.fizykor.data.source.EquationsDataSource
+import com.clakestudio.pc.fizykor.data.source.FlashCardsDataSource
 import com.clakestudio.pc.fizykor.data.source.local.EquationDatabase
 import com.clakestudio.pc.fizykor.data.source.local.equation.EquationDao
+import com.clakestudio.pc.fizykor.data.source.local.equation.EquationsLocalDataSource
 import com.clakestudio.pc.fizykor.data.source.local.flashcard.FlashCardDao
+import com.clakestudio.pc.fizykor.data.source.local.flashcard.FlashCardsLocalDataSource
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -33,5 +35,16 @@ class AppModule {
         return db.flashCardDao()
     }
 
+    @Singleton
+    @Provides
+    fun provideEquationsDataSource(equationDao: EquationDao) : EquationsDataSource {
+        return EquationsLocalDataSource(equationDao)
+    }
+
+    @Singleton
+    @Provides
+    fun provideFlashCardsDataSource(flashCardDao: FlashCardDao) : FlashCardsDataSource {
+        return FlashCardsLocalDataSource(flashCardDao)
+    }
 
 }

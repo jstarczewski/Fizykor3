@@ -4,8 +4,11 @@ import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.data.source.EquationsDataSource
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import io.reactivex.Flowable
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class EquationsLocalDataSource(private val equationDao: EquationDao) : EquationsDataSource {
+@Singleton
+class EquationsLocalDataSource @Inject constructor(private val equationDao: EquationDao) : EquationsDataSource {
 
 
     override fun getAllEquations(): Flowable<List<Equation>> {
@@ -26,7 +29,7 @@ class EquationsLocalDataSource(private val equationDao: EquationDao) : Equations
                 .observeOn(AppSchedulersProvider.uiScheduler())
                 .subscribe()
     }
-
+/*
     companion object {
 
         private var INSTANCE: EquationsLocalDataSource? = null
@@ -42,6 +45,6 @@ class EquationsLocalDataSource(private val equationDao: EquationDao) : Equations
             return INSTANCE!!
         }
 
-    }
+    }*/
 
 }

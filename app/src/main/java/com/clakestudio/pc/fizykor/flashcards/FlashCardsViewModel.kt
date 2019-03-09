@@ -15,6 +15,7 @@ import kotlin.random.Random
 
 private const val MIN_DISTANCE = 200
 
+
 class FlashCardsViewModel(private val equationsRepository: EquationsRepository) : ViewModel() {
 
 

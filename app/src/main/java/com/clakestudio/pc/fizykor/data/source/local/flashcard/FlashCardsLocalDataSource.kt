@@ -4,8 +4,11 @@ import com.clakestudio.pc.fizykor.data.FlashCard
 import com.clakestudio.pc.fizykor.data.source.FlashCardsDataSource
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import io.reactivex.Flowable
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class FlashCardsLocalDataSource(private val flashCardDao: FlashCardDao) : FlashCardsDataSource {
+@Singleton
+class FlashCardsLocalDataSource @Inject constructor(private val flashCardDao: FlashCardDao) : FlashCardsDataSource {
 
     override fun getAllFlashCards(): Flowable<List<FlashCard>> = flashCardDao.getAllFlashCards()
 
@@ -17,7 +20,7 @@ class FlashCardsLocalDataSource(private val flashCardDao: FlashCardDao) : FlashC
                 .observeOn(AppSchedulersProvider.uiScheduler())
                 .subscribe()
     }
-
+/*
     companion object {
 
         private var INSTANCE: FlashCardsLocalDataSource? = null
@@ -32,5 +35,5 @@ class FlashCardsLocalDataSource(private val flashCardDao: FlashCardDao) : FlashC
 
         }
 
-    }
+    }*/
 }

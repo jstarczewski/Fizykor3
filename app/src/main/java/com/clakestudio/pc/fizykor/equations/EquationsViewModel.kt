@@ -8,10 +8,11 @@ import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import io.reactivex.disposables.CompositeDisposable
 import java.util.*
+import javax.inject.Inject
 
-class EquationsViewModel(
-        private val equationsRepository: EquationsRepository
+class EquationsViewModel @Inject constructor(var equationsRepository: EquationsRepository
 ) : ViewModel() {
+
 
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -32,7 +33,7 @@ class EquationsViewModel(
         val disposable = equationsRepository.getAllEquations()
                 .subscribeOn(AppSchedulersProvider.ioScheduler())
                 .subscribe({ addEquations(it) },
-                        { addEquations(listOf(Equation(currentFiltering,  errorMessage + it.localizedMessage, ""))) })
+                        { addEquations(listOf(Equation(currentFiltering, errorMessage + it.localizedMessage, ""))) })
         compositeDisposable.add(disposable)
     }
 

@@ -11,6 +11,7 @@ import com.clakestudio.pc.fizykor.data.source.local.equation.EquationDao
 import com.clakestudio.pc.fizykor.data.source.local.flashcard.FlashCardDao
 import com.clakestudio.pc.fizykor.util.AppSchedulersProvider
 import com.clakestudio.pc.fizykor.util.DataProvider
+import dagger.Provides
 import io.reactivex.Completable
 import io.reactivex.disposables.CompositeDisposable
 

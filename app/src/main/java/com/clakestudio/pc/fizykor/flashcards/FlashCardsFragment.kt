@@ -25,14 +25,18 @@ class FlashCardsFragment : androidx.fragment.app.Fragment(), GestureDetector.OnG
 
 
         viewFragmentBinding = FragmentFlashCardsBinding.inflate(inflater, container, false).apply {
+
+
+        }
+
+                /*.apply {
             viewmodel = (activity as FlashCardsActivity).obtainViewModel().apply {
                 animatePreviousFlashCardEvent.observe(this@FlashCardsFragment, Observer { animatePrevious() })
                 animateNewFlashCardEvent.observe(this@FlashCardsFragment, Observer { animateNext() })
             }
 
         }
-
-        return viewFragmentBinding.root
+*/        return viewFragmentBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

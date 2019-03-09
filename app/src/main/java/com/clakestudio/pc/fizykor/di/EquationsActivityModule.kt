@@ -5,10 +5,10 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-abstract class MainActivityModule {
+abstract class EquationsActivityModule {
 
 
     @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
-    abstract fun contributeMainModule() : EquationsActivity
+    abstract fun contributeEquationsModuleModule() : EquationsActivity
 
 }

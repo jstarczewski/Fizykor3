@@ -15,20 +15,29 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.flashcards.FlashCardsActivity
 import com.clakestudio.pc.fizykor.util.InfoActivity
-import com.clakestudio.pc.fizykor.util.obtainViewModel
 import com.clakestudio.pc.fizykor.util.replaceFragmentInActivity
 import com.clakestudio.pc.fizykor.util.setupActionBar
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_equations.*
 import kotlinx.android.synthetic.main.app_bar_equations.*
+import javax.inject.Inject
 
-class EquationsActivity : AppCompatActivity() {
+class EquationsActivity : AppCompatActivity(), HasSupportFragmentInjector {
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = dispatchingAndroidInjector
 
     private lateinit var drawerLayout: androidx.drawerlayout.widget.DrawerLayout
-    private lateinit var equationsViewModel: EquationsViewModel
+   // private lateinit var equationsViewModel: EquationsViewModel
     private var checkedItemId: Int = R.id.kinematyka
+
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +48,7 @@ class EquationsActivity : AppCompatActivity() {
         setupNavigationDrawer()
         setupViewFragment()
 
+        /*
         equationsViewModel = obtainViewModel().apply {
 
             flashCardsEvent.observe(this@EquationsActivity, Observer<Void> {
@@ -46,7 +56,7 @@ class EquationsActivity : AppCompatActivity() {
             })
 
         }
-
+*/
         setupActionBar(R.id.toolbar) {
             setHomeAsUpIndicator(R.drawable.ic_menu)
             title = resources.getString(R.string.kinematyka)
@@ -91,7 +101,7 @@ class EquationsActivity : AppCompatActivity() {
                 R.id.przedrostki -> fab.hide()
                 else -> fab.show()
             }
-            equationsViewModel.filterEquations(menuItem.title.toString())
+       //     equationsViewModel.filterEquations(menuItem.title.toString())
             menuItem.isChecked = true
             toolbar.title = menuItem.title.toString()
             checkedItemId = menuItem.itemId

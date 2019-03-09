@@ -4,14 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.util.InfoActivity
-import com.clakestudio.pc.fizykor.util.obtainViewModel
 import com.clakestudio.pc.fizykor.util.replaceFragmentInActivity
 import com.clakestudio.pc.fizykor.util.setupActionBar
 import kotlinx.android.synthetic.main.activity_flash_cards.*
@@ -28,10 +25,10 @@ class FlashCardsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_flash_cards)
         setSupportActionBar(toolbar)
 
-        flashCardsViewModel = obtainViewModel().apply {
+       // flashCardsViewModel = obtainViewModel().apply {
 
             // Interactions
-        }
+     //   }
         setupViewFragment()
         setupNavigationDrawer()
         retriveIntentData()
@@ -107,7 +104,7 @@ class FlashCardsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun obtainViewModel(): FlashCardsViewModel = obtainViewModel(FlashCardsViewModel::class.java)
+    //fun obtainViewModel(): FlashCardsViewModel = obtainViewModel(FlashCardsViewModel::class.java)
 
 
 }

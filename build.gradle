@@ -43,7 +43,7 @@ ext {
     rxAndroidVersion = '2.0.2'
 
     // dagger
-    daggerVersion = "2.17"
+    daggerVersion = "2.16"
     // testing
     guavaVersion = '22.0-android'
     junitVersion = '4.12'

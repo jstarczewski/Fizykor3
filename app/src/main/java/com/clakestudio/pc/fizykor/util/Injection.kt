@@ -7,10 +7,9 @@ import com.clakestudio.pc.fizykor.data.source.local.equation.EquationsLocalDataS
 import com.clakestudio.pc.fizykor.data.source.local.flashcard.FlashCardsLocalDataSource
 
 object Injection {
-
+/*
     fun provideEquationsRepository(context: Context) : EquationsRepository = EquationsRepository.
             getInstance(EquationsLocalDataSource.getInstance(EquationDatabase.getInstance(context).equationDao()),
                     FlashCardsLocalDataSource.getInstance(EquationDatabase.getInstance(context).flashCardDao()))
 
-
-}
+*/}

@@ -25,7 +25,7 @@ class ViewModelFactory private constructor(
                 // Unchecked cast
             } as T
 
-
+/*
     companion object {
 
         @Volatile
@@ -39,5 +39,5 @@ class ViewModelFactory private constructor(
 
                 }
 
-    }
+    }*/
 }

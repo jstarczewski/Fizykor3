@@ -1,5 +1,6 @@
 package com.clakestudio.pc.fizykor.di
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.clakestudio.pc.fizykor.equations.EquationsViewModel
 import com.clakestudio.pc.fizykor.viewmodel.FizykorViewModelFactory
@@ -13,7 +14,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(EquationsViewModel::class)
-    abstract fun bindEuationsViewModel(equationsViewModel: EquationsViewModel): EquationsViewModel
+    abstract fun bindEuationsViewModel(equationsViewModel: EquationsViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: FizykorViewModelFactory): ViewModelProvider.Factory
