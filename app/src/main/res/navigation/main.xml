@@ -9,10 +9,11 @@
         android:label="EquationsFragment" >
         <action
             android:id="@+id/action_equationsFragment_to_flashCardsFragment"
-            app:destination="@id/flashCardsFragment" />
+            app:destination="@id/flashCardsFragment"
+            app:exitAnim="@anim/fragment_fade_out"/>
     </fragment>
     <fragment
         android:id="@+id/flashCardsFragment"
-        android:name="com.clakestudio.pc.fizykor.flashcards.FlashCardsFragment"
+        android:name="com.clakestudio.pc.fizykor.ui.flashcards.FlashCardsFragment"
         android:label="FlashCardsFragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.clakestudio.pc.fizykor.ui.equations
+package com.clakestudio.pc.fizykor.adapters
 
 import android.view.LayoutInflater
 import android.view.View

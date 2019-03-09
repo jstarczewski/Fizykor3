@@ -1,4 +1,4 @@
-package com.clakestudio.pc.fizykor.flashcards
+package com.clakestudio.pc.fizykor.adapters
 
 import androidx.databinding.BindingAdapter
 import android.view.View

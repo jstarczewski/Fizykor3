@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
 import com.clakestudio.pc.fizykor.ui.equations.EquationsViewModel
-import com.clakestudio.pc.fizykor.flashcards.FlashCardsViewModel
+import com.clakestudio.pc.fizykor.ui.flashcards.FlashCardsViewModel
 
 class ViewModelFactory private constructor(
         private val equationsRepository: EquationsRepository

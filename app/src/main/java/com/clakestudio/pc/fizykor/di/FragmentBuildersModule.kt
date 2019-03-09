@@ -1,6 +1,6 @@
 package com.clakestudio.pc.fizykor.di
 
-import com.clakestudio.pc.fizykor.flashcards.FlashCardsFragment
+import com.clakestudio.pc.fizykor.ui.flashcards.FlashCardsFragment
 import com.clakestudio.pc.fizykor.ui.equations.EquationsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

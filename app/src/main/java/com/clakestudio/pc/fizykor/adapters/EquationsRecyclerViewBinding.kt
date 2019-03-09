@@ -1,4 +1,4 @@
-package com.clakestudio.pc.fizykor.ui.equations
+package com.clakestudio.pc.fizykor.adapters
 
 import androidx.databinding.BindingAdapter
 import com.clakestudio.pc.fizykor.data.Equation

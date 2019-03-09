@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.clakestudio.pc.fizykor.R
+import com.clakestudio.pc.fizykor.adapters.EquationsAdapter
 import com.clakestudio.pc.fizykor.databinding.FragmentEquationsBinding
 import com.clakestudio.pc.fizykor.di.Injectable
 import javax.inject.Inject
@@ -58,6 +58,7 @@ class EquationsFragment : Fragment(), Injectable {
     private fun setupFab() {
         var fab = activity?.findViewById<FloatingActionButton>(R.id.fab)
         fab?.setOnClickListener{
+            fab.hide()
             findNavController().navigate(R.id.action_equationsFragment_to_flashCardsFragment)
         }
 

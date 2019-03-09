@@ -1,4 +1,4 @@
-package com.clakestudio.pc.fizykor.flashcards
+package com.clakestudio.pc.fizykor.ui.flashcards
 
 import androidx.lifecycle.ViewModel
 import androidx.databinding.ObservableField

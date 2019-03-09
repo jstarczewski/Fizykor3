@@ -1,4 +1,4 @@
-package com.clakestudio.pc.fizykor.flashcards
+package com.clakestudio.pc.fizykor.ui.flashcards
 
 import android.os.Bundle
 import androidx.core.view.GestureDetectorCompat
@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.clakestudio.pc.fizykor.R
-import com.clakestudio.pc.fizykor.ViewModelFactory
 import com.clakestudio.pc.fizykor.databinding.FragmentFlashCardsBinding
 import com.clakestudio.pc.fizykor.di.Injectable
 import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider
