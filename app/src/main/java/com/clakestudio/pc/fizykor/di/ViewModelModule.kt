@@ -1,6 +1,6 @@
 package com.clakestudio.pc.fizykor.di
 
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider
 import com.clakestudio.pc.fizykor.viewmodel.FizykorViewModelFactory
 import dagger.Binds
 import dagger.Module

@@ -1,9 +1,9 @@
 package com.clakestudio.pc.fizykor.flashcards
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.view.GestureDetectorCompat
+import androidx.fragment.app.Fragment
+import androidx.core.view.GestureDetectorCompat
 import android.view.*
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -15,7 +15,7 @@ import com.clakestudio.pc.fizykor.util.SharedPreferencesProvider.get
 import kotlinx.android.synthetic.main.fragment_flash_cards.*
 import kotlinx.android.synthetic.main.fragment_flash_cards.view.*
 
-class FlashCardsFragment : Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener {
+class FlashCardsFragment : androidx.fragment.app.Fragment(), GestureDetector.OnGestureListener, View.OnTouchListener {
 
     private lateinit var viewFragmentBinding: FragmentFlashCardsBinding
     private lateinit var gestureDetectorCompat: GestureDetectorCompat

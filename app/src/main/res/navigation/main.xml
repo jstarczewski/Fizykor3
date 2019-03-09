@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main"
+    app:startDestination="@id/equationsFragment">
+
+    <fragment
+        android:id="@+id/equationsFragment"
+        android:name="com.clakestudio.pc.fizykor.equations.EquationsFragment"
+        android:label="EquationsFragment" >
+        <action
+            android:id="@+id/action_equationsFragment_to_flashCardsFragment"
+            app:destination="@id/flashCardsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flashCardsFragment"
+        android:name="com.clakestudio.pc.fizykor.flashcards.FlashCardsFragment"
+        android:label="FlashCardsFragment" />
+</navigation>

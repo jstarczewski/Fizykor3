@@ -1,7 +1,7 @@
 package com.clakestudio.pc.fizykor.equations
 
-import android.support.v7.widget.CardView
-import android.support.v7.widget.RecyclerView
+import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +11,12 @@ import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.databinding.MultiEquationBinding
 import com.jstarczewski.pc.mathview.src.MathView
 
-class EquationsAdapter(private var equations: ArrayList<List<Equation>>) : RecyclerView.Adapter<EquationsAdapter.ViewHolder>() {
+class EquationsAdapter(private var equations: ArrayList<List<Equation>>) : androidx.recyclerview.widget.RecyclerView.Adapter<EquationsAdapter.ViewHolder>() {
 
 
-    class ViewHolder(private val binding: com.clakestudio.pc.fizykor.databinding.MultiEquationBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: com.clakestudio.pc.fizykor.databinding.MultiEquationBinding) : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) {
 
-        val updateData = { tv: TextView, mv: MathView, cv: CardView, equation: Equation ->
+        val updateData = { tv: TextView, mv: MathView, cv: androidx.cardview.widget.CardView, equation: Equation ->
             (if (equation.title == "") cv.visibility = View.GONE else { tv.text = equation.title; mv.text = equation.equation }) }
 
         private val textViews = arrayListOf(binding.tvTitle1, binding.tvTitle2, binding.tvTitle3, binding.tvTitle4)
