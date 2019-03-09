@@ -4,6 +4,7 @@
     package="com.clakestudio.pc.fizykor">
 
     <application
+        android:name=".FizykorApp"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
