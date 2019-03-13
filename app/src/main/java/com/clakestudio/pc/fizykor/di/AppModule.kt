@@ -1,6 +1,7 @@
 package com.clakestudio.pc.fizykor.di
 
 import android.app.Application
+import com.clakestudio.pc.fizykor.DrawerLiveEvent
 import com.clakestudio.pc.fizykor.data.source.EquationsDataSource
 import com.clakestudio.pc.fizykor.data.source.FlashCardsDataSource
 import com.clakestudio.pc.fizykor.data.source.local.EquationDatabase
@@ -45,6 +46,12 @@ class AppModule {
     @Provides
     fun provideFlashCardsDataSource(flashCardDao: FlashCardDao) : FlashCardsDataSource {
         return FlashCardsLocalDataSource(flashCardDao)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDrawerLiveEvent() : DrawerLiveEvent<String> {
+        return DrawerLiveEvent<String>()
     }
 
 }

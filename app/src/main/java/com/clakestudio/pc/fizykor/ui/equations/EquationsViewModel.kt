@@ -2,6 +2,7 @@ package com.clakestudio.pc.fizykor.ui.equations
 
 import androidx.lifecycle.ViewModel
 import androidx.databinding.ObservableArrayList
+import com.clakestudio.pc.fizykor.DrawerLiveEvent
 import com.clakestudio.pc.fizykor.SingleLiveEvent
 import com.clakestudio.pc.fizykor.data.Equation
 import com.clakestudio.pc.fizykor.data.source.EquationsRepository
@@ -13,7 +14,8 @@ import javax.inject.Inject
 class EquationsViewModel @Inject constructor(var equationsRepository: EquationsRepository
 ) : ViewModel() {
 
-
+    @Inject
+    lateinit var drawerLiveEvent: DrawerLiveEvent<String>
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     val equations: ObservableArrayList<Equation> = ObservableArrayList()
@@ -26,6 +28,10 @@ class EquationsViewModel @Inject constructor(var equationsRepository: EquationsR
     fun start() {
         if (!isDataLoaded)
             loadData()
+
+        drawerLiveEvent.observe(androidx.lifecycle.Observer<String> {
+            filterEquations(it)
+        })
     }
 
     private fun loadData() {
@@ -50,7 +56,6 @@ class EquationsViewModel @Inject constructor(var equationsRepository: EquationsR
         currentFiltering = filtering
 
     }
-
 
 
 }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.clakestudio.pc.fizykor.DrawerLiveEvent
 import com.clakestudio.pc.fizykor.R
 import com.clakestudio.pc.fizykor.util.InfoActivity
 import com.clakestudio.pc.fizykor.util.setupActionBar
@@ -26,11 +27,15 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
+    @Inject
+    lateinit var drawerLiveEvent: DrawerLiveEvent<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_equations)
         setSupportActionBar(toolbar)
 
+        drawerLiveEvent.setOwner(this)
 
         setupNavigationDrawer()
 
@@ -67,6 +72,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
             menuItem.isChecked = true
             toolbar.title = menuItem.title.toString()
             drawer_layout?.closeDrawers()
+            drawerLiveEvent.value = menuItem.title.toString()
             true
         }
         navigationView.menu.findItem(R.id.stale_i_przedrostki).isVisible = true
