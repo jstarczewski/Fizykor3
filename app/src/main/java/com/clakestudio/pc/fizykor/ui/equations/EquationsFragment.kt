@@ -29,7 +29,7 @@ class EquationsFragment : Fragment(), Injectable {
 
     lateinit var equationsViewModel: EquationsViewModel
 
-    lateinit var fab : FloatingActionButton
+    lateinit var fab: FloatingActionButton
 
     private lateinit var equationsAdapter: EquationsAdapter
 
@@ -51,8 +51,6 @@ class EquationsFragment : Fragment(), Injectable {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-       fab  = activity!!.findViewById<FloatingActionButton>(R.id.fab)
-        setUpDrawerContent(activity!!.findViewById(R.id.nav_view))
     }
 
     override fun onResume() {
@@ -67,24 +65,6 @@ class EquationsFragment : Fragment(), Injectable {
         }
     }
 
-    private fun setUpDrawerContent(navigationView: NavigationView) {
-
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-
-            when (menuItem.itemId) {
-                R.id.stale -> fab.hide()
-                R.id.przedrostki -> fab.hide()
-                else -> fab.show()
-            }
-            equationsViewModel.filterEquations(menuItem.title.toString())
-            menuItem.isChecked = true
-            toolbar.title = menuItem.title.toString()
-            activity?.drawer_layout?.closeDrawers()
-            true
-        }
-        navigationView.menu.findItem(R.id.stale_i_przedrostki).isVisible = true
-
-    }
 
     private fun setupRecyclerView() {
         viewDataBinding.rvEquations.apply {

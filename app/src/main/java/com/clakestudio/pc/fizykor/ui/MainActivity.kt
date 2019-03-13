@@ -52,9 +52,26 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         drawerLayout = (findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawer_layout)).apply {
             setStatusBarBackground(R.color.colorPrimaryDark)
         }
-        //setUpDrawerContent(findViewById(R.id.nav_view))
+        setUpDrawerContent(findViewById(R.id.nav_view))
     }
 
+    private fun setUpDrawerContent(navigationView: NavigationView) {
+
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+
+            when (menuItem.itemId) {
+                R.id.stale -> fab.hide()
+                R.id.przedrostki -> fab.hide()
+                else -> fab.show()
+            }
+            menuItem.isChecked = true
+            toolbar.title = menuItem.title.toString()
+            drawer_layout?.closeDrawers()
+            true
+        }
+        navigationView.menu.findItem(R.id.stale_i_przedrostki).isVisible = true
+
+    }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
