@@ -25,8 +25,6 @@ class DrawerLiveEvent<T> : MutableLiveData<T>() {
 
     }
 
-    
-
     fun setOwner(owner: LifecycleOwner) {
         if (isOwnerSet.compareAndSet(false, true))
             this.owner = owner
