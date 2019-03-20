@@ -17,6 +17,7 @@ import com.clakestudio.pc.fizykor.di.Injectable
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_equations.*
 import kotlinx.android.synthetic.main.app_bar_equations.*
+import kotlinx.android.synthetic.main.fragment_equations.view.*
 import javax.inject.Inject
 
 class EquationsFragment : Fragment(), Injectable {
@@ -74,6 +75,7 @@ class EquationsFragment : Fragment(), Injectable {
             viewDataBinding.rvEquations.adapter = equationsAdapter
         }
     }
+
 
     companion object {
         fun newInstance() = EquationsFragment()
